@@ -375,11 +375,12 @@ table td .btn .btn-edit{
 }
 
 .upper-profile-card h1{
-    margin-left: 200px;
+    text-align: center;
 }
 
 .editProfile-btn{
-    margin: 15px 0;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .editProfile-btn a{
@@ -388,7 +389,6 @@ table td .btn .btn-edit{
     color: white;
     padding: 10px;
     border-radius: 10px;
-    margin-left: 100px;
 }
 
 .editProfile-btn a:hover{
@@ -407,13 +407,14 @@ table td .btn .btn-edit{
 .label{
     width: 300px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .box-value{
     border: 1px solid black;
     width: 600px;
     margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 .label-value{

@@ -7,9 +7,9 @@
     <div class="card-container">
         <div class="upper-profile-card">
             <h1>Profile Page</h1><br>
-            <div class="editProfile-btn">
-                <a href="/editProfile/{{ auth()->user()->id }}">Edit Profile</a>
-            </div>
+        </div>
+        <div class="editProfile-btn">
+            <a href="/editProfile/{{ auth()->user()->id }}">Edit Profile</a>
         </div>
         <div class="profile-information">
             <div class="label">
