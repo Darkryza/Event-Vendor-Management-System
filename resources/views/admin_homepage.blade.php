@@ -56,14 +56,6 @@
                         <td>{{ $event->title }}</td>
                         <td>{{ $event->date }}</td>
                         <td>{{ $event->location }}</td>
-                        <td>
-                            <a href="#" class="btn btn-edit">Edit</a>
-                            <form action="#" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-delete">Delete</button>
-                            </form>
-                        </td>
                     </tr>
                 @endforeach
             </tbody>

@@ -12,7 +12,7 @@
           <a href="/vendor_homepage">
             <img class="UTMlogo" src="{{ asset('images/UTM-LOGO-FULL.png') }}" alt="logo">
           </a>
-          <a class="app-name" href="/manager_homepage">
+          <a class="app-name" href="/vendor_homepage">
             {{ config('app.name') }}
           </a>
         @elseif (auth()->user()->role == 'Admin')
