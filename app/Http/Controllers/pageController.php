@@ -10,7 +10,7 @@ class pageController extends Controller
 {
     public function adminPage(){
         $users = User::all();
-        $events = Event::all();
+        $events = Event::with('user')->get();
         return view('admin_homepage',compact('events','users'));
     }
 
@@ -22,6 +22,10 @@ class pageController extends Controller
     public function vendorPage(){
         $events = Event::all();
         return view('vendor_homepage', compact('events'));
+    }
+
+    public function edituser(User $user){
+        return view('edituser',['user'=>$user]);
     }
 
     public function profilePage(){

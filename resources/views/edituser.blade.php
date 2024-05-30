@@ -1,65 +1,53 @@
 @extends('include.layout')
 @include('include.header')
-@section('title', 'Edit Profile')
+@section('title','Edit User')
 @section('content')
 
 <div class="body-container">
-    <div class="card-container">
-        <div class="upper-editprofile-card">
-            <h1 style="margin-left: 0">Edit Profile</h1><br>
-        </div>
-        @if (session()->has('success'))
-            <div class="alert alert-success mx-3">{{ session('success') }}</div>
-        @endif
-        <div class="profile-information">
-            <form name="editprofileform" action="/editProfile/{{ $user->id }}" onsubmit="return validateForm()" method="POST">
-                @csrf
-                <div class="label">
+    <div class="edit-user-container">
+        <h1>Edit User</h1>
+        <div class="form-edit-user">
+            <form action="/edituser/{{ $user->id }}" class="edit-user">
+                <div class="edituser-label">
                     <label for="name">Name: </label>
                 </div>
                 <div class="edit-value">
                     <input type="text" name="name" id="name" value="{{ $user->name }}">
                 </div>
-                <div class="label">
+                <div class="edituser-label">
                     <label for="role">Role: </label>
                 </div>
-                <div class="box-value">
-                    <p class="label-value">{{ $user->role }}</p>
-                </div> 
-                <div class="label">
+                <select name="role" id="role" class="form-select">
+                    <option value="Admin" {{ $user->role == 'Admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="Event Manager" {{ $user->role == 'Event Manager' ? 'selected' : '' }}>Event Manager</option>
+                    <option value="Vendor" {{ $user->role == 'Vendor' ? 'selected' : '' }}>Vendor</option>
+                </select>
+                <div class="edituser-label">
                     <label for="ic_number">IC Number: </label>
                 </div>
                 <div class="edit-value">
                     <input type="text" name="IC_number" id="IC_number" value="{{ $user->IC_number }}">
                 </div>
-                <div class="label">
+                <div class="edituser-label">
                     <label for="phone_number">Phone number: </label>
                 </div>
                 <div class="edit-value">
                     <input type="text" name="phone_number" id="phone_number" value="{{ $user->phone_number }}">
                 </div>
-                <div class="label">
+                <div class="edituser-label">
                     <label for="email">Email: </label>
                 </div>
                 <div class="edit-value">
                     <input type="email" name="email" id="email" value="{{ $user->email }}">
                 </div>
-                <div class="label">
+                <div class="edituser-label">
                     <label for="username">User name: </label>
                 </div>
                 <div class="edit-value">
                     <input type="text" name="username" id="username" value="{{ $user->username }}">
                 </div>
-                <div class="edit-btn">
-                    <div class="save-btn">
-                        <button type="submit">Save</button>
-                    </div>
-                    <div class="cancel-btn">
-                        <a href="/profile">Cancel</a>
-                    </div> 
-                </div>
             </form>
-        </div>    
+        </div>
     </div>
 </div>
 

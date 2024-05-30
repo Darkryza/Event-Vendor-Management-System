@@ -25,6 +25,9 @@ Route::get('/admin_homepage', [pageController::class, 'adminPage']);
 Route::get('/manager_homepage', [pageController::class, 'managerPage']);
 Route::get('/vendor_homepage', [pageController::class, 'vendorPage']);
 
+// Route for Admin Edit User
+Route::get('/edituser/{user}', [pageController::class, 'edituser']);
+
 
 //Route for profile
 Route::get('/profile', [pageController::class, 'profilePage']);

@@ -5,7 +5,12 @@
 
 <div class="body-container">
     <div class="user-list">
-        <h2>List of Users</h2>
+        <div class="admin-upper-container">
+            <h2>List of Users</h2>
+            <div class="btn-AddUser">
+                <a href="/AddUser">Add user</a>
+            </div>
+        </div>  
         <table>
             <thead>
                 <tr>
@@ -24,12 +29,10 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
                         <td>
-                            <a href="#" class="btn btn-edit">Edit</a>
-                            <form action="#" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-delete">Delete</button>
-                            </form>
+                            <div class="listuser-btn">
+                                <a href="/edituser/{{ $user->id }}">Edit</a>
+                                <a href="#">Delete</a>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
@@ -38,15 +41,24 @@
     </div>
 
     <div class="event-list">
-        <h2>List of Events</h2>
+        <div class="admin-upper-container">
+            <h2>List of events</h2>
+            <div class="btn-Add">
+                <a href="/AddEvent">Add event</a>
+            </div>
+        </div>  
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
-                    <th>Date</th>
                     <th>Location</th>
-                    <th>Actions</th>
+                    <th>Duration</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th>Manager</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,13 +66,22 @@
                     <tr>
                         <td>{{ $event->id }}</td>
                         <td>{{ $event->title }}</td>
-                        <td>{{ $event->date }}</td>
                         <td>{{ $event->location }}</td>
+                        <td>{{ $event->duration }}</td>
+                        <td>{{ $event->start_date }}</td>
+                        <td>{{ $event->end_date }}</td>
+                        <td>{{ $event->status }}</td>
+                        <td>{{ $event->user->name }}</td>
+                        <td>
+                            <div class="listuser-btn">
+                                <a href="/edituser/{{ $user->id }}">Edit</a>
+                                <a href="#">Delete</a>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-</div>
 
 @endsection
