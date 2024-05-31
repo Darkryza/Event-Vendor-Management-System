@@ -22,7 +22,9 @@
                     <img src="{{ asset('storage/images/' . $event->name_imgPoster) }}" alt="events">
                 </div>
                 <div class="eventsInfo-container">
-                  <h4><b>{{ $event->title }}</b></h4> 
+                  <h4><b>{{ $event->title }}</b></h4>
+                  <p>{{ $event->duration }} days</p>
+                  <p><b>{{ $event->status }}</b></p>
                 </div>
             </a>
         </div>

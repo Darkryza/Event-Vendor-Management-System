@@ -57,27 +57,59 @@ class EventController extends Controller
 
     public function editEvent(Request $request, Event $event){
         $title = $request->input('title');
-        $date =  $request->input('date');
+        $location = $request->input('location');
         $description = $request->input('description');
-    
-        // Check if the image input exists in the request
-        if ($request->hasFile('image')) {
-            $name_photo = $request->file('image')->getClientOriginalName();
-            $size_photo = $request->file('image')->getSize();
+        $start_date =  $request->input('start_date');
+        $end_date =  $request->input('end_date');
+        // Calculate duration days from start to end date
+        $start_date = Carbon::parse($start_date);
+        $end_date = Carbon::parse($end_date);
+        // ...............................................
+        $duration = $start_date->diffInDays($end_date) + 1;
+        $agreement = $request->input('agreement');
+
+        // Check if the poster image input exists in the request
+        if ($request->hasFile('poster_image')) {
+            $poster_name = $request->file('poster_image')->getClientOriginalName();
+            $poster_size = $request->file('poster_image')->getSize();
             
-            $request->file('image')->storeAs('public/images', $name_photo);
+            $request->file('poster_image')->storeAs('public/images', $poster_name);
         } else {
             // If the image input doesn't exist, retain the existing image details
-            $name_photo = $event->name_image;
-            $size_photo = $event->size_image;
+            $poster_name = $event->name_imgPoster;
+            $poster_size = $event->size_imgPoster;
+        }
+        // Check if the layout image input exists in the request
+        if ($request->hasFile('layout_image')) {
+            $layout_name = $request->file('layout_image')->getClientOriginalName();
+            $layout_size = $request->file('layout_image')->getSize();
+            
+            $request->file('layout_image')->storeAs('public/images', $layout_name);
+        } else {
+            // If the image input doesn't exist, retain the existing image details
+            $layout_name = $event->name_imgLayout;
+            $layout_size = $event->size_imgLayout;
         }
     
+        $Lot_Quantity = $request->input('lot_quantity');
+        $status = $request->input('status');
+        $user_id = auth()->user()->id;
+        
         Event::where('id', $event->id)->update([
             'title' => $title,
-            'date' => $date,
+            'location' => $location,
             'description' => $description,
-            'name_image' => $name_photo,
-            'size_image' => $size_photo
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+            'duration' => $duration,
+            'agreement' => $agreement,
+            'name_imgPoster' => $poster_name,
+            'size_imgPoster' => $poster_size,
+            'name_imgLayout' => $layout_name,
+            'size_imgLayout' => $layout_size,
+            'Lot_Quantity' => $Lot_Quantity,
+            'status' => $status,
+            'user_id' => $user_id
         ]);
     
         return redirect()->back()->with('success', 'Event updated successfully');

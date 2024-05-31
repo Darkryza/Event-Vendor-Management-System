@@ -27,22 +27,6 @@
             <form action="/editEvent/{{ $event->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="formEditEvent-container">
-                    {{-- <label for="title" class="label">Event Title</label>
-                    <div class="edit-value">
-                        <input type="text" name="title" id="title" value="{{ $event->title }}">
-                    </div>
-                    <label for="date" class="label">Date</label>
-                    <div class="edit-value">
-                        <input type="date" name="date" id="date" value="{{ $event->date }}">
-                    </div>
-                    <label for="description" class="label">Event Description</label>
-                    <div class="edit-value">
-                        <textarea name="description" id="description" cols="5" rows="5">{{ $event->description }}</textarea>
-                    </div>
-                    <label for="image" class="label mt-3">Poster Event</label>
-                    <div class="edit-value">
-                        <input type="file" id="image" name="image" accept="image/*">
-                    </div> --}}
                     <div class="mb-3 mx-5">
                         <label for="title" class="form-label">Event Title</label>
                         <input type="text" class="form-control" id="title" name="title" value="{{ $event->title }}">
@@ -69,11 +53,11 @@
                     </div>
                     <div class="mb-3 mx-5">
                         <label for="poster" class="form-label">Poster Event</label><br>
-                        <input type="file" id="image" name="image" accept="image/*">
+                        <input type="file" id="poster" name="poster_image" accept="image/*">
                     </div>
                     <div class="mb-3 mx-5">
-                        <label for="poster" class="form-label">Layout Event</label><br>
-                        <input type="file" id="image" name="layout_image" accept="image/*">
+                        <label for="layout" class="form-label">Layout Event</label><br>
+                        <input type="file" id="layout" name="layout_image" accept="image/*">
                     </div>
                     <div class="mb-3 mx-5" style="width: 100px">
                         <label for="lot_quantity" class="form-label">Lot Quantity</label>
@@ -84,6 +68,7 @@
                         <select name="status" id="status" class="form-select">
                             <option value="Pending" {{ $event->status == 'Pending' ? 'selected' : '' }}>Pending</option>
                             <option value="Ongoing" {{ $event->status == 'Ongoing' ? 'selected' : '' }}>Ongoing</option>
+                            <option value="Completed" {{ $event->status == 'Completed' ? 'selected' : '' }}>Completed</option>
                         </select>
                     </div>      
                     <div class="updateEvent-btn">

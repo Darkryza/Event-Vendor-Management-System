@@ -4,10 +4,10 @@
 @section('content')
 
 <div class="body-container">
-    <div class="user-list">
+    <div class="list">
         <div class="admin-upper-container">
             <h2>List of Users</h2>
-            <div class="btn-AddUser">
+            <div class="btn-Add">
                 <a href="/AddUser">Add user</a>
             </div>
         </div>  
@@ -40,7 +40,7 @@
         </table>
     </div>
 
-    <div class="event-list">
+    <div class="list">
         <div class="admin-upper-container">
             <h2>List of events</h2>
             <div class="btn-Add">
@@ -67,7 +67,7 @@
                         <td>{{ $event->id }}</td>
                         <td>{{ $event->title }}</td>
                         <td>{{ $event->location }}</td>
-                        <td>{{ $event->duration }}</td>
+                        <td>{{ $event->duration }} days</td>
                         <td>{{ $event->start_date }}</td>
                         <td>{{ $event->end_date }}</td>
                         <td>{{ $event->status }}</td>

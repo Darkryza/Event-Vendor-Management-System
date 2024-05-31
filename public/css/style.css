@@ -118,7 +118,7 @@ nav{
 /* Body-container */
 
 .body-container{
-    position: relative;
+    position: absolute;
     height: auto;
     width: 100%;
 }
@@ -252,7 +252,7 @@ nav{
 
 /* HomePage Admin */
 
-.user-list{
+.list{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -282,7 +282,6 @@ nav{
 
 table {
     width: 80%;
-    border-collapse: collapse;
     margin: 0 auto;
 }
 th{
@@ -294,6 +293,11 @@ th{
     background-color: #f2f2f2;
 }
 
+tbody, td, tfoot, th, thead, tr{
+    margin: 5px 0;
+    height: auto;
+}
+
 .user-list table tr td{
     padding: 10px 5px;
 }
@@ -301,6 +305,7 @@ th{
 .listuser-btn{
     display: flex;
     gap: 5px;
+    margin: 5px 0;
 }
 
 .listuser-btn a{
