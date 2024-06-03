@@ -571,10 +571,10 @@ tbody, td, tfoot, th, thead, tr{
 
 .upperEvent-container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
 .upperEvent-container h1{
@@ -582,11 +582,13 @@ tbody, td, tfoot, th, thead, tr{
     font-weight: bolder;
 }
 
-.home-btn{
-    margin-left: 50px;
+.view-event-btn{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-.home-btn a{
+.view-event-btn a{
     text-decoration: none;
     background-color: rgb(92, 0, 31);
     color: white;
@@ -594,45 +596,21 @@ tbody, td, tfoot, th, thead, tr{
     border-radius: 10px;
 }
 
-.home-btn a:hover{
+.view-event-btn a:hover{
     background-color: rgb(122, 40, 67);
 }
 
-.apply-btn a{
-    margin-left: 20px;
-    padding: 7px;
-    border-radius: 10px;
-    background-color: rgb(92, 0, 31);
-    color: white;
-    border: none;
-    box-shadow: none;
-    text-decoration: none;
-}
-
-.apply-btn a:hover{
-    background-color: rgb(122, 40, 67);
-}
-
-.titleTable-container{
-    display: flex;
-    flex-direction: row;
-    padding: 20px 70px;
-    gap: 400px;
-}
-
-.contentEvent-container{
+.event-container{
     display: flex;
     flex-direction: row;
     padding: 0 20px;
+    margin: 10px 0;
+    justify-content: space-between;
 }
 
-.detailEvent{
-    width: 500px;
-}
-
-.aboutEvent{
-    width: 500px;
-    margin-right: 100px;
+.view-content-event h4{
+    font-size: 20px;
+    font-weight: 800;
 }
 
 .imgEvent img{

@@ -51,7 +51,22 @@ class pageController extends Controller
     public function applyEventPage(Event $event){
         return view('applyEvent', ['event' => $event]);
     }
+
+    public function verifyPage(Event $event){
+        return view('verify-applyevent' ,['event' => $event]);
+    }
+
+    public function paymentPage(Event $event){
+        return view('payment-applyevent',['event' => $event]);
+    }
+    public function statusPage(Event $event){
+        return view('status-applyevent',['event' => $event]);
+    }
+
     public function editEventPage(Event $event){
         return view('editEvent', ['event' => $event]);
+    }
+    public function adduser(){
+        return view('Admin-adduser');
     }
 }

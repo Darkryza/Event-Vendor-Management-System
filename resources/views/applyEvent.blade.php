@@ -14,7 +14,7 @@
         <div class="link-application">
             <ul>
                 <li><a href="" class="active">Details</a></li>
-                <li><a href="">Verify</a></li>
+                <li><a href="/verify/{{ $event->id }}">Verify</a></li>
                 <li><a href="">Payment</a></li>
                 <li><a href="">Status</a></li>
             </ul>
@@ -23,13 +23,22 @@
             <form action="/bookEvent" method="POST">
                 @csrf
                 <div class="mb-4">
-                    <input name="name" type="text" class="form-control" placeholder="Name">
+                    <input name="name" type="text" class="form-control" placeholder="Vendor Name">
+                </div>
+                <div class="mb-4">
+                    <input name="name" type="text" class="form-control" placeholder="Booth Name">
                 </div>
                 <div class="mb-4">
                     <input name="phone_number" type="text" class="form-control" placeholder="Phone Number">
                 </div>
                 <div class="mb-4">
-                    <input name="type_sell" type="text" class="form-control" placeholder="Type of Sell">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Category</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="F&B">Foods and Beverages</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Others">Others</option>
+                      </select> 
                 </div>
                 <div class="btn-user">
                     <button type="submit" class="btn">Submit</button>

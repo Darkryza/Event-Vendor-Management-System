@@ -25,9 +25,9 @@ Route::get('/admin_homepage', [pageController::class, 'adminPage']);
 Route::get('/manager_homepage', [pageController::class, 'managerPage']);
 Route::get('/vendor_homepage', [pageController::class, 'vendorPage']);
 
-// Route for Admin Edit User
+// Route for Admin
 Route::get('/edituser/{user}', [pageController::class, 'edituser']);
-
+Route::get('/adduser', [pageController::class, 'adduser']);
 
 //Route for profile
 Route::get('/profile', [pageController::class, 'profilePage']);
@@ -40,12 +40,14 @@ Route::post('/addEvent', [EventController::class, 'addEvent']);
 Route::get('/pageEvent/{event}',[pageController::class,'pageEvent']);
 Route::get('/viewEvent/{event}', [pageController::class, 'viewEvent']);
 
+
 //Route Edit Event
+Route::get('/editEvent/{event}',[pageController::class,'editEventPage']);
 Route::post('/editEvent/{event}',[EventController::class,'editEvent']);
 Route::delete('/deleteEvent/{event}', [EventController::class, 'deleteEvent']);
 
 //Route for ApplyEvent
 Route::get('/applyEvent/{event}',[pageController::class,'applyEventPage']);
-Route::get('/editEvent/{event}',[pageController::class,'editEventPage']);
-
-
+Route::get('/verify/{event}',[pageController::class,'verifyPage']);
+Route::get('/payment/{event}', [pageController::class, 'paymentPage']);
+Route::get('/status/{event}', [pageController::class, 'statusPage']);

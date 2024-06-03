@@ -8,7 +8,7 @@
         <div class="admin-upper-container">
             <h2>List of Users</h2>
             <div class="btn-Add">
-                <a href="/AddUser">Add user</a>
+                <a href="/adduser">Add user</a>
             </div>
         </div>  
         <table>
