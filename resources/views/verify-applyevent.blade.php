@@ -21,7 +21,6 @@
                 <li><a href="/applyEvent/{{ $event->id }}">Details</a></li>
                 <li><a href="/verify/{{ $event->id }}" class="active">Verify</a></li>
                 <li><a href="/payment/{{ $event->id }}">Payment</a></li>
-                <li><a href="">Status</a></li>
             </ul>
         </div>
         <div class="form-applyEvent">

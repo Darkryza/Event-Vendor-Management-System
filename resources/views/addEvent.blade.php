@@ -45,18 +45,14 @@
             <label for="layout" class="form-label">Layout Event</label><br>
             <input type="file" id="layout" name="layout_image" accept="image/*">
         </div>
+        <div class="mb-3 mx-5">
+            <label for="qr" class="form-label">QR Bank</label><br>
+            <input type="file" id="qr" name="qr_image" accept="image/*">
+        </div>
         <div class="mb-3 mx-5" style="width: 100px">
             <label for="lot_quantity" class="form-label">Lot Quantity</label>
             <input type="number" class="form-control" id="lot_quantity" name="lot_quantity" min="1">
-        </div>
-        <div class="mb-3 mx-5">
-            <label for="status" class="form-label">Status Event</label><br>
-            <select name="status" id="status" class="form-select">
-                <option value="" disabled selected hidden>Status</option>
-                <option value="Pending">Pending</option>
-                <option value="Ongoing">Ongoing</option>
-            </select>
-        </div>        
+        </div>       
         <div class="mx-5 addEvent">
             <button type="submit">Submit</button>
         </div>        

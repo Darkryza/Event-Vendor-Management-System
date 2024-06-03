@@ -59,9 +59,6 @@ class pageController extends Controller
     public function paymentPage(Event $event){
         return view('payment-applyevent',['event' => $event]);
     }
-    public function statusPage(Event $event){
-        return view('status-applyevent',['event' => $event]);
-    }
 
     public function editEventPage(Event $event){
         return view('editEvent', ['event' => $event]);

@@ -613,6 +613,16 @@ tbody, td, tfoot, th, thead, tr{
     font-weight: 800;
 }
 
+.view-content-event .details,
+.view-content-event .photo
+{
+    width: 30%;
+}
+
+.view-content-event .description{
+    width: 40%;
+}
+
 .imgEvent img{
     width: 100%;
     height: 300px;
@@ -718,6 +728,7 @@ tbody, td, tfoot, th, thead, tr{
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 .editEvent-btn a{

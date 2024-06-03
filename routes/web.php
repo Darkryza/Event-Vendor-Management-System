@@ -48,6 +48,6 @@ Route::delete('/deleteEvent/{event}', [EventController::class, 'deleteEvent']);
 
 //Route for ApplyEvent
 Route::get('/applyEvent/{event}',[pageController::class,'applyEventPage']);
+Route::post('/bookEvent-application/{event}',[applyEventController::class,'details']);
 Route::get('/verify/{event}',[pageController::class,'verifyPage']);
 Route::get('/payment/{event}', [pageController::class, 'paymentPage']);
-Route::get('/status/{event}', [pageController::class, 'statusPage']);

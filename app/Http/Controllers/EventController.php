@@ -19,8 +19,8 @@ class EventController extends Controller
             'agreement' => 'required',
             'poster_image'=> 'required',
             'layout_image' => 'required',
+            'qr_image' => 'required',
             'lot_quantity' => 'required',
-            'status' => 'required'
         ]);
 
         $poster_name = $request->file('poster_image')->getClientOriginalName();
@@ -30,6 +30,8 @@ class EventController extends Controller
         $layout_name = $request->file('layout_image')->getClientOriginalName();
         $layout_size = $request->file('layout_image')->getSize();
         $request->file('layout_image')->storeAs('public/images', $layout_name);
+
+        $qr_name = $request->file('qr_image')->getClientOriginalName();
 
         $start_date = Carbon::parse($request->start_date);
         $end_date = Carbon::parse($request->end_date);
@@ -47,8 +49,8 @@ class EventController extends Controller
         $event->size_imgPoster = $poster_size;
         $event->name_imgLayout = $layout_name;
         $event->size_imgLayout = $layout_size;
+        $event->name_imgQR = $qr_name;
         $event->Lot_Quantity = $request->lot_quantity;
-        $event->status = $request->status;
         $event->user_id = auth()->user()->id;
         $event->save();
 

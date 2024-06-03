@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('category');
             $table->boolean('agreement');
             $table->string('receipt_name');
-            $table->string('status');
+            $table->string('status')->default('pending');
             $table->foreignId('event_id')->constrained('events')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();

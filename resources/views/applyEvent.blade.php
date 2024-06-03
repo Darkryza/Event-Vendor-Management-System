@@ -16,11 +16,10 @@
                 <li><a href="" class="active">Details</a></li>
                 <li><a href="/verify/{{ $event->id }}">Verify</a></li>
                 <li><a href="">Payment</a></li>
-                <li><a href="">Status</a></li>
             </ul>
         </div>
         <div class="form-applyEvent">
-            <form action="/bookEvent" method="POST">
+            <form action="/bookEvent-application" method="POST">
                 @csrf
                 <div class="mb-4">
                     <input name="name" type="text" class="form-control" placeholder="Vendor Name">

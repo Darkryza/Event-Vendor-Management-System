@@ -10,9 +10,14 @@ class Application extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name_vendor',
+        'vendor_name',
+        'booth_name',
         'phone_number',
-        'type_sell',
-        'event_id'
+        'category',
+        'agreement',
+        'receipt_name',
+        'status',
+        'event_id',
+        'user_id'
     ];
 }

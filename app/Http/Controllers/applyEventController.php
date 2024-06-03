@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class applyEventController extends Controller
 {
-    public function ApplyEvent(Request $request){
+    public function details(Request $request){
         
     }
 }
