@@ -584,8 +584,10 @@ tbody, td, tfoot, th, thead, tr{
 
 .view-event-btn{
     display: flex;
+    align-items: center;
     justify-content: center;
     gap: 20px;
+    margin: 10px 0;
 }
 
 .view-event-btn a{
@@ -603,24 +605,21 @@ tbody, td, tfoot, th, thead, tr{
 .event-container{
     display: flex;
     flex-direction: row;
-    padding: 0 20px;
-    margin: 10px 0;
     justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.view-content-event{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .view-content-event h4{
     font-size: 20px;
     font-weight: 800;
-}
-
-.view-content-event .details,
-.view-content-event .photo
-{
-    width: 30%;
-}
-
-.view-content-event .description{
-    width: 40%;
 }
 
 .imgEvent img{
@@ -640,6 +639,8 @@ tbody, td, tfoot, th, thead, tr{
 
 .content-applyEvent{
     display: flex;
+    flex-direction: row;
+    position: relative;
 }
 
 .link-application{
@@ -680,17 +681,29 @@ tbody, td, tfoot, th, thead, tr{
 }
 
 .form-applyEvent{
-    position: absolute;
-    width: 500px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 220px;
+    margin: 20px 0;
+    margin-right: 50px;
+    width: 100%;
+
 }
 
-.button{
+.button-applyEvent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-applyEvent button{
     background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.button-applyEvent button:hover{
+    background-color: rgb(54, 8, 23);
 }
 
 /* Manager view Event */

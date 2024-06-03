@@ -39,8 +39,8 @@
                         <option value="Others">Others</option>
                       </select> 
                 </div>
-                <div class="btn-user">
-                    <button type="submit" class="btn">Submit</button>
+                <div class="button-applyEvent">
+                    <button type="submit" class="btn-applyEvent">Submit</button>
                 </div>
             </form>
         </div>

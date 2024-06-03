@@ -20,8 +20,9 @@
             </div>
             <div class="content-event">
                 <p>Duration: {{ $event->duration }} Days</p>
-                <p>Date: {{ \Carbon\Carbon::parse($event->start_date)->format('j F Y') }}</p>
-                <p>Date: {{ \Carbon\Carbon::parse($event->end_date)->format('j F Y') }}</p>
+                <p>Start Date: {{ \Carbon\Carbon::parse($event->start_date)->format('j F Y') }}</p>
+                <p>End Date: {{ \Carbon\Carbon::parse($event->end_date)->format('j F Y') }}</p>
+                <p>Lot Quantity: {{ $event->Lot_Quantity }} vendors needed</p>
             </div>
         </div>
     </div>

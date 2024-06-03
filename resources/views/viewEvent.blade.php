@@ -12,20 +12,22 @@
         </div>
     </div>
     <div class="event-container">
-        <div class="view-content-event details">
-            <h4>Details:</h4>
-            <p>Date: {{ \Carbon\Carbon::parse($event->date)->format('j F Y') }}</p>
-            <p>Location: {{ $event->location }}</p>
-            <p>Start Date: {{ $event->start_date }}</p>
-            <p>End Date: {{ $event->end_date }}</p>
-            <p>Lot Quantity: {{ $event->Lot_Quantity }} vendors needed</p>
-            <p>Status: {{ $event->status }}</p>
+        <div class="view-content-event">
+            <div class="event-content">
+                <h4>Details:</h4>
+                <p>Date: {{ \Carbon\Carbon::parse($event->date)->format('j F Y') }}</p>
+                <p>Location: {{ $event->location }}</p>
+                <p>Start Date: {{ $event->start_date }}</p>
+                <p>End Date: {{ $event->end_date }}</p>
+                <p>Lot Quantity: {{ $event->Lot_Quantity }} vendors needed</p>
+                <p>Status: {{ $event->status }}</p>
+            </div>
         </div>
-        <div class="view-content-event description">
+        <div class="view-content-event">
             <h4>Description of event:</h4>
             <p>{{ $event->description }}</p>
         </div>
-        <div class="view-content-event photo">
+        <div class="view-content-event">
             <h4 class="eventPhotos-title">Photo:</h4>
             <img src="{{ asset('storage/images/'.$event->name_imgPoster) }}" alt="Event Poster">
         </div>
