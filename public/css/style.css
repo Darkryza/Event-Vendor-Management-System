@@ -628,6 +628,10 @@ tbody, td, tfoot, th, thead, tr{
     border-bottom: 1px solid black;
 }
 
+.content-applyEvent{
+    display: flex;
+}
+
 .link-application{
     display: flex;
     flex-direction: column;
@@ -665,14 +669,18 @@ tbody, td, tfoot, th, thead, tr{
     background-color: rgb(92, 0, 31);
 }
 
-.content-applyEvent{
+.form-applyEvent{
+    position: absolute;
+    width: 500px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 220px;
 }
 
-.form-applyEvent{
-    padding: 20px;
-    width: 500px;
-    margin: 0 220px
+.button{
+    background-color: rgb(92, 0, 31);
 }
 
 /* Manager view Event */

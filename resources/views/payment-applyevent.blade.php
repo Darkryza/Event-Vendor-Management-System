@@ -29,9 +29,12 @@
                 <img src="https://www.easywedding.com.my/image/easywedding/image/data/IMG_2251.jpg" alt="QR Payment" style="height: 200px">
             </div>
             <form action="/bookEvent" method="POST">
-                <div class="mb-3 mx-5">
+                <div class="mb-3">
                     <label for="receipt-payment" class="form-label">Receipt Payment</label><br>
                     <input type="file" id="receipt-payment" name="receipt-payment" accept="image/*">
+                </div>
+                <div class="btn-user">
+                    <button type="submit" class="btn">Submit</button>
                 </div>
             </form>
         </div>
