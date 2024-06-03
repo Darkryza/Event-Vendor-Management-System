@@ -23,16 +23,16 @@
                 <li><a href="/payment/{{ $event->id }}" class="active">Payment</a></li>
             </ul>
         </div>
-        <div class="form-applyEvent">
+        <div class="form-payment-applyEvent">
             <div class="qr-payment">
-                <img src="https://www.easywedding.com.my/image/easywedding/image/data/IMG_2251.jpg" alt="QR Payment" style="height: 200px">
+                <img src="{{ asset('storage/images/'.$event->name_imgQR) }}" alt="QR Payment">
             </div>
-            <form action="/bookEvent" method="POST">
+            <form class="form-uploadPayment" action="/bookEvent" method="POST">
                 <div class="mb-3">
                     <label for="receipt-payment" class="form-label">Receipt Payment</label><br>
                     <input type="file" id="receipt-payment" name="receipt-payment" accept="image/*">
                 </div>
-                <div class="btn-user">
+                <div class="payment-button-applyEvent">
                     <button type="submit" class="btn">Submit</button>
                 </div>
             </form>

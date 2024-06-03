@@ -15,7 +15,7 @@
             <ul>
                 <li><a href="" class="active">Details</a></li>
                 <li><a href="/verify/{{ $event->id }}">Verify</a></li>
-                <li><a href="">Payment</a></li>
+                <li><a href="/payment/{{ $event->id }}">Payment</a></li>
             </ul>
         </div>
         <div class="form-applyEvent">

@@ -641,6 +641,7 @@ tbody, td, tfoot, th, thead, tr{
     display: flex;
     flex-direction: row;
     position: relative;
+    height: auto;
 }
 
 .link-application{
@@ -704,6 +705,38 @@ tbody, td, tfoot, th, thead, tr{
 
 .button-applyEvent button:hover{
     background-color: rgb(54, 8, 23);
+}
+
+.qr-payment{
+    margin-left: 50px;
+}
+
+.qr-payment img{
+    width: 200px;
+    height: 250px;
+}
+
+.form-payment-applyEvent{
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+.form-uploadPayment{
+    margin-left: 50px;
+}
+
+.payment-button-applyEvent button{
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.payment-button-applyEvent button:hover{
+    background-color: rgb(54, 8, 23);
+    color: white;
 }
 
 /* Manager view Event */
