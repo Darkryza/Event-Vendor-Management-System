@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class pageController extends Controller
 {
+    // Homepage
+
     public function adminPage(){
         $users = User::all();
         $events = Event::with('user')->get();
@@ -24,16 +27,24 @@ class pageController extends Controller
         return view('vendor_homepage', compact('events'));
     }
 
-    public function edituser(User $user){
-        return view('edituser',['user'=>$user]);
-    }
+    // .......................................
+
+    // Edit Profile
 
     public function profilePage(){
         return view('profile');
     }
 
-    public function addEventPage(){
-        return view('addEvent');
+    // .......................................
+
+    // Admin functions
+    
+    public function adduser(){
+        return view('Admin-adduser');
+    }
+
+    public function edituser(User $user){
+        return view('edituser',['user'=>$user]);
     }
 
     public function editProfilePage(User $user){
@@ -42,28 +53,34 @@ class pageController extends Controller
         }
         return view('editProfile',['user'=>$user]);
     }
+
+    // Manager functions
+
+    public function addEventPage(){
+        return view('addEvent');
+    }
+
     public function pageEvent(Event $event){
         return view('pageEvent', ['event' => $event]);
-    }
-    public function viewEvent(Event $event){
-        return view('viewEvent', ['event' => $event]);
-    }
-    public function applyEventPage(Event $event){
-        return view('applyEvent', ['event' => $event]);
-    }
-
-    public function verifyPage(Event $event){
-        return view('verify-applyevent' ,['event' => $event]);
-    }
-
-    public function paymentPage(Event $event){
-        return view('payment-applyevent',['event' => $event]);
     }
 
     public function editEventPage(Event $event){
         return view('editEvent', ['event' => $event]);
     }
-    public function adduser(){
-        return view('Admin-adduser');
+
+    public function listApplicationPage(){
+        $applications = Application::all();
+        return view('listApplication', compact('applications'));
     }
+
+    // Vendor functions
+
+    public function viewEvent(Event $event){
+        return view('viewEvent', ['event' => $event]);
+    }
+
+    public function applyEventPage(Event $event){
+        return view('applyEvent', ['event' => $event]);
+    }
+
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('booth_name');
             $table->string('phone_number');
             $table->string('category');
+            $table->string('no_of_lot');
             $table->boolean('agreement');
             $table->string('receipt_name');
             $table->string('status')->default('pending');

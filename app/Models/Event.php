@@ -23,6 +23,7 @@ class Event extends Model
         'size_imgLayout',
         'name_imgQR',
         'Lot_Quantity',
+        'availabality',
         'status',
         'user_id'
     ];

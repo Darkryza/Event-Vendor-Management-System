@@ -582,6 +582,18 @@ tbody, td, tfoot, th, thead, tr{
     font-weight: bolder;
 }
 
+.upperEvent-container a{
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: rgb(92, 0, 31);
+}
+
+.upperEvent-container a:hover{
+    background-color: rgb(122, 40, 67);
+}
+
 .view-event-btn{
     display: flex;
     align-items: center;
@@ -606,7 +618,7 @@ tbody, td, tfoot, th, thead, tr{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
@@ -684,8 +696,7 @@ tbody, td, tfoot, th, thead, tr{
 .form-applyEvent{
     display: flex;
     flex-direction: column;
-    margin: 20px 0;
-    margin-right: 50px;
+    margin: 20px 50px;
     width: 100%;
 
 }
@@ -793,7 +804,7 @@ tbody, td, tfoot, th, thead, tr{
 .editEvent-container{
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin: 10px 20px;
 }
 
 .upperEditEvent-container{
@@ -808,7 +819,9 @@ tbody, td, tfoot, th, thead, tr{
 }
 
 .eventContent-container{
+    width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     margin-bottom: 50px;
 }
@@ -816,13 +829,11 @@ tbody, td, tfoot, th, thead, tr{
 .editEvent-poster img{
     height: 300px;
     width: 200px;
-    margin-left: 50px;
 }
 
 .editEvent-layout img{
     height: 300px;
     width: 200px;
-    margin-right: 50px;
 }
 
 .formEditEvent-container{
@@ -901,6 +912,43 @@ tbody, td, tfoot, th, thead, tr{
 
 .edit-user .form-select{
     margin-bottom: 10px;
+}
+
+/* ................ */
+
+/* List application */
+
+.list-application{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.application-upper-container{
+    display: flex;
+    justify-content: center;
+}
+
+table tbody tr td{
+    padding: 8px 10px;
+}
+
+table tbody tr td .buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.buttons button{
+    background-color: rgb(92, 0, 31);
+    padding: 5px;
+    border: none;
+    color: white;
+}
+
+.buttons button:hover{
+    background-color: rgb(54, 8, 23);
 }
 
 /* ................ */

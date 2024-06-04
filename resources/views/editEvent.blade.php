@@ -18,7 +18,7 @@
             </div>
         </div>
         @if (session()->has('success'))
-            <div class="alert alert-success mx-3">{{ session('success') }}</div>
+            <div class="alert alert-success">{{ session('success') }}</div>
         @endif
         <div class="eventContent-container">
             <div class="editEvent-poster">

@@ -14,6 +14,7 @@ class Application extends Model
         'booth_name',
         'phone_number',
         'category',
+        'no_of_lot',
         'agreement',
         'receipt_name',
         'status',
