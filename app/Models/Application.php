@@ -21,4 +21,9 @@ class Application extends Model
         'event_id',
         'user_id'
     ];
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
 }

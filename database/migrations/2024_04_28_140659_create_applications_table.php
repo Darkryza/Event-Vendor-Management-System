@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('no_of_lot');
             $table->boolean('agreement');
             $table->string('receipt_name');
-            $table->string('status')->default('pending');
+            $table->string('status')->default('Pending');
             $table->foreignId('event_id')->constrained('events')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();

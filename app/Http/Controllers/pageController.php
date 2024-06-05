@@ -68,10 +68,16 @@ class pageController extends Controller
         return view('editEvent', ['event' => $event]);
     }
 
-    public function listApplicationPage(){
-        $applications = Application::all();
-        return view('listApplication', compact('applications'));
+    public function listApplicationPage(Event $event){
+        $applications = Application::where('event_id', $event->id)->get();
+        return view('listApplication', compact('applications', 'event'));
     }
+
+    public function viewReceiptPage(Event $event, Application $application){
+        return view('viewReceipt', compact('event','application'));
+    }
+
+
 
     // Vendor functions
 
@@ -81,6 +87,15 @@ class pageController extends Controller
 
     public function applyEventPage(Event $event){
         return view('applyEvent', ['event' => $event]);
+    }
+
+    public function vendorApplicationPage(User $user){
+        $applications = Application::where('user_id', $user->id)->get();
+        return view('vendorApplications', compact('applications'));
+    }
+
+    public function EditAppPage(Application $application){
+        return view('editApplication', compact('application'));
     }
 
 }

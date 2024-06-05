@@ -347,6 +347,23 @@ tbody, td, tfoot, th, thead, tr{
     background-color: rgb(74, 16, 36);
 }
 
+.applications-btn{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.applications-btn a{
+    background-color: rgb(92, 0, 31);
+    text-decoration: none;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+.applications-btn a:hover{
+    background-color: rgb(74, 16, 36);
+}
+
 .managerEvents-card{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -930,6 +947,36 @@ tbody, td, tfoot, th, thead, tr{
     justify-content: center;
 }
 
+.lot-boxes-container {
+    display: flex;
+    margin: 0 200px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.list-application .title{
+    text-align: center;
+}
+
+.lot-box {
+    width: 30px;
+    height: 30px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.lot-box.approved {
+    background-color: green;
+    color: white;
+}
+
 table tbody tr td{
     padding: 8px 10px;
 }
@@ -945,6 +992,7 @@ table tbody tr td .buttons{
     padding: 5px;
     border: none;
     color: white;
+    border-radius: 5px;
 }
 
 .buttons button:hover{
@@ -952,3 +1000,75 @@ table tbody tr td .buttons{
 }
 
 /* ................ */
+
+/* Vendor Application */
+
+.my-applications{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.myApp-uppercontainer{
+    margin: 10px 0;
+    text-align: center;
+}
+
+.back-myapp-button{
+    margin: 20px 0;
+}
+
+.back-myapp-button a{
+    text-decoration: none;
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.back-myapp-button a:hover{
+    background-color: rgb(54, 8, 23);
+}
+
+.editApp-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.form-editApp{
+    width: 50%;
+    margin: 20px 0;
+}
+
+.editApp-btn{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.editApp-btn a{
+    text-decoration: none;
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.editApp-btn a:hover{
+    background-color: rgb(54, 8, 23);
+}
+
+.editApp-btn button{
+    border: none;
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.editApp-btn button:hover{
+    background-color: rgb(54, 8, 23);
+}

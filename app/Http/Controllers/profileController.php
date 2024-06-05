@@ -21,17 +21,6 @@ class profileController extends Controller
         $email = $request->input('email');
         $username = $request->input('username');
 
-        // $registerData = $request->input([
-        //     'name' => 'required',
-        //     'role' => 'required',
-        //     'ic_number' => 'required',
-        //     'phone_number' => 'required',
-        //     'email' => 'required',
-        //     'username' => 'required',
-        // ]);
-
-        // $registerData['password'] = $user->password;
-        // $user->update($registerData);
         User::where('id', $user->id)->update(['name'=>$name, 'role'=>$role, 'ic_number'=>$ic_number, 'phone_number'=>$phone_number, 'email'=>$email, 'username'=>$username]);
 
         return redirect()->back()->with('success', 'Profile updated successfully');

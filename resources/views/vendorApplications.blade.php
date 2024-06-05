@@ -1,35 +1,17 @@
 @extends('include.layout')
 @include('include.header')
-@section('title','List Application')
+@section('title','Applications')
 @section('content')
-    
+
 <div class="body-container">
-    <div class="list-application">
-        <div class="application-upper-container">
-            <h2>List of Applications</h2>
+    <div class="my-applications">
+        <div class="myApp-uppercontainer">
+            <h2>My application</h2>
+            <div class="back-myapp-button">
+                <a href="/vendor_homepage">Back</a>
+            </div>
         </div>
-    
-        <div class="title">
-            <h4>No. of lot:</h4>
-        </div>
-    
-        <div class="lot-boxes-container">
-            @for ($i = 1; $i <= $event->Lot_Quantity; $i++)
-                @php
-                    $isApproved = false;
-                @endphp
-                @foreach($applications as $application)
-                    @if ($application->no_of_lot == $i && $application->status == 'Approve')
-                        @php
-                            $isApproved = true;
-                            break;
-                        @endphp
-                    @endif
-                @endforeach
-                <div class="lot-box {{ $isApproved ? 'approved' : '' }}">{{ $i }}</div>
-            @endfor
-        </div>
-    
+
         <table>
             <thead>
                 <tr>
@@ -49,18 +31,14 @@
                     $no = 1;
                 @endphp
                 @foreach($applications as $application)
-                    <tr class="row-list-app">
+                    <tr>
                         <td>{{ $no++ }}.</td>
                         <td>{{ $application->vendor_name }}</td>
                         <td>{{ $application->booth_name }}</td>
                         <td>{{ $application->phone_number }}</td>
                         <td>{{ $application->category }}</td>
                         <td>{{ $application->no_of_lot }}</td>
-                        <td>
-                            <a href="/viewReceipt/{{ $event->id }}/{{ $application->id }}">
-                                {{ $application->receipt_name }}
-                            </a>
-                        </td>
+                        <td>{{ $application->receipt_name }}</td>
                         <td>
                             @if ($application->status == 'Pending')
                                 <button class="btn btn-warning">Pending</button>
@@ -72,13 +50,9 @@
                         </td>
                         <td>
                             <div class="buttons">
-                                <form action="/approve/{{ $application->id }}" method="POST">
+                                <form action="/editApplication/{{ $application->id }}" method="GET">
                                     @csrf
-                                    <button type="submit">Approve</button>
-                                </form>
-                                <form action="/reject/{{ $application->id }}" method="POST">
-                                    @csrf
-                                    <button type="submit">Reject</button>
+                                    <button type="submit">Edit</button>
                                 </form>
                             </div>
                         </td>
@@ -86,6 +60,7 @@
                 @endforeach
             </tbody>
         </table>
+
     </div>
 </div>
 

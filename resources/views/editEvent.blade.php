@@ -53,11 +53,11 @@
                     </div>
                     <div class="mb-3 mx-5">
                         <label for="poster" class="form-label">Poster Event</label><br>
-                        <input type="file" id="poster" name="poster_image" accept="image/*">
+                        <input type="file" id="poster" name="poster_image" accept="image/*" class="form-control">
                     </div>
                     <div class="mb-3 mx-5">
                         <label for="layout" class="form-label">Layout Event</label><br>
-                        <input type="file" id="layout" name="layout_image" accept="image/*">
+                        <input type="file" id="layout" name="layout_image" accept="image/*" class="form-control">
                     </div>
                     <div class="mb-3 mx-5" style="width: 100px">
                         <label for="lot_quantity" class="form-label">Lot Quantity</label>

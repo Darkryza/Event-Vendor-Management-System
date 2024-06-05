@@ -29,7 +29,7 @@
     <div class="editEvent-btn">
         <a href="/manager_homepage">Back</a>
         <a href="/editEvent/{{ $event->id }}">Edit</a>
-        <a href="/list-applications">List Applications</a>
+        <a href="/list-applications/{{ $event->id }}">List Applications</a>
     </div>
 </div>
 

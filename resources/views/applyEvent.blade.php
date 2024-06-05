@@ -30,7 +30,7 @@
                     <input name="phone_number" type="text" class="form-control" placeholder="Phone Number">
                 </div>
                 <div class="mb-4">
-                    <select name="category" class="form-select" aria-label="Default select example">
+                    <select name="category" class="form-select">
                         <option selected disabled hidden>Category</option>
                         <option value="Clothes">Clothes</option>
                         <option value="F&B">Foods and Beverages</option>
@@ -49,7 +49,7 @@
                 <label class="mb-4" for="agree"> I Agree</label><br>
                 <div class="mb-3">
                     <label for="receipt_image" class="form-label"><h4>Receipt  Payment</h4></label><br>
-                    <input type="file" id="receipt_image" name="receipt_image" accept="image/*">
+                    <input type="file" id="receipt_image" name="receipt_image" accept="image/*" class="form-control">
                 </div>
                 <div class="button-applyEvent">
                     <button type="submit" class="btn-applyEvent">Submit</button>

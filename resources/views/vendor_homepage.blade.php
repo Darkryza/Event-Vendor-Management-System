@@ -7,7 +7,9 @@
     <div class="title">
         <h1>Vendor Home Page</h1>
     </div>
-    
+    <div class="applications-btn">
+        <a href="/vendorApplications/{{ auth()->user()->id }}">My applications</a>
+    </div>
     <div class="events-container">
         @foreach ($events as $event)
         <div class="events-card">

@@ -34,4 +34,16 @@ class applyEventController extends Controller
 
         return redirect()->back()->with('success', "Application successful");
     }
+
+    public function approve(Application $application){
+        $application->status = 'Approve';
+        $application->save();
+        return redirect()->back()->with('success', "Application successful");
+    }
+
+    public function reject(Application $application){
+        $application->status = 'Reject';
+        $application->save();
+        return redirect()->back()->with('success', "Application successful");
+    }
 }
