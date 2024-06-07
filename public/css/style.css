@@ -7,12 +7,7 @@
     text-decoration: none;
     list-style: none;
     font-family: "Roboto", sans-serif;
-}
-
-body{
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
+    box-sizing: border-box
 }
 
 /* ----------------------- */
@@ -20,6 +15,9 @@ body{
 /* header*/
 
 nav{
+    position: sticky;
+    top: 0;
+    left: 0;
     height: 70px;
     width: 100%;
     display: flex;
@@ -118,7 +116,6 @@ nav{
 /* Body-container */
 
 .body-container{
-    position: absolute;
     height: auto;
     width: 100%;
 }

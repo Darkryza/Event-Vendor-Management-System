@@ -48,6 +48,9 @@
                 <input type="checkbox" id="agree" name="agreement" value="1">
                 <label class="mb-4" for="agree"> I Agree</label><br>
                 <div class="mb-3">
+                    <img src="{{ asset('storage/images/'. $event->name_imgQR)}}" alt="QR Image" style="width: 200px; height:250px;">
+                </div>
+                <div class="mb-3">
                     <label for="receipt_image" class="form-label"><h4>Receipt  Payment</h4></label><br>
                     <input type="file" id="receipt_image" name="receipt_image" accept="image/*" class="form-control">
                 </div>

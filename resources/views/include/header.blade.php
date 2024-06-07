@@ -1,4 +1,4 @@
-<nav class="sticky-top">
+<nav>
   <div class="left-navbar">
     @auth
         @if (auth()->user()->role == 'Event Manager')
