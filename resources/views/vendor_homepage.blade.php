@@ -15,7 +15,7 @@
         <div class="events-card">
             <div class="event-info">
                 <div class="img-events">
-                    <img src="{{ asset('storage/images/' . $event->name_imgPoster) }}" alt="events">
+                    <img src="{{ $event->name_imgPoster }}" alt="events">
                 </div>
                 <div class="eventsInfo-container">
                     <div class="title">

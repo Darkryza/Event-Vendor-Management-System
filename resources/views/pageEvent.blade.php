@@ -5,7 +5,7 @@
 
 <div class="body-container">
     <div class="managerEventInfo-container">
-        <img src="{{ asset('storage/images/'.$event->name_imgPoster) }}" alt="Event Poster">
+        <img src="{{ asset($event->name_imgPoster) }}" alt="Event Poster">
         <div class="managerAbout-event">
             <div class="title-event">
                 <h1>About</h1>

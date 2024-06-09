@@ -22,7 +22,7 @@
         @endif
         <div class="eventContent-container">
             <div class="editEvent-poster">
-                <img src="{{ asset('storage/images/'.$event->name_imgPoster) }}" alt="Event Poster">
+                <img src="{{ asset($event->name_imgPoster) }}" alt="Event Poster">
             </div>
             <form action="/editEvent/{{ $event->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -82,7 +82,7 @@
                 </div>
             </form>
             <div class="editEvent-layout">
-                <img src="{{ asset('storage/images/'.$event->name_imgLayout) }}" alt="Event Layout">
+                <img src="{{ asset($event->name_imgLayout) }}" alt="Event Layout">
             </div>
         </div>
     </div>

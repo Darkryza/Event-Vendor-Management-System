@@ -17,21 +17,33 @@ class EventController extends Controller
             'start_date' => 'required',
             'end_date' => 'required',
             'agreement' => 'required',
-            'poster_image'=> 'required',
-            'layout_image' => 'required',
-            'qr_image' => 'required',
+            'poster_image'=> 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'layout_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'qr_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'lot_quantity' => 'required',
         ]);
 
-        $poster_name = $request->file('poster_image')->getClientOriginalName();
-        $poster_size = $request->file('poster_image')->getSize();
-        $request->file('poster_image')->storeAs('public/images', $poster_name);
-        
-        $layout_name = $request->file('layout_image')->getClientOriginalName();
-        $layout_size = $request->file('layout_image')->getSize();
-        $request->file('layout_image')->storeAs('public/images', $layout_name);
+        // Ni code img lama
+        // $poster_name = $request->file('poster_image')->getClientOriginalName();
+        // $poster_size = $request->file('poster_image')->getSize();
+        // $request->file('poster_image')->storeAs('public/images', $poster_name);
 
-        $qr_name = $request->file('qr_image')->getClientOriginalName();
+        
+        // $layout_name = $request->file('layout_image')->getClientOriginalName();
+        // $layout_size = $request->file('layout_image')->getSize();
+        // $request->file('layout_image')->storeAs('public/images', $layout_name);
+
+        // $qr_name = $request->file('qr_image')->getClientOriginalName();
+
+        // Ni code img baru
+        $poster_name = time().'.'.$request->poster_image->getClientOriginalName().'.'.$request->poster_image->extension();
+        $request->poster_image->move(public_path('images'), $poster_name);
+
+        $layout_name = time().'.'.$request->layout_image->getClientOriginalName().'.'.$request->layout_image->extension();
+        $request->layout_image->move(public_path('images'), $layout_name);
+
+        $qr_name = time().'.'.$request->qr_image->getClientOriginalName().'.'.$request->qr_image->extension();
+        $request->qr_image->move(public_path('images'), $qr_name);
 
         $start_date = Carbon::parse($request->start_date);
         $end_date = Carbon::parse($request->end_date);
@@ -45,11 +57,9 @@ class EventController extends Controller
         $event->end_date = $request->end_date;
         $event->duration = $duration;
         $event->agreement = $request->agreement;
-        $event->name_imgPoster = $poster_name;
-        $event->size_imgPoster = $poster_size;
-        $event->name_imgLayout = $layout_name;
-        $event->size_imgLayout = $layout_size;
-        $event->name_imgQR = $qr_name;
+        $event->name_imgPoster = 'images/'.$poster_name;
+        $event->name_imgLayout = 'images/'.$layout_name;
+        $event->name_imgQR = 'images/'.$qr_name;
         $event->Lot_Quantity = $request->lot_quantity;
         $event->user_id = auth()->user()->id;
         $event->save();

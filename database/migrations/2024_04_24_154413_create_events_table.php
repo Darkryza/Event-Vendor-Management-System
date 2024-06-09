@@ -21,9 +21,7 @@ return new class extends Migration
             $table->integer('duration');
             $table->text('agreement');
             $table->string('name_imgPoster');
-            $table->string('size_imgPoster');
             $table->string('name_imgLayout');
-            $table->string('size_imgLayout');
             $table->string('name_imgQR');
             $table->integer('Lot_Quantity');
             $table->integer('availabality')->default(0);
