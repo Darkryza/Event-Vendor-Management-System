@@ -7,9 +7,9 @@
         <a href="/list-applications/{{ $event->id }}">
             Back
         </a>
-        <div class="receipt-img">
-            <img src="{{ asset('storage/images/'.$application->receipt_name) }}" alt="Receipt Image">
-        </div>
+    </div>
+    <div class="receipt-img">
+        <img src="{{ asset($application->receipt_name) }}" alt="Receipt Image">
     </div>
 </div>
 

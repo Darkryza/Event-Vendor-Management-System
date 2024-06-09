@@ -17,9 +17,12 @@ class applyEventController extends Controller
         $no_of_lot = $request->no_of_lot;
         $agreement = $request->agreement;
         
-        $receipt_name = $request->file('receipt_image')->getClientOriginalName();
-        $request->file('receipt_image')->storeAs('public/images', $receipt_name);
+        // $receipt_name = $request->file('receipt_image')->getClientOriginalName();
+        // $request->file('receipt_image')->storeAs('public/images', $receipt_name);
 
+        $receipt_name = time().'.'.$request->receipt_image->getClientOriginalName().'.'.$request->receipt_image->extension();
+        $request->receipt_image->move(public_path('images'), $receipt_name);
+        
         $application = new Application();
         $application->vendor_name = $vendor_name;
         $application->booth_name = $booth_name;
@@ -27,7 +30,7 @@ class applyEventController extends Controller
         $application->category = $category;
         $application->no_of_lot = $no_of_lot;
         $application->agreement = $agreement;
-        $application->receipt_name = $receipt_name;
+        $application->receipt_name = 'images/'.$receipt_name;
         $application->event_id = $event->id;
         $application->user_id = $user->id;
         $application->save();

@@ -931,7 +931,7 @@ tbody, td, tfoot, th, thead, tr{
 
 /* ................ */
 
-/* List application */
+/* List application (Manager/Vendor) */
 
 .list-application{
     display: flex;
@@ -1069,4 +1069,22 @@ table tbody tr td .buttons{
 
 .editApp-btn button:hover{
     background-color: rgb(54, 8, 23);
+}
+
+/* ............ */
+
+/* View Receipt */
+
+.viewReceipt-container{
+    margin: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.receipt-img img{
+    width: 400px;
+    height: 450px;
 }
