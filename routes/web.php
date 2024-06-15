@@ -22,7 +22,7 @@ Route::get('/logout',[UserController::class, 'logout']);
 
 // Route for user Homepage
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin_homepage', [pageController::class, 'adminPage']);
+    Route::get('/admin_homepage', [pageController::class, 'adminPage'])->name('admin_homepage');
 });
 
 
@@ -30,7 +30,10 @@ Route::get('/manager_homepage', [pageController::class, 'managerPage']);
 Route::get('/vendor_homepage', [pageController::class, 'vendorPage']);
 
 // Route for Admin
+Route::get('/viewUsers', [pageController::class, 'viewUsers'])->name('viewUsers');
+Route::get('/viewEvents', [pageController::class, 'viewEvents'])->name('viewEvents');
 Route::get('/edituser/{user}', [pageController::class, 'edituser']);
+Route::put('/edituser/{user}', [profileController::class, 'edituser']);
 Route::get('/adduser', [pageController::class, 'adduser']);
 
 //Route for profile

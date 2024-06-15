@@ -57,6 +57,16 @@ class pageController extends Controller
     // .......................................
 
     // Admin functions
+
+    public function viewUsers(){
+        $users = User::where('role', '!=', 'Admin')->get();
+        return view('viewUsers', compact('users')); 
+    }
+
+    public function viewEvents(){
+        $events = Event::all();
+        return view('viewEvents', compact('events'));
+    }
     
     public function adduser(){
         return view('Admin-adduser');

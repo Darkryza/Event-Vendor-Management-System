@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class profileController extends Controller
 {
@@ -26,4 +27,20 @@ class profileController extends Controller
         return redirect()->back()->with('success', 'Profile updated successfully');
     }
 
+    public function edituser(Request $request, User $user){
+        $user->name = $request->name;
+        $user->role = $request->role;
+        $user->IC_number = $request->IC_number;
+        $user->phone_number = $request->phone_number;
+        $user->email = $request->email;
+        $user->username = $request->username;
+
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'User updated successfully');
+    }
 }

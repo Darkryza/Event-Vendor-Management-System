@@ -313,7 +313,7 @@ a.nav-link{
     padding: 10px;
 }
 
-/* .list{
+.list{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -379,7 +379,7 @@ tbody, td, tfoot, th, thead, tr{
 
 .listuser-btn a:hover{
     background-color: rgb(33, 7, 16)
-} */
+}
 
 /* ............. */
 
@@ -1002,6 +1002,22 @@ tbody, td, tfoot, th, thead, tr{
 
 .edit-user .form-select{
     margin-bottom: 10px;
+}
+
+button.btn.button-editUser{
+    background-color: rgb(92, 0, 31);
+    color: white;
+    &:hover{
+        background-color: rgb(54, 8, 23);
+    }
+}
+
+a.btn.button-editUser{
+    background-color: rgb(92, 0, 31);
+    color: white;
+    &:hover{
+        background-color: rgb(54, 8, 23);
+    }
 }
 
 /* ................ */

@@ -6,8 +6,13 @@
 <div class="body-container">
     <div class="edit-user-container">
         <h1>Edit User</h1>
+        @if (session()->has('success'))
+            <div class="alert alert-success mx-3">{{ session('success') }}</div>
+        @endif
         <div class="form-edit-user">
-            <form action="/edituser/{{ $user->id }}" class="edit-user">
+            <form action="/edituser/{{ $user->id }}" class="edit-user" method="POST">
+                @csrf
+                @method('PUT')
                 <div class="edituser-label">
                     <label for="name">Name: </label>
                 </div>
@@ -45,6 +50,17 @@
                 </div>
                 <div class="edit-value">
                     <input type="text" name="username" id="username" value="{{ $user->username }}">
+                </div>
+                <div class="edituser-label">
+                    <label for="password">Password: </label>
+                    <small>Leave blank if you don't want to change the password</small>
+                </div>
+                <div class="edit-value">
+                    <input type="password" name="password" id="password">
+                </div>
+                <div class="edituser-label">
+                    <button type="submit" class="btn button-editUser">Save Changes</button>
+                    <a href="/viewUsers" class="btn button-editUser">Back</a>
                 </div>
             </form>
         </div>
