@@ -246,9 +246,31 @@ nav{
     display: inline-block;
 }
 
+.required::after {
+    content: " *";
+    color: red;
+}
+
 /* ------------- */
 
 /* HomePage Admin */
+
+.admin-container{
+    margin: 20px 20px;
+}
+
+.admin-container-row{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.admin-container-card{
+    background-color: #545454;
+    border: 1px solid black;
+    width: 200px;
+    height: 220px;
+}
 
 .list{
     display: flex;
@@ -833,22 +855,51 @@ tbody, td, tfoot, th, thead, tr{
     margin-top: 20px;
 }
 
+.delete-btn button{
+    border: 0;
+    background-color: rgb(92, 0, 31);
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.delete-btn button:hover{
+    background-color: rgb(54, 8, 23);
+}
+
 .eventContent-container{
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 100px;
     margin-bottom: 50px;
+}
+
+.editEvent-img{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .editEvent-poster img{
     height: 300px;
     width: 200px;
+    border:1px solid #000000;
 }
 
 .editEvent-layout img{
     height: 300px;
     width: 200px;
+    border:1px solid #000000;
+}
+
+.editEvent-QR img{
+    height: 300px;
+    width: 200px;
+    border:1px solid #000000;
 }
 
 .formEditEvent-container{
@@ -861,23 +912,6 @@ tbody, td, tfoot, th, thead, tr{
 .edit-value textarea{
     width: 600px;
     padding: 5px 10px;
-}
-
-.delete-btn button{
-    border: 0;
-    background: none;
-    box-shadow: none;
-    background-color: rgb(92, 0, 31);
-    text-decoration: none;
-    color: white;
-    margin-top: 20px;
-    padding: 10px 15px;
-    border-radius: 10px;
-}
-
-.delete-btn button:hover{
-    background-color: rgb(54, 8, 23);
-    color: rgb(255, 255, 255);
 }
 
 .updateEvent-btn{
@@ -1028,6 +1062,8 @@ table tbody tr td .buttons{
     background-color: rgb(54, 8, 23);
 }
 
+/* Edit Application (Vendor) */
+
 .editApp-container{
     display: flex;
     flex-direction: column;
@@ -1045,6 +1081,15 @@ table tbody tr td .buttons{
     flex-direction: row;
     gap: 10px;
     justify-content: center;
+}
+
+.receipt-img{
+    text-align: center;
+}
+
+.receipt-img img{
+    width: 200px;
+    height: 300px;
 }
 
 .editApp-btn a{

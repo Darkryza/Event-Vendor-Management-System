@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('UTM_relation');
             $table->string('IC_number');
             $table->string('phone_number');
+            $table->string('SSM_num')->nullable();
             $table->string('email')->unique();
             $table->string('username');
             $table->string('password');

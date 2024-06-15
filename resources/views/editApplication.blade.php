@@ -9,7 +9,7 @@
             <h2>Edit Application - {{ $application->event->title }}</h2>
         </div>
         <div class="form-editApp">
-            <form action="/editApp/{{ $application->id }}" enctype="multipart/form-data">
+            <form action="/editApp/{{ $application->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3 mx-5">
                     <label for="vendor_name" class="form-label">Vendor Name</label>
@@ -35,6 +35,9 @@
                 <div class="mb-3 mx-5">
                     <label for="no_of_lot" class="form-label">No of lot</label>
                     <input type="text" name="no_of_lot" id="no_of_lot" value="{{ $application->no_of_lot }}" class="form-control">
+                </div>
+                <div class="mb-3 mx-5 receipt-img">
+                    <img src="{{ asset('images/'.$application->receipt_name) }}" alt="Receipt Image">
                 </div>
                 <div class="mb-3 mx-5">
                     <label class="form-label" for="receipt_name">Receipt</label>

@@ -29,7 +29,7 @@
         </div>
         <div class="view-content-event">
             <h4 class="eventPhotos-title">Photo:</h4>
-            <img src="{{ asset($event->name_imgPoster) }}" alt="Event Poster">
+            <img src="{{ asset('images/'.$event->name_imgPoster) }}" alt="Event Poster">
         </div>
         
     </div>

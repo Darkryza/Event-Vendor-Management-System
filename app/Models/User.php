@@ -22,6 +22,7 @@ class User extends Authenticatable
         'UTM_relation',
         'ic_number',
         'phone_number',
+        'SSM_num',
         'email',
         'username',
         'password',

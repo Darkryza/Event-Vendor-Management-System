@@ -54,9 +54,9 @@ class UserController extends Controller
             'username' => 'required',
             'password' => 'required'
         ]);
-        $registerData['password']=Hash::make($registerData['password']);
+        $registerData['password'] = Hash::make($registerData['password']);
+        $registerData['SSM_num'] = $request->SSM_num;
         $user = User::create($registerData);
-
         if(!$user){
             return redirect('/register')->with('error', 'Register invalid, Please try again');
         }

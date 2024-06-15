@@ -9,7 +9,7 @@
         </a>
     </div>
     <div class="receipt-img">
-        <img src="{{ asset($application->receipt_name) }}" alt="Receipt Image">
+        <img src="{{ asset('images/'.$application->receipt_name) }}" alt="Receipt Image">
     </div>
 </div>
 

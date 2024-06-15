@@ -4,7 +4,16 @@
 @section('content')
 
 <div class="body-container">
-    <div class="list">
+
+    <div class="admin-container">
+        <div class="admin-container-row">
+            <div class="admin-container-card">
+                
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="list">
         <div class="admin-upper-container">
             <h2>List of Users</h2>
             <div class="btn-Add">
@@ -14,7 +23,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
@@ -22,9 +31,12 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $no = 1;
+                @endphp
                 @foreach($users as $user)
                     <tr>
-                        <td>{{ $user->id }}</td>
+                        <td>{{ $no++ }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
@@ -50,7 +62,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No</th>
                     <th>Title</th>
                     <th>Location</th>
                     <th>Duration</th>
@@ -62,9 +74,12 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $no = 1;
+                @endphp
                 @foreach($events as $event)
                     <tr>
-                        <td>{{ $event->id }}</td>
+                        <td>{{ $no++ }}</td>
                         <td>{{ $event->title }}</td>
                         <td>{{ $event->location }}</td>
                         <td>{{ $event->duration }} days</td>
@@ -82,6 +97,6 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-
+    </div>     --}}
+</div>
 @endsection

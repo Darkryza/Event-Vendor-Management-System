@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Application;
-use App\Models\Event;
 use App\Models\User;
+use App\Models\Event;
+use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class pageController extends Controller
 {
     // Homepage
 
     public function adminPage(){
-        $users = User::all();
+        $users = User::where('role','!=','Admin')->get();
         $events = Event::with('user')->get();
         return view('admin_homepage',compact('events','users'));
     }
 
     public function managerPage(){
-        $events = Event::all();
+        $user = Auth::user();
+        $events = Event::where('user_id', $user->id)->get();
         return view('manager_homepage',compact('events'));
     }
 
@@ -86,7 +88,8 @@ class pageController extends Controller
     }
 
     public function applyEventPage(Event $event){
-        return view('applyEvent', ['event' => $event]);
+        $user = auth()->user();
+        return view('applyEvent', ['event' => $event, 'user' => $user]);
     }
 
     public function vendorApplicationPage(User $user){

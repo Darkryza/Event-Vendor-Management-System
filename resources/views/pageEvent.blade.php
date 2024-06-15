@@ -5,15 +5,7 @@
 
 <div class="body-container">
     <div class="managerEventInfo-container">
-        <img src="{{ asset($event->name_imgPoster) }}" alt="Event Poster">
-        <div class="managerAbout-event">
-            <div class="title-event">
-                <h1>About</h1>
-            </div>
-            <div class="content-event">
-                <p>{{ $event->description }}</p>
-            </div>
-        </div>
+        <img src="{{ asset('images/'.$event->name_imgPoster) }}" alt="Event Poster">
         <div class="managerDetail-event">
             <div class="title-event">
                 <h1>Detail</h1>
@@ -23,6 +15,14 @@
                 <p>Start Date: {{ \Carbon\Carbon::parse($event->start_date)->format('j F Y') }}</p>
                 <p>End Date: {{ \Carbon\Carbon::parse($event->end_date)->format('j F Y') }}</p>
                 <p>Lot Quantity: {{ $event->Lot_Quantity }} vendors needed</p>
+            </div>
+        </div>
+        <div class="managerAbout-event">
+            <div class="title-event">
+                <h1>About</h1>
+            </div>
+            <div class="content-event">
+                <p>{{ $event->description }}</p>
             </div>
         </div>
     </div>

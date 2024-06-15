@@ -37,7 +37,7 @@ Route::post('/editProfile/{user}', [profileController::class, 'editProfile']);
 //Route for Events
 Route::get('/addEvent', [pageController::class, 'addEventPage']);
 Route::post('/addEvent', [EventController::class, 'addEvent']);
-Route::get('/pageEvent/{event}',[pageController::class,'pageEvent']);
+Route::get('/pageEvent/{event}',[pageController::class,'pageEvent'])->name('PageEvent');
 Route::get('/viewEvent/{event}', [pageController::class, 'viewEvent']);
 
 
@@ -58,3 +58,4 @@ Route::get('/viewReceipt/{event}/{application}',[pageController::class,'viewRece
 
 Route::get('/vendorApplications/{user}', [pageController::class, 'vendorApplicationPage']);
 Route::get('/editApplication/{application}',[pageController::class,'EditAppPage']);
+Route::post('/editApplication/{application}',[applyEventController::class,'editApplyEvent']);

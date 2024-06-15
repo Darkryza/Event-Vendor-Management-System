@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class EventController extends Controller
 {
@@ -23,19 +24,6 @@ class EventController extends Controller
             'lot_quantity' => 'required',
         ]);
 
-        // Ni code img lama
-        // $poster_name = $request->file('poster_image')->getClientOriginalName();
-        // $poster_size = $request->file('poster_image')->getSize();
-        // $request->file('poster_image')->storeAs('public/images', $poster_name);
-
-        
-        // $layout_name = $request->file('layout_image')->getClientOriginalName();
-        // $layout_size = $request->file('layout_image')->getSize();
-        // $request->file('layout_image')->storeAs('public/images', $layout_name);
-
-        // $qr_name = $request->file('qr_image')->getClientOriginalName();
-
-        // Ni code img baru
         $poster_name = time().'.'.$request->poster_image->getClientOriginalName().'.'.$request->poster_image->extension();
         $request->poster_image->move(public_path('images'), $poster_name);
 
@@ -57,9 +45,9 @@ class EventController extends Controller
         $event->end_date = $request->end_date;
         $event->duration = $duration;
         $event->agreement = $request->agreement;
-        $event->name_imgPoster = 'images/'.$poster_name;
-        $event->name_imgLayout = 'images/'.$layout_name;
-        $event->name_imgQR = 'images/'.$qr_name;
+        $event->name_imgPoster = $poster_name;
+        $event->name_imgLayout = $layout_name;
+        $event->name_imgQR = $qr_name;
         $event->Lot_Quantity = $request->lot_quantity;
         $event->user_id = auth()->user()->id;
         $event->save();
@@ -82,27 +70,33 @@ class EventController extends Controller
 
         // Check if the poster image input exists in the request
         if ($request->hasFile('poster_image')) {
-            $poster_name = $request->file('poster_image')->getClientOriginalName();
-            $poster_size = $request->file('poster_image')->getSize();
-            
-            $request->file('poster_image')->storeAs('public/images', $poster_name);
+            if (File::exists(public_path($event->name_imgLayout))) {
+                File::delete(public_path($event->name_imgLayout));
+            }
+
+            $poster_name = time().'.'.$request->poster_image->getClientOriginalName().'.'.$request->poster_image->extension();
+            $request->poster_image->move(public_path('images'), $poster_name);
         } else {
             // If the image input doesn't exist, retain the existing image details
             $poster_name = $event->name_imgPoster;
-            $poster_size = $event->size_imgPoster;
         }
         // Check if the layout image input exists in the request
         if ($request->hasFile('layout_image')) {
-            $layout_name = $request->file('layout_image')->getClientOriginalName();
-            $layout_size = $request->file('layout_image')->getSize();
-            
-            $request->file('layout_image')->storeAs('public/images', $layout_name);
+            $layout_name = time().'.'.$request->layout_image->getClientOriginalName().'.'.$request->layout_image->extension();
+            $request->layout_image->move(public_path('images'), $layout_name);
         } else {
             // If the image input doesn't exist, retain the existing image details
             $layout_name = $event->name_imgLayout;
-            $layout_size = $event->size_imgLayout;
         }
-    
+
+        if ($request->hasFile('qr_image')) {
+            $qr_name = time().'.'.$request->qr_image->getClientOriginalName().'.'.$request->qr_image->extension();
+            $request->qr_image->move(public_path('images'), $qr_name);
+        } else {
+            // If the image input doesn't exist, retain the existing image details
+            $qr_name = $event->name_imgQR;
+        }
+
         $Lot_Quantity = $request->input('lot_quantity');
         $status = $request->input('status');
         $user_id = auth()->user()->id;
@@ -116,9 +110,8 @@ class EventController extends Controller
             'duration' => $duration,
             'agreement' => $agreement,
             'name_imgPoster' => $poster_name,
-            'size_imgPoster' => $poster_size,
             'name_imgLayout' => $layout_name,
-            'size_imgLayout' => $layout_size,
+            'name_imgQR' => $qr_name,
             'Lot_Quantity' => $Lot_Quantity,
             'status' => $status,
             'user_id' => $user_id

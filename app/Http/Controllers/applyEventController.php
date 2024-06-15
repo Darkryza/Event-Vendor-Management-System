@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 class applyEventController extends Controller
 {
     public function addApplyEvent(Request $request, Event $event, User $user){
+
+        $applyEvent = $request->validate([
+            'vendor_name' => 'required',
+            'booth_name' => 'required',
+            'phone_number' => 'required',
+            'category' => 'required',
+            'no_of_lot' => 'required',
+            'agreement' => 'required',
+        ]);
+
         $vendor_name = $request->vendor_name;
         $booth_name = $request->booth_name;
         $phone_number = $request->phone_number;
@@ -30,12 +40,16 @@ class applyEventController extends Controller
         $application->category = $category;
         $application->no_of_lot = $no_of_lot;
         $application->agreement = $agreement;
-        $application->receipt_name = 'images/'.$receipt_name;
+        $application->receipt_name = $receipt_name;
         $application->event_id = $event->id;
         $application->user_id = $user->id;
         $application->save();
 
         return redirect()->back()->with('success', "Application successful");
+    }
+
+    public function editApplyEvent(){
+        
     }
 
     public function approve(Application $application){

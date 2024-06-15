@@ -19,7 +19,7 @@
         <div class="managerEvents-card">
             <a href="/pageEvent/{{ $event->id }}" class="link-cardEvent">
                 <div class="img-events">
-                    <img src="{{ asset($event->name_imgPoster) }}" alt="events">
+                    <img src="{{ asset('images/'.$event->name_imgPoster) }}" alt="events">
                 </div>
                 <div class="eventsInfo-container">
                   <h4><b>{{ $event->title }}</b></h4>
