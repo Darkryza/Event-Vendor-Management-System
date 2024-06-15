@@ -256,23 +256,64 @@ nav{
 /* HomePage Admin */
 
 .admin-container{
-    margin: 20px 20px;
+    margin: 20px;
+    display: flex;
+    gap: 50px;
 }
 
-.admin-container-row{
+.admin-nav{
+    width: 10%;
+    margin-right: 20px;
+}
+
+a.nav-link{
+    color: black;
+}
+
+.nav-link.active{
+    color: rgb(92, 0, 31);
+    background-color: rgb(232, 232, 232);
+    font-weight: bold;
+}
+
+.admin-link{
+    background-color: rgb(232, 232, 232);
+    border-bottom: 1px solid black;
+}
+
+.admin-content{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.admin-content-row{
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .admin-container-card{
-    background-color: #545454;
-    border: 1px solid black;
+    background-color: rgb(232, 232, 232);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 10px;
     width: 200px;
     height: 220px;
+    text-align: center;
+    padding: 20px;
 }
 
-.list{
+.graph-event-month{
+    width: 60%;
+    margin-left: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* .list{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -338,7 +379,7 @@ tbody, td, tfoot, th, thead, tr{
 
 .listuser-btn a:hover{
     background-color: rgb(33, 7, 16)
-}
+} */
 
 /* ............. */
 

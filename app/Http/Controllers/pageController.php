@@ -13,10 +13,27 @@ class pageController extends Controller
     // Homepage
 
     public function adminPage(){
-        $users = User::where('role','!=','Admin')->get();
+        $users = User::where('role', '!=', 'Admin')->get();
+        $totalUsers = $users->count();  // Calculate the total number of non-admin users
+    
         $events = Event::with('user')->get();
-        return view('admin_homepage',compact('events','users'));
+        $totalEvents = $events->count();  // Calculate the total number of events
+    
+        // Calculate the total number of events for each month
+        $eventsByMonth = Event::selectRaw('MONTH(start_date) as month, COUNT(*) as count')
+                              ->groupBy('month')
+                              ->orderBy('month')
+                              ->get()
+                              ->keyBy('month'); // Collecting the data by month
+        
+        $eventsPerMonth = array_fill(1, 12, 0); // Initialize array for 12 months with 0 events
+        foreach ($eventsByMonth as $monthData) {
+            $eventsPerMonth[$monthData->month] = $monthData->count;
+        }
+        
+        return view('admin_homepage', compact('events', 'users', 'totalUsers', 'totalEvents', 'eventsPerMonth'));
     }
+    
 
     public function managerPage(){
         $user = Auth::user();
