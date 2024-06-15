@@ -21,7 +21,11 @@ Route::post('/login', [UserController::class, 'loginPost']);
 Route::get('/logout',[UserController::class, 'logout']);
 
 // Route for user Homepage
-Route::get('/admin_homepage', [pageController::class, 'adminPage']);
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin_homepage', [pageController::class, 'adminPage']);
+});
+
+
 Route::get('/manager_homepage', [pageController::class, 'managerPage']);
 Route::get('/vendor_homepage', [pageController::class, 'vendorPage']);
 
