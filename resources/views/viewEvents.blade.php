@@ -12,6 +12,9 @@
                     <a class="button" href="{{ route('admin_homepage') }}">Back</a>
                     <a class="button" href="{{ route('admin.addevent') }}">Add event</a>
                 </div>
+                @if (session()->has('success'))
+                <div class="alert alert-success my-3 mx-3">{{ session('success') }}</div>
+                @endif
             </div>  
             <table>
                 <thead>
@@ -44,7 +47,10 @@
                             <td>
                                 <div class="listuser-btn">
                                     <a href="#">Edit</a>
-                                    <a href="#">Delete</a>
+                                    <form action="{{ route('Admin.deleteEvent', ['event' => $event->id]) }}" method="POST">
+                                       @csrf
+                                       <button type="submit" class="button">Delete</button> 
+                                    </form>
                                 </div>
                             </td>
                         </tr>

@@ -126,4 +126,9 @@ class EventController extends Controller
         return redirect('/manager_homepage')->with('success', $event->title.' deleted successfully');
     }
 
+    public function Admin_deleteEvent(Event $event){
+        $event->delete();
+
+        return redirect()->back()->with('success',$event->title.' deleted successfully');
+    }
 }

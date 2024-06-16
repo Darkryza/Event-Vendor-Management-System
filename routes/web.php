@@ -38,6 +38,7 @@ Route::get('/adduser', [pageController::class, 'adduser'])->name('adduser');
 Route::post('/admin/adduser', [UserController::class, 'adduser']);
 Route::post('deleteUser/{user}', [UserController::class, 'deleteuser'])->name('delete.user');
 Route::get('/admin/addevent',[pageController::class,'addevent'])->name('admin.addevent');
+Route::post('/deleteEvent/{event}',[EventController::class,'Admin_deleteEvent'])->name('Admin.deleteEvent');
 
 //Route for profile
 Route::get('/profile', [pageController::class, 'profilePage']);
@@ -46,7 +47,7 @@ Route::post('/editProfile/{user}', [profileController::class, 'editProfile']);
 
 //Route for Events
 Route::get('/addEvent', [pageController::class, 'addEventPage']);
-Route::post('/addEvent', [EventController::class, 'addEvent']);
+Route::post('/addEvent', [EventController::class, 'addEvent'])->name('addEvent');
 Route::get('/pageEvent/{event}',[pageController::class,'pageEvent'])->name('PageEvent');
 Route::get('/viewEvent/{event}', [pageController::class, 'viewEvent']);
 
@@ -54,7 +55,7 @@ Route::get('/viewEvent/{event}', [pageController::class, 'viewEvent']);
 //Route Edit Event
 Route::get('/editEvent/{event}',[pageController::class,'editEventPage']);
 Route::post('/editEvent/{event}',[EventController::class,'editEvent']);
-Route::delete('/deleteEvent/{event}', [EventController::class, 'deleteEvent']);
+Route::delete('/deleteEvent/{event}', [EventController::class, 'deleteEvent'])->name('deleteEvent');
 
 //Route for ApplyEvent
 Route::get('/applyEvent/{event}',[pageController::class,'applyEventPage']);

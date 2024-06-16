@@ -73,7 +73,7 @@ class pageController extends Controller
     }
 
     public function addevent(){
-        
+        return view('admin-addevent');
     }
 
     public function edituser(User $user){
