@@ -69,4 +69,30 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+    public function adduser(Request $request){
+        $adduser = $request->validate([
+            'name' => 'required',
+            'role' => 'required',
+            'UTM_relation' => 'required',
+            'ic_number' => 'required',
+            'phone_number' => 'required',
+            'email' => 'required',
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+        $adduser['password'] = Hash::make($adduser['password']);
+        $adduser['SSM_num'] = $request->SSM_num;
+        $user = User::create($adduser);
+        if(!$user){
+            return redirect('/adduser')->with('error', 'Add user invalid, Please try again');
+        }
+        return redirect()->back()->with('success', 'Add User successfully');
+    }
+
+    public function deleteuser(User $user){
+        $user->delete();
+
+        return redirect()->back()->with('success', $user->name.' deleted successfully');
+    }
 }

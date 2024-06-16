@@ -34,7 +34,10 @@ Route::get('/viewUsers', [pageController::class, 'viewUsers'])->name('viewUsers'
 Route::get('/viewEvents', [pageController::class, 'viewEvents'])->name('viewEvents');
 Route::get('/edituser/{user}', [pageController::class, 'edituser']);
 Route::put('/edituser/{user}', [profileController::class, 'edituser']);
-Route::get('/adduser', [pageController::class, 'adduser']);
+Route::get('/adduser', [pageController::class, 'adduser'])->name('adduser');
+Route::post('/admin/adduser', [UserController::class, 'adduser']);
+Route::post('deleteUser/{user}', [UserController::class, 'deleteuser'])->name('delete.user');
+Route::get('/admin/addevent',[pageController::class,'addevent'])->name('admin.addevent');
 
 //Route for profile
 Route::get('/profile', [pageController::class, 'profilePage']);

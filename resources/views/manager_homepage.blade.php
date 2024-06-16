@@ -5,7 +5,7 @@
 
 <div class="body-container">
     <div class="title">
-        <h1>Manager Home Page</h1>
+        <h1>Dashboard</h1>
     </div>
     <div class="add-event-btn">
         <a href="/addEvent">Add Event</a>

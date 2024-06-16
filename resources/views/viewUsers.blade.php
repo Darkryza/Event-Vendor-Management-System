@@ -8,10 +8,13 @@
         <div class="list">
             <div class="admin-upper-container">
                 <h2>List of Users</h2>
-                <div class="btn-Add">
-                    <a href="/adduser">Add user</a>
-                    <a href="admin_homepage">Back</a>
+                <div class="d-flex gap-3">
+                    <a class="button" href="adduser">Add user</a>
+                    <a class="button" href="admin_homepage">Back</a>
                 </div>
+                @if (session()->has('success'))
+                <div class="alert alert-success my-3 mx-3">{{ session('success') }}</div>
+                @endif
             </div>  
             <table>
                 <thead>
@@ -36,7 +39,10 @@
                             <td>
                                 <div class="listuser-btn">
                                     <a href="/edituser/{{ $user->id }}">Edit</a>
-                                    <a href="">Delete</a>
+                                    <form action="{{ route('delete.user',['user' => $user->id]) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="button">Delete</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

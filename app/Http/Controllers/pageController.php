@@ -72,6 +72,10 @@ class pageController extends Controller
         return view('Admin-adduser');
     }
 
+    public function addevent(){
+        
+    }
+
     public function edituser(User $user){
         return view('edituser',['user'=>$user]);
     }

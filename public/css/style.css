@@ -141,6 +141,18 @@ nav{
     font-weight: 700;
 }
 
+.button{
+    border: none;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(92, 0, 31);
+    padding: 5px 10px;
+    border-radius: 5px;
+    &:hover{
+        background-color: rgb(33, 7, 16);
+    }
+}
+
 /* --------------- */
 
 /* Index Page */
@@ -306,7 +318,7 @@ a.nav-link{
 }
 
 .graph-event-month{
-    width: 60%;
+    width: 50%;
     margin-left: 20px;
     border: 1px solid black;
     border-radius: 10px;
@@ -327,19 +339,6 @@ a.nav-link{
     align-items: center;
     justify-self: center;
 }
-
-.btn-Add a{
-    text-decoration: none;
-    color: white;
-    padding: 5px 10px;
-    background-color: rgb(92, 0, 31);
-    border-radius: 5px;
-}
-
-.btn-Add a:hover{
-    background-color: rgb(33, 7, 16)
-}
-
 
 table {
     width: 80%;

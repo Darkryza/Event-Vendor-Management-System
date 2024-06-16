@@ -8,9 +8,9 @@
         <div class="list">
             <div class="admin-upper-container">
                 <h2>List of events</h2>
-                <div class="btn-Add">
-                    <a href="/AddEvent">Add event</a>
-                    <a href="admin_homepage">Back</a>
+                <div class="my-1 d-flex gap-3">
+                    <a class="button" href="{{ route('admin_homepage') }}">Back</a>
+                    <a class="button" href="{{ route('admin.addevent') }}">Add event</a>
                 </div>
             </div>  
             <table>
