@@ -52,7 +52,11 @@ class EventController extends Controller
         $event->user_id = auth()->user()->id;
         $event->save();
 
-        return redirect()->back()->with('success', 'Event added successfully');
+        if (auth()->user()->role == 'Admin') {
+            return redirect()->route('viewEvents')->with('success', 'Event added successfully');
+        } else {
+            return redirect()->back()->with('success', 'Event added successfully');
+        }
     }
 
     public function editEvent(Request $request, Event $event){
@@ -121,14 +125,23 @@ class EventController extends Controller
     }
     
     public function deleteEvent(Request $request,Event $event){
-        Event::where('id', $event->id)->delete();
-
-        return redirect('/manager_homepage')->with('success', $event->title.' deleted successfully');
-    }
-
-    public function Admin_deleteEvent(Event $event){
+        $images = [
+            public_path('images/' . $event->name_imgPoster),
+            public_path('images/' . $event->name_imgLayout),
+            public_path('images/' . $event->name_imgQR)
+        ];
+    
+        foreach ($images as $image) {
+            if (File::exists($image)) {
+                File::delete($image);
+            }
+        }
+    
         $event->delete();
-
-        return redirect()->back()->with('success',$event->title.' deleted successfully');
+    
+        if (auth()->user()->role != 'Admin'){
+            return redirect('/manager_homepage')->with('success', $event->title.' deleted successfully');
+        }
+        return redirect()->route('viewEvents')->with('success',$event->title.' deleted successfully');
     }
 }

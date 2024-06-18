@@ -58,9 +58,9 @@
                 <div class="edit-value">
                     <input type="password" name="password" id="password">
                 </div>
-                <div class="edituser-label">
-                    <button type="submit" class="btn button-editUser">Save Changes</button>
+                <div class="d-flex justify-content-center gap-3">
                     <a href="/viewUsers" class="btn button-editUser">Back</a>
+                    <button type="submit" class="btn button-editUser">Save Changes</button>
                 </div>
             </form>
         </div>

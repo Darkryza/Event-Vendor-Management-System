@@ -25,7 +25,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin_homepage', [pageController::class, 'adminPage'])->name('admin_homepage');
 });
 
-
 Route::get('/manager_homepage', [pageController::class, 'managerPage']);
 Route::get('/vendor_homepage', [pageController::class, 'vendorPage']);
 
@@ -38,7 +37,6 @@ Route::get('/adduser', [pageController::class, 'adduser'])->name('adduser');
 Route::post('/admin/adduser', [UserController::class, 'adduser']);
 Route::post('deleteUser/{user}', [UserController::class, 'deleteuser'])->name('delete.user');
 Route::get('/admin/addevent',[pageController::class,'addevent'])->name('admin.addevent');
-Route::post('/deleteEvent/{event}',[EventController::class,'Admin_deleteEvent'])->name('Admin.deleteEvent');
 
 //Route for profile
 Route::get('/profile', [pageController::class, 'profilePage']);
