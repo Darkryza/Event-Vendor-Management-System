@@ -57,8 +57,12 @@
                     <img id="eventLayoutImage" class="border border-black w-25" src="{{ asset('images/'.$event->name_imgLayout) }}" alt="Event Layout" style="cursor: pointer;">
                 </div>
                 <div class="mb-4">
-                    <label for="no_of_lot" class="form-label">No of Lot</label>
-                    <input type="number" id="no_of_lot" class="form-control" name="no_of_lot" placeholder="No of lot" min="0">
+                    <label for="no_of_lot" class="form-label">Lot Price:</label>
+                    <p>{{ $event->lot_price }}</p>
+                </div>
+                <div class="mb-4">
+                    <label for="no_of_lot" class="form-label">Lot Number</label>
+                    <input type="number" id="no_of_lot" class="form-control w-25" name="no_of_lot" placeholder="No of lot" min="1">
                 </div>
                 <div class="mb-4">
                     <h4>Agreement:</h4>
@@ -86,10 +90,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header d-flex flex-row gap-3">
-            <h5 class="modal-title" id="imageModalLabel">Event Layout</h5>
-            <button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            <h5 class="modal-title" id="imageModalLabel">Event Layout <i>(To exit click outside the white window)</i></h5>
             </div>
             <div class="modal-body">
             <img id="modalImage" src="{{ asset('images/'.$event->name_imgLayout) }}" alt="Event Layout" class="img-fluid">

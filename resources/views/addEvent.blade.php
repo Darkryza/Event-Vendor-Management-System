@@ -49,6 +49,10 @@
             <label for="qr" class="form-label">QR Bank</label><br>
             <input type="file" id="qr" name="qr_image" accept="image/*" class="form-control">
         </div>
+        <div class="mb-3 mx-5">
+            <label for="lot_price" class="form-label">Lot Price</label>
+            <textarea class="form-control" id="lot_price" name="lot_price" rows="3"></textarea>
+        </div>
         <div class="mb-3 mx-5" style="width: 100px">
             <label for="lot_quantity" class="form-label">Lot Quantity</label>
             <input type="number" class="form-control" id="lot_quantity" name="lot_quantity" min="1">

@@ -21,6 +21,7 @@ class EventController extends Controller
             'poster_image'=> 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'layout_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'qr_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'lot_price' => 'required',
             'lot_quantity' => 'required',
         ]);
 
@@ -49,6 +50,7 @@ class EventController extends Controller
         $event->name_imgPoster = $poster_name;
         $event->name_imgLayout = $layout_name;
         $event->name_imgQR = $qr_name;
+        $event->lot_price = $request->lot_price;
         $event->Lot_Quantity = $request->lot_quantity;
         $event->user_id = auth()->user()->id;
         $event->save();
@@ -102,6 +104,7 @@ class EventController extends Controller
             $qr_name = $event->name_imgQR;
         }
 
+        $lot_price = $request->input('lot_price');
         $Lot_Quantity = $request->input('lot_quantity');
         $status = $request->input('status');
         $user_id = auth()->user()->id;
@@ -117,6 +120,7 @@ class EventController extends Controller
             'name_imgPoster' => $poster_name,
             'name_imgLayout' => $layout_name,
             'name_imgQR' => $qr_name,
+            'lot_price' => $lot_price,
             'Lot_Quantity' => $Lot_Quantity,
             'status' => $status,
             'user_id' => $user_id

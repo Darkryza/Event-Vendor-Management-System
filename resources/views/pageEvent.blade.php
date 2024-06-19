@@ -15,6 +15,7 @@
                 <p>Start Date: {{ \Carbon\Carbon::parse($event->start_date)->format('j F Y') }}</p>
                 <p>End Date: {{ \Carbon\Carbon::parse($event->end_date)->format('j F Y') }}</p>
                 <p>Lot Quantity: {{ $event->Lot_Quantity }} vendors needed</p>
+                <p>Lot Price: {{ $event->lot_price }}</p>
             </div>
         </div>
         <div class="managerAbout-event">
@@ -22,7 +23,7 @@
                 <h1>About</h1>
             </div>
             <div class="content-event">
-                <p>{{ $event->description }}</p>
+                <p style="text-align: justify;">{{ $event->description }}</p>
             </div>
         </div>
     </div>

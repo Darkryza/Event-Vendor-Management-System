@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Application;
 use App\Models\User;
 use App\Models\Event;
+use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class applyEventController extends Controller
 {
@@ -45,11 +46,18 @@ class applyEventController extends Controller
         $application->user_id = $user->id;
         $application->save();
 
-        return redirect()->back()->with('success', "Application successful");
+        return redirect()->route('listApplicationVendor',['user' => $user->id])->with('success', $application->event->title." Application successful");
     }
 
     public function editApplyEvent(){
         
+    }
+
+    public function deleteApplyEvent(Request $request, Application $application){
+        $image = public_path('images/' . $application->receipt_name);
+        if (File::exists($image)) {
+            File::delete($image);
+        }
     }
 
     public function approve(Application $application){

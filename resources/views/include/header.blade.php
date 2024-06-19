@@ -35,16 +35,15 @@
   
   <div class="right-navbar">
     <ul class="link-navbar">
-      <li class="navbar-list">
-        <a href="/profile">
-          @auth
-            {{ auth()->user()->username }}
-          @endauth
-        </a>
-      </li>
       @auth
         <li class="navbar-list">
-          <a class="btn nav-link nav_text" href="/logout">Logout</a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ auth()->user()->username }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          </ul>
         </li>
       @else
         <li class="navbar-list">

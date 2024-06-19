@@ -20,6 +20,7 @@ class Event extends Model
         'name_imgPoster',
         'name_imgLayout',
         'name_imgQR',
+        'lot_price',
         'Lot_Quantity',
         'availabality',
         'status',

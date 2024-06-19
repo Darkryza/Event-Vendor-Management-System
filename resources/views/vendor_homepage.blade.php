@@ -22,7 +22,11 @@
                         <h4><b>{{ $event->title }}</b></h4> 
                     </div>
                     <div class="status-event">
-                        <p>{{ $event->status }}</p>
+                        <p>
+                            @if ($event->status == 'Pending')
+                                Upcoming
+                            @endif
+                        </p>
                     </div>
                 </div>
                 <div class="applyEvent">
