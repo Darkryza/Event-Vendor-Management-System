@@ -49,8 +49,35 @@ class applyEventController extends Controller
         return redirect()->route('listApplicationVendor',['user' => $user->id])->with('success', $application->event->title." Application successful");
     }
 
-    public function editApplyEvent(){
-        
+    public function editApplyEvent(Request $request, Application $application){
+        $vendor_name = $request->input('vendor_name');
+        $booth_name = $request->input('booth_name');
+        $phone_number = $request->input('phone_number');
+        $category = $request->input('category');
+        $no_of_lot = $request->input('no_of_lot');
+
+        if ($request->hasFile('receipt_name')) {
+            if (File::exists(public_path('images/' . $application->receipt_name))) {
+                File::delete(public_path('images/' . $application->receipt_name));
+            }
+
+            $receipt_image = $request->file('receipt_name');
+            $receipt_name = time() . '.' . $receipt_image->getClientOriginalName();
+            $receipt_image->move(public_path('images'), $receipt_name);
+        } else {
+            $receipt_name = $application->receipt_name;
+        }
+
+        $application->update([
+            'vendor_name' => $vendor_name,
+            'booth_name' => $booth_name,
+            'phone_number' => $phone_number,
+            'category' => $category,
+            'no_of_lot' => $no_of_lot,
+            'receipt_name' => $receipt_name,
+        ]);
+
+        return redirect()->back()->with('success', 'Application update successfully');
     }
 
     public function deleteApplyEvent(Request $request, Application $application){
@@ -58,6 +85,8 @@ class applyEventController extends Controller
         if (File::exists($image)) {
             File::delete($image);
         }
+        $application->delete();
+        return redirect()->route('listApplicationVendor',['user' => auth()->user()])->with('success','Application deleted successfully');
     }
 
     public function approve(Application $application){

@@ -19,6 +19,10 @@ class pageController extends Controller
         $users = User::where('role', '!=', 'Admin')->get();
         $totalUsers = $users->count();
 
+        // Total Applications
+        $applications = Application::all();
+        $totalApplications = $applications->count();
+
         // Total events for the current year
         $totalEvents = Event::whereYear('start_date', $currentYear)->count();
 
@@ -41,7 +45,8 @@ class pageController extends Controller
         return view('admin_homepage', [
             'totalUsers' => $totalUsers,
             'totalEvents' => $totalEvents,
-            'eventsPerMonth' => $eventsPerMonthArray
+            'eventsPerMonth' => $eventsPerMonthArray,
+            'totalApplications' => $totalApplications
         ]);
     }
     
@@ -100,6 +105,11 @@ class pageController extends Controller
 
     public function admin_editEvent(Event $event){
         return view('admin-editEvent', compact('event'));
+    }
+
+    public function admin_viewApplications(){
+        $applications = Application::all();
+        return view('admin-viewApplications', compact('applications'));
     }
 
     // Manager functions

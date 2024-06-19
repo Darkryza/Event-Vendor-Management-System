@@ -109,7 +109,7 @@
 
     // Ensure the modal is properly reset when hidden
     $('#imageModal').on('hidden.bs.modal', function () {
-        document.getElementById('modalImage').src = '{{ asset('images/'.$event->name_imgLayout) }}';
+        document.getElementById('modalImage').src = '{{ asset("images/".$event->name_imgLayout) }}';
     });
 </script>
 

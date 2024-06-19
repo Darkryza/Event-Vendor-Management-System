@@ -18,6 +18,9 @@
                 <li class="nav-item admin-link">
                   <a class="nav-link active" href="viewEvents">Event</a>
                 </li>
+                <li class="nav-item admin-link">
+                    <a class="nav-link" href="{{ route('Admin.viewApplications') }}">Applications</a>
+                </li>
             </ul>
         </div>
 

@@ -18,6 +18,9 @@
                 <li class="nav-item admin-link">
                   <a class="nav-link" href="viewEvents">Event</a>
                 </li>
+                <li class="nav-item admin-link">
+                    <a class="nav-link" href="{{ route('Admin.viewApplications') }}">Applications</a>
+                </li>
             </ul>
         </div>
 
@@ -30,6 +33,10 @@
                 <div class="admin-container-card">
                     <h2>Total Events</h2><br>
                     <h2>{{ $totalEvents }}</h2>
+                </div>
+                <div class="admin-container-card">
+                    <h2>Total Applications</h2><br>
+                    <h2>{{ $totalApplications }}</h2>
                 </div>
                 <div class="graph-event-month">
                     <h2>Events Per Month</h2>

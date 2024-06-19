@@ -39,6 +39,8 @@ Route::get('/viewEvents', [pageController::class, 'viewEvents'])->name('viewEven
 Route::get('/admin/addevent',[pageController::class,'addevent'])->name('admin.addevent');
 Route::get('admin/editEvent/{event}',[pageController::class,'admin_editEvent'])->name('admin.editevent');
 
+Route::get('/viewApplications',[pageController::class, 'admin_viewApplications'])->name('Admin.viewApplications');
+
 //Route for profile
 Route::get('/profile', [pageController::class, 'profilePage']);
 Route::get('/editProfile/{user}', [pageController::class, 'editProfilePage']);
@@ -69,4 +71,4 @@ Route::get('/viewReceipt/{event}/{application}',[pageController::class,'viewRece
 
 Route::get('/vendorApplications/{user}', [pageController::class, 'vendorApplicationPage'])->name('listApplicationVendor');
 Route::get('/editApplication/{application}',[pageController::class,'EditAppPage']);
-Route::post('/editApplication/{application}',[applyEventController::class,'editApplyEvent']);
+Route::post('/editApplication/{application}',[applyEventController::class,'editApplyEvent'])->name('editApplication');
