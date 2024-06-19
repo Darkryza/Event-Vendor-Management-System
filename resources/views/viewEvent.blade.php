@@ -15,10 +15,9 @@
         <div class="view-content-event">
             <div class="event-content">
                 <h4>Details:</h4>
-                <p>Date: {{ \Carbon\Carbon::parse($event->date)->format('j F Y') }}</p>
                 <p>Location: {{ $event->location }}</p>
-                <p>Start Date: {{ $event->start_date }}</p>
-                <p>End Date: {{ $event->end_date }}</p>
+                <p>Start Date: {{ \Carbon\Carbon::parse($event->start_date)->format('j F Y') }}</p>
+                <p>End Date: {{ \Carbon\Carbon::parse($event->end_date)->format('j F Y') }}</p>
                 <p>Lot Quantity: {{ $event->Lot_Quantity }} vendors needed</p>
                 <p>Status: {{ $event->status }}</p>
             </div>

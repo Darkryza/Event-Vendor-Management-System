@@ -50,6 +50,13 @@
                 <div class="edit-value">
                     <input type="text" name="username" id="username" value="{{ $user->username }}">
                 </div>
+                <div class="label">
+                    <label for="password">Password: </label>
+                    <small>Leave blank if you don't want to change the password</small>
+                </div>
+                <div class="edit-value">
+                    <input type="password" name="password" id="password">
+                </div>
                 <div class="edit-btn">
                     <div class="save-btn">
                         <button type="submit">Save</button>

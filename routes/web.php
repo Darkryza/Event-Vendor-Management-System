@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pageController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\UserController;
+use App\Models\Event;
 
 // Route to index
 Route::get('/', function () {
@@ -16,7 +17,7 @@ Route::get('/', function () {
 //Route for autherntication
 Route::get('/login', [UserController::class, 'login']);
 Route::get('/register', [UserController::class, 'register']);
-Route::post('/register', [UserController::class, 'registerPost']);
+Route::post('/register', [UserController::class, 'registerPost'])->name('register');
 Route::post('/login', [UserController::class, 'loginPost']);
 Route::get('/logout',[UserController::class, 'logout']);
 
@@ -30,18 +31,18 @@ Route::get('/vendor_homepage', [pageController::class, 'vendorPage']);
 
 // Route for Admin
 Route::get('/viewUsers', [pageController::class, 'viewUsers'])->name('viewUsers');
-Route::get('/viewEvents', [pageController::class, 'viewEvents'])->name('viewEvents');
-Route::get('/edituser/{user}', [pageController::class, 'edituser']);
-Route::put('/edituser/{user}', [profileController::class, 'edituser']);
 Route::get('/adduser', [pageController::class, 'adduser'])->name('adduser');
-Route::post('/admin/adduser', [UserController::class, 'adduser']);
+Route::get('/edituser/{user}', [pageController::class, 'edituser']);
 Route::post('deleteUser/{user}', [UserController::class, 'deleteuser'])->name('delete.user');
+
+Route::get('/viewEvents', [pageController::class, 'viewEvents'])->name('viewEvents');
 Route::get('/admin/addevent',[pageController::class,'addevent'])->name('admin.addevent');
+Route::get('admin/editEvent/{event}',[pageController::class,'admin_editEvent'])->name('admin.editevent');
 
 //Route for profile
 Route::get('/profile', [pageController::class, 'profilePage']);
 Route::get('/editProfile/{user}', [pageController::class, 'editProfilePage']);
-Route::post('/editProfile/{user}', [profileController::class, 'editProfile']);
+Route::post('/editProfile/{user}', [profileController::class, 'editProfile'])->name('editProfile');
 
 //Route for Events
 Route::get('/addEvent', [pageController::class, 'addEventPage']);
@@ -52,7 +53,7 @@ Route::get('/viewEvent/{event}', [pageController::class, 'viewEvent']);
 
 //Route Edit Event
 Route::get('/editEvent/{event}',[pageController::class,'editEventPage']);
-Route::post('/editEvent/{event}',[EventController::class,'editEvent']);
+Route::post('/editEvent/{event}',[EventController::class,'editEvent'])->name('editEvent');
 Route::delete('/deleteEvent/{event}', [EventController::class, 'deleteEvent'])->name('deleteEvent');
 
 //Route for ApplyEvent

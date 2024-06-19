@@ -10,9 +10,8 @@
             <div class="alert alert-success mx-3">{{ session('success') }}</div>
         @endif
         <div class="form-edit-user">
-            <form action="/edituser/{{ $user->id }}" class="edit-user" method="POST">
+            <form action="{{ route('editProfile', ['user' => $user->id]) }}" class="edit-user" method="POST">
                 @csrf
-                @method('PUT')
                 <div class="edituser-label">
                     <label for="name">Name: </label>
                 </div>

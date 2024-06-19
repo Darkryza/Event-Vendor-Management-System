@@ -30,7 +30,7 @@
                                 @endif
 
                             </div>
-                            <form action="/register" method="POST">
+                            <form action="{{ route('register') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="name" class="px-1 form-label required">Name</label>

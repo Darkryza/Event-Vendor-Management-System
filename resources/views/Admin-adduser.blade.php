@@ -14,7 +14,7 @@
             @if (session()->has('success'))
                 <div class="alert alert-success mx-3">{{ session('success') }}</div>
             @endif
-            <form action="/admin/adduser" method="POST" class="mx-3">
+            <form action="{{ route('register') }}" method="POST" class="mx-3">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>

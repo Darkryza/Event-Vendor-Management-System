@@ -33,6 +33,7 @@ class EventController extends Controller
         $qr_name = time().'.'.$request->qr_image->getClientOriginalName().'.'.$request->qr_image->extension();
         $request->qr_image->move(public_path('images'), $qr_name);
 
+
         $start_date = Carbon::parse($request->start_date);
         $end_date = Carbon::parse($request->end_date);
         $duration = $start_date->diffInDays($end_date) + 1;

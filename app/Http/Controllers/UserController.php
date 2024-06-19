@@ -15,10 +15,6 @@ class UserController extends Controller
         return view('login');
     }
 
-    public function register(){
-        return view('register');
-    }
-
     public function loginPost(Request $request){
         $request->validate([
             'email' => 'required',
@@ -43,6 +39,10 @@ class UserController extends Controller
         return redirect('/login')->with('error', 'Login details is not valid');
     }
 
+    public function register(){
+        return view('register');
+    }
+
     public function registerPost(Request $request){
         $registerData = $request->validate([
             'name' => 'required',
@@ -57,38 +57,24 @@ class UserController extends Controller
         $registerData['password'] = Hash::make($registerData['password']);
         $registerData['SSM_num'] = $request->SSM_num;
         $user = User::create($registerData);
+        
         if(!$user){
             return redirect('/register')->with('error', 'Register invalid, Please try again');
         }
-
-        return redirect('/login')->with('success', 'Register success');
+    
+        if(auth()->check() && auth()->user()->role == 'Admin'){
+            return redirect()->route('viewUsers')->with('success','Add user successfully');
+            
+        }
+        return redirect('/login')->with('success', 'Register successfully');
     }
-
+    
     public function logout(){
         Session::flush();
         Auth::logout();
         return redirect('/login');
     }
 
-    public function adduser(Request $request){
-        $adduser = $request->validate([
-            'name' => 'required',
-            'role' => 'required',
-            'UTM_relation' => 'required',
-            'ic_number' => 'required',
-            'phone_number' => 'required',
-            'email' => 'required',
-            'username' => 'required',
-            'password' => 'required'
-        ]);
-        $adduser['password'] = Hash::make($adduser['password']);
-        $adduser['SSM_num'] = $request->SSM_num;
-        $user = User::create($adduser);
-        if(!$user){
-            return redirect('/adduser')->with('error', 'Add user invalid, Please try again');
-        }
-        return redirect()->back()->with('success', 'Add User successfully');
-    }
 
     public function deleteuser(User $user){
         $user->delete();

@@ -62,7 +62,7 @@
                                 <td>{{ $event->user->name }}</td>
                                 <td>
                                     <div class="listuser-btn">
-                                        <a href="#">Edit</a>
+                                        <a href="{{ route('admin.editevent', ['event' => $event->id]) }}">Edit</a>
                                         <form action="{{ route('deleteEvent', ['event' => $event->id]) }}" method="POST">
                                            @csrf
                                            @method('DELETE')

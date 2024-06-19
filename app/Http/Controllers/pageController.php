@@ -13,25 +13,36 @@ class pageController extends Controller
     // Homepage
 
     public function adminPage(){
+        $currentYear = now()->year;
+
+        // Total users
         $users = User::where('role', '!=', 'Admin')->get();
-        $totalUsers = $users->count();  // Calculate the total number of non-admin users
-    
-        $events = Event::with('user')->get();
-        $totalEvents = $events->count();  // Calculate the total number of events
-    
-        // Calculate the total number of events for each month
-        $eventsByMonth = Event::selectRaw('MONTH(start_date) as month, COUNT(*) as count')
-                              ->groupBy('month')
-                              ->orderBy('month')
-                              ->get()
-                              ->keyBy('month'); // Collecting the data by month
-        
-        $eventsPerMonth = array_fill(1, 12, 0); // Initialize array for 12 months with 0 events
-        foreach ($eventsByMonth as $monthData) {
-            $eventsPerMonth[$monthData->month] = $monthData->count;
+        $totalUsers = $users->count();
+
+        // Total events for the current year
+        $totalEvents = Event::whereYear('start_date', $currentYear)->count();
+
+        // Events per month for the current year
+        $eventsPerMonth = Event::whereYear('start_date', $currentYear)
+            ->selectRaw('MONTH(start_date) as month, COUNT(*) as count')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->pluck('count', 'month')
+            ->toArray();
+
+        // Initialize an array with 12 elements set to 0 for each month
+        $eventsPerMonthArray = array_fill(1, 12, 0);
+
+        // Fill the array with the actual values
+        foreach ($eventsPerMonth as $month => $count) {
+            $eventsPerMonthArray[$month] = $count;
         }
-        
-        return view('admin_homepage', compact('events', 'users', 'totalUsers', 'totalEvents', 'eventsPerMonth'));
+
+        return view('admin_homepage', [
+            'totalUsers' => $totalUsers,
+            'totalEvents' => $totalEvents,
+            'eventsPerMonth' => $eventsPerMonthArray
+        ]);
     }
     
 
@@ -85,6 +96,10 @@ class pageController extends Controller
             return redirect('/');
         }
         return view('editProfile',['user'=>$user]);
+    }
+
+    public function admin_editEvent(Event $event){
+        return view('admin-editEvent', compact('event'));
     }
 
     // Manager functions

@@ -53,6 +53,9 @@
                         <option value="Others">Others</option>
                       </select> 
                 </div>
+                <div class="mb-4 d-flex justify-content-center">
+                    <img id="eventLayoutImage" class="border border-black w-25" src="{{ asset('images/'.$event->name_imgLayout) }}" alt="Event Layout" style="cursor: pointer;">
+                </div>
                 <div class="mb-4">
                     <label for="no_of_lot" class="form-label">No of Lot</label>
                     <input type="number" id="no_of_lot" class="form-control" name="no_of_lot" placeholder="No of lot" min="0">
@@ -77,5 +80,37 @@
         </div>
     </div>
 </div>
+
+<!-- Modal for Fullscreen Image -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header d-flex flex-row gap-3">
+            <h5 class="modal-title" id="imageModalLabel">Event Layout</h5>
+            <button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <img id="modalImage" src="{{ asset('images/'.$event->name_imgLayout) }}" alt="Event Layout" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+  
+<!-- Scripts -->
+<script>
+    document.getElementById('eventLayoutImage').addEventListener('click', function() {
+        var src = this.src;
+        document.getElementById('modalImage').src = src;
+        $('#imageModal').modal('show');
+    });
+
+    // Ensure the modal is properly reset when hidden
+    $('#imageModal').on('hidden.bs.modal', function () {
+        document.getElementById('modalImage').src = '{{ asset('images/'.$event->name_imgLayout) }}';
+    });
+</script>
+
 
 @endsection

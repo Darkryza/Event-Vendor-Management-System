@@ -130,7 +130,7 @@ nav{
     margin: auto;
     margin-top: 30px;
     margin-bottom: 20px;
-    box-shadow: 5px 5px 4px rgba(0,0,0,0.1);
+    box-shadow: 5px 5px 4px 5px rgba(0,0,0,0.1);
     border-radius: 10px;
     z-index: 1;
 }
@@ -1188,3 +1188,23 @@ table tbody tr td .buttons{
     width: 400px;
     height: 450px;
 }
+
+/* Carousel Image Resize */
+
+.img-resize{
+    width: 200px;
+    height: 300;
+}
+
+/* ............ */
+
+/* modal close button */
+
+.close-button{
+    padding: 0 10px;
+    &:hover{
+        background-color: #545454;
+    }
+}
+
+/* ........... */
