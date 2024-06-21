@@ -43,10 +43,10 @@
                             <th>Organiser</th>
                             <th>Manager</th>
                             <th>Location</th>
-                            <th>Duration</th>
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Status</th>
+                            <th>Approval</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -56,32 +56,49 @@
                         @endphp
                         @foreach($events as $event)
                             <tr>
-                                <td>{{ $no++ }}</td>
+                                <td>{{ $no++ }}.</td>
                                 <td>{{ $event->title }}</td>
                                 <td>{{ $event->organiser }}</td>
                                 <td>{{ $event->user->name }}</td>
                                 <td>{{ $event->location }}</td>
-                                <td>{{ $event->duration }} days</td>
                                 <td>{{ \Carbon\Carbon::parse($event->start_date)->format('j M Y') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($event->end_date)->format('j M Y') }}</td>
+                                <td>{{ $event->status }}</td>
                                 <td>
-                                    @if ($event->status == 'Pending')
-                                    <button class="btn btn-danger">Pending</button>
-                                    @elseif ($event->status == 'Ongoing')
-                                        <button class="btn btn-warning">Ongoing</button>
-                                    @elseif ($event->status == 'Completed')
-                                        <button class="btn btn-success">Completed</button>
+                                    @if ($event->approval == 'Pending')
+                                        <div class="btn btn-warning">Pending</div>
+                                    @elseif ($event->approval == 'Approved')
+                                        <div class="btn btn-success">Approved</div>
+                                    @elseif ($event->approval == 'Rejected')
+                                        <div class="btn btn-danger">Rejected</div>
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="listuser-btn">
-                                        <a href="{{ route('admin.editevent', ['event' => $event->id]) }}">Edit</a>
-                                        <form action="{{ route('deleteEvent', ['event' => $event->id]) }}" method="POST">
-                                           @csrf
-                                           @method('DELETE')
-                                           <button type="submit" class="button">Delete</button> 
-                                        </form>
-                                    </div>
+                                    @if ($event->approval == 'Approved')
+                                        <div class="listuser-btn">
+                                            <a href="{{ route('admin.editevent', ['event' => $event->id]) }}">Edit</a>
+                                            <form action="{{ route('reject', ['event' => $event->id]) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="button">Reject</button> 
+                                            </form>
+                                            <form action="{{ route('deleteEvent', ['event' => $event->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="button">Delete</button> 
+                                            </form>
+                                        </div>
+                                    @elseif ($event->approval == 'Pending')
+                                        <div class="listuser-btn">
+                                            <a href="{{ route('reviewEvent', ['event' => $event->id]) }}">Review</a>
+                                        </div>
+                                    @elseif ($event->approval == 'Rejected')
+                                        <div class="listuser-btn">
+                                            <form action="{{ route('approve', ['event' => $event->id]) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="button">Approve</button> 
+                                            </form>
+                                        </div>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

@@ -214,4 +214,16 @@ class EventController extends Controller
 
         return redirect()->route('viewEvents')->with('success', 'Event added successfully');
     }
+
+    public function approve(Event $event){
+        $event->approval = 'Approved';
+        $event->save();
+        return redirect()->route('viewEvents')->with('success', $event->title.' Approved');
+    }
+
+    public function reject(Event $event){
+        $event->approval = 'Rejected';
+        $event->save();
+        return redirect()->route('viewEvents')->with('success', $event->title . ' Rejected');
+    }
 }

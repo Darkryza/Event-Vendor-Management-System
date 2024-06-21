@@ -153,6 +153,24 @@ nav{
     }
 }
 
+.content{
+    margin: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-content{
+    width: 10%;
+    margin-right: 20px;
+}
+
+.main-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 /* --------------- */
 
 /* Index Page */
@@ -389,8 +407,7 @@ tbody, td, tfoot, th, thead, tr{
 
 .add-event-btn{
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .add-event-btn a{
@@ -617,7 +634,7 @@ tbody, td, tfoot, th, thead, tr{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin:20px 0;
+    /* margin:20px 0; */
 }
 
 .link-cardEvent{

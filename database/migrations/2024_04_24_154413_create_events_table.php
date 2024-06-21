@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('name_imgQR');
             $table->integer('Lot_Quantity');
             $table->integer('availabality')->default(0);
-            $table->string('status')->default('Pending');
+            $table->string('status')->default('Upcoming');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });

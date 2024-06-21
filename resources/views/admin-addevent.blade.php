@@ -7,6 +7,9 @@
     <div class="container">
         <div class="card-container d-flex flex-column py-3">
             <h2 class="text-center">Add Event</h2>
+            <div class="mb-3 mx-5 text-center">
+                <a href="{{ route('viewEvents') }}" class="button">Back</a>
+            </div>
             @if (session()->has('error'))
                 <div class="alert alert-danger mx-3">{{ session('error') }}</div>
             @endif
@@ -14,6 +17,9 @@
             @if (session()->has('success'))
                 <div class="alert alert-success mx-3">{{ session('success') }}</div>
             @endif
+            <div class="mb-3 mx-5">
+                <label class="form-label">Note: Make sure to put label for lot using number eg. 1-30. <span style="color: red;"><b>Cannot combine the character with number eg. A1-A30.</b></span> The requirement are not compatible with the system. Thank you.</label>
+            </div>
             <form action="{{ route('Admin_AddEvent') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3 mx-5">

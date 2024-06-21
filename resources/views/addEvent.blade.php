@@ -11,6 +11,10 @@
         {{ session('success') }}
     </div>
     @endif
+    <div class="mb-3 mx-5">
+        <label class="form-label">Note: Make sure to put label for lot using number eg. 1-30. <span style="color: red;"><b>Cannot combine the character with number eg. A1-A30.</b></span> The requirement are not compatible with the system. Thank you.</label>
+    </div>
+    
     <form action="{{ route('addEvent') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3 mx-5">

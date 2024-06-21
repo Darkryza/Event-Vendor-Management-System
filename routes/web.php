@@ -27,7 +27,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 Route::get('/manager_homepage', [pageController::class, 'managerPage'])->name('manager_homepage');
-Route::get('/vendor_homepage', [pageController::class, 'vendorPage']);
+Route::get('/vendor_homepage', [pageController::class, 'vendorPage'])->name('vendor_homepage');
 
 // Route for Admin
 Route::get('/viewUsers', [pageController::class, 'viewUsers'])->name('viewUsers');
@@ -38,9 +38,18 @@ Route::post('deleteUser/{user}', [UserController::class, 'deleteuser'])->name('d
 Route::get('/viewEvents', [pageController::class, 'viewEvents'])->name('viewEvents');
 Route::get('/admin/addevent',[pageController::class,'addevent'])->name('admin.addevent');
 Route::post('/admin/addEvent', [EventController::class, 'Admin_AddEvent'])->name('Admin_AddEvent');
-Route::get('admin/editEvent/{event}',[pageController::class,'admin_editEvent'])->name('admin.editevent');
+Route::get('/admin/editEvent/{event}',[pageController::class,'admin_editEvent'])->name('admin.editevent');
 
-Route::get('/viewApplications',[pageController::class, 'admin_viewApplications'])->name('Admin.viewApplications');
+Route::get('/reviewEvent/{event}',[pageController::class, 'reviewEvent'])->name('reviewEvent');
+Route::post('/approve/{event}', [EventController::class, 'approve'])->name('approve');
+Route::post('/reject/{event}', [EventController::class, 'reject'])->name('reject');
+
+Route::get('/viewApplications', [pageController::class, 'admin_viewApplications'])->name('Admin.viewApplications');
+
+// Route for manager
+Route::get('/manager-listEvents',[pageController::class, 'manager_listEvent'])->name('manager-listEvents');
+Route::get('/manager-listApplications',[pageController::class, 'manager_listApplications'])->name('manager-listApplications');
+
 
 //Route for profile
 Route::get('/profile', [pageController::class, 'profilePage']);
@@ -50,7 +59,7 @@ Route::post('/editProfile/{user}', [profileController::class, 'editProfile'])->n
 //Route for Events
 Route::get('/addEvent', [pageController::class, 'addEventPage']);
 Route::post('/addEvent', [EventController::class, 'addEvent'])->name('addEvent');
-Route::get('/pageEvent/{event}',[pageController::class,'pageEvent'])->name('PageEvent');
+Route::get('/pageEvent/{event}',[pageController::class,'pageEvent'])->name('pageEvent');
 Route::get('/viewEvent/{event}', [pageController::class, 'viewEvent']);
 
 

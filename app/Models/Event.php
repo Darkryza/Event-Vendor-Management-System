@@ -25,6 +25,7 @@ class Event extends Model
         'Lot_Quantity',
         'availabality',
         'status',
+        'approval',
         'user_id'
     ];
 

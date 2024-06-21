@@ -11,7 +11,7 @@
                 @csrf
                 @method('delete')
                 <div class="d-flex flex-row gap-2">
-                    <a href="{{ route('PageEvent',['event' => $event->id]) }}" class="button d-flex align-items-center" style="margin-top: 20;">Back</a>
+                    <a href="{{ route('pageEvent',['event' => $event->id]) }}" class="button d-flex align-items-center" style="margin-top: 20;">Back</a>
                     <div class="delete-btn">
                         <button type="submit">Delete</button>
                     </div>  
@@ -87,7 +87,7 @@
                     <div class="mb-3">
                         <label for="status" class="form-label">Status Event</label><br>
                         <select name="status" id="status" class="form-select">
-                            <option value="Pending" {{ $event->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+                            <option value="Pending" {{ $event->status == 'Upcoming' ? 'selected' : '' }}>Upcoming</option>
                             <option value="Ongoing" {{ $event->status == 'Ongoing' ? 'selected' : '' }}>Ongoing</option>
                             <option value="Completed" {{ $event->status == 'Completed' ? 'selected' : '' }}>Completed</option>
                         </select>

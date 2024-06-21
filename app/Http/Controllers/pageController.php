@@ -115,6 +115,10 @@ class pageController extends Controller
         return view('admin-viewApplications', compact('applications'));
     }
 
+    public function reviewEvent(Event $event){
+        return view('Admin-reviewEvent', compact('event'));
+    } 
+
     // Manager functions
 
     public function addEventPage(){
@@ -138,7 +142,17 @@ class pageController extends Controller
         return view('viewReceipt', compact('event','application'));
     }
 
+    public function manager_listEvent(){
+        $user = Auth::user();
+        $events = Event::where('user_id', $user->id)->get();
+        return view('manager-listEvents', compact('events')); 
+    }
 
+    public function manager_listApplications(){
+        $user = Auth::user();
+        $applications = Application::where('user_id', $user->id)->get();
+        return view('manager-listApplications', compact('applications')); 
+    }
 
     // Vendor functions
 
@@ -148,7 +162,7 @@ class pageController extends Controller
 
     public function applyEventPage(Event $event){
         $user = auth()->user();
-        $applications = Application::all();
+        $applications = Application::where('event_id', $event->id)->get();
         return view('applyEvent', ['event' => $event, 'user' => $user, 'applications' => $applications]);
     }
 

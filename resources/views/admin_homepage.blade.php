@@ -10,7 +10,7 @@
         <div class="admin-nav">
             <ul class="nav flex-column">
                 <li class="nav-item admin-link">
-                  <a class="nav-link active" href="#">Dashboard</a>
+                  <a class="nav-link active" href="admin_homepage">Dashboard</a>
                 </li>
                 <li class="nav-item admin-link">
                   <a class="nav-link" href="viewUsers">Users</a>
