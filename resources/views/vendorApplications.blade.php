@@ -24,6 +24,8 @@
                     <th>No.</th>
                     <th>Vendor Name</th>
                     <th>Event</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
                     <th>Booth Name</th>
                     <th>Phone Number</th>
                     <th>Category</th>
@@ -42,6 +44,8 @@
                         <td>{{ $no++ }}.</td>
                         <td>{{ $application->vendor_name }}</td>
                         <td style="font-weight: 800;">{{ $application->event->title }}</td>
+                        <td>{{ \Carbon\Carbon::parse($application->event->start_date)->format('j F Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($application->event->end_date)->format('j F Y') }}</td>
                         <td>{{ $application->booth_name }}</td>
                         <td>{{ $application->phone_number }}</td>
                         <td>{{ $application->category }}</td>

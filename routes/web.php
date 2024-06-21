@@ -26,7 +26,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin_homepage', [pageController::class, 'adminPage'])->name('admin_homepage');
 });
 
-Route::get('/manager_homepage', [pageController::class, 'managerPage']);
+Route::get('/manager_homepage', [pageController::class, 'managerPage'])->name('manager_homepage');
 Route::get('/vendor_homepage', [pageController::class, 'vendorPage']);
 
 // Route for Admin
@@ -37,6 +37,7 @@ Route::post('deleteUser/{user}', [UserController::class, 'deleteuser'])->name('d
 
 Route::get('/viewEvents', [pageController::class, 'viewEvents'])->name('viewEvents');
 Route::get('/admin/addevent',[pageController::class,'addevent'])->name('admin.addevent');
+Route::post('/admin/addEvent', [EventController::class, 'Admin_AddEvent'])->name('Admin_AddEvent');
 Route::get('admin/editEvent/{event}',[pageController::class,'admin_editEvent'])->name('admin.editevent');
 
 Route::get('/viewApplications',[pageController::class, 'admin_viewApplications'])->name('Admin.viewApplications');

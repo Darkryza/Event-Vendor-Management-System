@@ -15,11 +15,22 @@
         <div class="view-content-event">
             <div class="event-content">
                 <h4>Details:</h4>
-                <p>Location: {{ $event->location }}</p>
-                <p>Start Date: {{ \Carbon\Carbon::parse($event->start_date)->format('j F Y') }}</p>
-                <p>End Date: {{ \Carbon\Carbon::parse($event->end_date)->format('j F Y') }}</p>
-                <p>Lot Quantity: {{ $event->Lot_Quantity }} vendors needed</p>
-                <p>Status: {{ $event->status }}</p>
+                <p><b>Organiser:</b>{{ $event->organiser }}</p>
+                <p><b>Location:</b> {{ $event->location }}</p>
+                <p><b>Start Date:</b> {{ \Carbon\Carbon::parse($event->start_date)->format('j F Y') }}</p>
+                <p><b>End Date:</b> {{ \Carbon\Carbon::parse($event->end_date)->format('j F Y') }}</p>
+                <p><b>Lot Quantity:</b> {{ $event->Lot_Quantity }} vendors needed</p>
+                <p><b>Status:</b>
+                    @if ($event->status == 'Pending')
+                        Upcoming
+                    @else
+                        {{ $event->status }}
+                    @endif
+                </p>
+                <p>
+                    <b>Lot Price:</b><br>
+                    {!! nl2br(e($event->lot_price)) !!}
+                </p>
             </div>
         </div>
         <div class="view-content-event">

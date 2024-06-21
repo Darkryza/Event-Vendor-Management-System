@@ -28,9 +28,13 @@
                             @endif
                         </p>
                     </div>
+                    <div>
+                        <h5>Availability:</h5>
+                        <p>{{ $event->availabality }}/{{ $event->Lot_Quantity }}</p>
+                    </div>
                 </div>
                 <div class="applyEvent">
-                    <a href="/viewEvent/{{ $event->id }}" class="applyEvent-btn">View</a>
+                    <a href="/viewEvent/{{ $event->id }}">View</a>
                 </div>
             </div>
         </div>

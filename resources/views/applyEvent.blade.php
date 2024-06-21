@@ -57,12 +57,31 @@
                     <img id="eventLayoutImage" class="border border-black w-25" src="{{ asset('images/'.$event->name_imgLayout) }}" alt="Event Layout" style="cursor: pointer;">
                 </div>
                 <div class="mb-4">
-                    <label for="no_of_lot" class="form-label">Lot Price:</label>
-                    <p>{{ $event->lot_price }}</p>
+                    <h4 class="text-center mb-4">Availabality Lot (Green - Booked)</h4>
+                    <div class="lot-boxes-container">
+                        @for ($i = 1; $i <= $event->Lot_Quantity; $i++)
+                            @php
+                                $isApproved = false;
+                            @endphp
+                            @foreach($applications as $application)
+                                @if ($application->no_of_lot == $i && $application->status == 'Approve')
+                                    @php
+                                        $isApproved = true;
+                                        break;
+                                    @endphp
+                                @endif
+                            @endforeach
+                            <div class="lot-box {{ $isApproved ? 'approved' : '' }}">{{ $i }}</div>
+                        @endfor
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h4>Lot Price:</h4>
+                    <p>{!! nl2br(e($event->lot_price)) !!}</p>
                 </div>
                 <div class="mb-4">
                     <label for="no_of_lot" class="form-label">Lot Number</label>
-                    <input type="number" id="no_of_lot" class="form-control w-25" name="no_of_lot" placeholder="No of lot" min="1">
+                    <input type="number" id="no_of_lot" class="form-control" style="width: 200px" name="no_of_lot" placeholder="No of lot" min="1">
                 </div>
                 <div class="mb-4">
                     <h4>Agreement:</h4>
@@ -71,7 +90,9 @@
                 <input type="checkbox" id="agree" name="agreement" value="1">
                 <label class="mb-4" for="agree"> I Agree</label><br>
                 <div class="mb-3">
-                    <img src="{{ asset('images/'.$event->name_imgQR)}}" alt="QR Image" style="width: 200px; height:250px;">
+                    <a href="{{ asset('images/'.$event->name_imgQR)}}" target="_blank">
+                        <img src="{{ asset('images/'.$event->name_imgQR)}}" alt="QR Image" style="width: 200px; height:250px;">
+                    </a>
                 </div>
                 <div class="mb-3">
                     <label for="receipt_image" class="form-label"><h4>Receipt  Payment</h4></label><br>

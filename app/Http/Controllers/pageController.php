@@ -89,7 +89,8 @@ class pageController extends Controller
     }
 
     public function addevent(){
-        return view('admin-addevent');
+        $managers = User::where('role', 'Event Manager')->get();
+        return view('admin-addevent', compact('managers'));
     }
 
     public function edituser(User $user){
@@ -104,7 +105,9 @@ class pageController extends Controller
     }
 
     public function admin_editEvent(Event $event){
-        return view('admin-editEvent', compact('event'));
+        $managers = User::where('role', 'Event Manager')->get();
+        $current_manager = User::find($event->user_id);
+        return view('admin-editEvent', compact('event', 'managers', 'current_manager'));
     }
 
     public function admin_viewApplications(){
@@ -145,11 +148,18 @@ class pageController extends Controller
 
     public function applyEventPage(Event $event){
         $user = auth()->user();
-        return view('applyEvent', ['event' => $event, 'user' => $user]);
+        $applications = Application::all();
+        return view('applyEvent', ['event' => $event, 'user' => $user, 'applications' => $applications]);
     }
 
     public function vendorApplicationPage(User $user){
-        $applications = Application::where('user_id', $user->id)->get();
+        $applications = Application::where('applications.user_id', $user->id)
+        ->leftJoin('events', 'applications.event_id', '=', 'events.id')
+        ->orderByRaw("CASE WHEN applications.status = 'Approve' THEN 1 ELSE 2 END")
+        ->orderBy('events.start_date', 'asc')
+        ->select('applications.*', 'events.start_date as event_start_date') // Include event start date in the selection
+        ->get();
+
         return view('vendorApplications', compact('applications'));
     }
 

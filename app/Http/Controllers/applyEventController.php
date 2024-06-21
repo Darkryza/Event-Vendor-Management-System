@@ -77,7 +77,7 @@ class applyEventController extends Controller
             'receipt_name' => $receipt_name,
         ]);
 
-        return redirect()->back()->with('success', 'Application update successfully');
+        return redirect()->route('listApplicationVendor', ['user' => auth()->user()->id])->with('success', 'Application update successfully');
     }
 
     public function deleteApplyEvent(Request $request, Application $application){
@@ -90,14 +90,39 @@ class applyEventController extends Controller
     }
 
     public function approve(Application $application){
-        $application->status = 'Approve';
-        $application->save();
-        return redirect()->back()->with('success', "Application successful");
+        $event = $application->event;
+
+        // Check if the availability can be increased
+        if ($event->availabality < $event->Lot_Quantity) {
+            // Increase the availability by 1
+            $event->availabality += 1;
+            $event->save();
+
+            // Update the application's status to 'Approve'
+            $application->status = 'Approve';
+            $application->save();
+
+            return redirect()->back()->with('success', "Application approved successfully");
+        } else {
+            return redirect()->back()->with('error', "Cannot approve application. Maximum lot quantity reached.");
+        }
     }
 
     public function reject(Application $application){
-        $application->status = 'Reject';
-        $application->save();
-        return redirect()->back()->with('success', "Application successful");
+         // Fetch the event associated with the application
+         $event = $application->event;
+
+         // Check if the application was previously approved
+         if ($application->status == 'Approve') {
+             // Decrease the availability by 1
+             $event->availabality -= 1;
+             $event->save();
+         }
+ 
+         // Update the application's status to 'Reject'
+         $application->status = 'Reject';
+         $application->save();
+ 
+         return redirect()->back()->with('success', "Application rejected successfully");
     }
 }

@@ -7,6 +7,7 @@
     <div class="list-application">
         <div class="application-upper-container">
             <h2>List of Applications</h2>
+            <h3>{{ $event->title }}</h3>
         </div>
     
         <div class="title">

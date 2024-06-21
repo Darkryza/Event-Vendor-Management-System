@@ -10,9 +10,12 @@
             <form action="/deleteEvent/{{ $event->id }}" method="POST">
                 @csrf
                 @method('delete')
-                <div class="delete-btn">
-                    <button type="submit">Delete</button>
-                </div>    
+                <div class="d-flex flex-row gap-2">
+                    <a href="{{ route('PageEvent',['event' => $event->id]) }}" class="button d-flex align-items-center" style="margin-top: 20;">Back</a>
+                    <div class="delete-btn">
+                        <button type="submit">Delete</button>
+                    </div>  
+                </div>  
             </form>  
         </div>
         @if (session()->has('success'))
@@ -36,6 +39,10 @@
                     <div class="mb-3">
                         <label for="title" class="form-label">Event Title</label>
                         <input type="text" class="form-control" id="title" name="title" value="{{ $event->title }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="organiser" class="form-label">Organiser</label>
+                        <input type="text" class="form-control" id="organiser" name="organiser" value="{{ $event->organiser }}">
                     </div>
                     <div class="mb-3">
                         <label for="location" class="form-label">Location</label>

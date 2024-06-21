@@ -12,7 +12,7 @@ class profileController extends Controller
 {
     public function editProfile(User $user, Request $request){
         $user->name = $request->name;
-        if ($request->password){
+        if ($request->role){
             $user->role = $request->role;
         }
         $user->IC_number = $request->IC_number;

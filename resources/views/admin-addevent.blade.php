@@ -14,12 +14,25 @@
             @if (session()->has('success'))
                 <div class="alert alert-success mx-3">{{ session('success') }}</div>
             @endif
-            <form action="{{ route('addEvent') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('Admin_AddEvent') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3 mx-5">
                     <label for="title" class="form-label">Event Title</label>
                     <input type="text" class="form-control" id="title" name="title">
                 </div>
+                <div class="mb-3 mx-5">
+                    <label for="organiser" class="form-label">Organiser</label>
+                    <input type="text" class="form-control" id="organiser" name="organiser">
+                </div>
+                <div class="mb-3 mx-5">
+                    <label for="manager" class="form-label">Manager</label>
+                    <select class="form-select" id="manager" name="manager">
+                        @foreach($managers as $manager)
+                            <option value="" disabled selected hidden></option>
+                            <option value="{{ $manager->id }}">{{ $manager->name }}</option>
+                        @endforeach
+                    </select>
+                </div> 
                 <div class="mb-3 mx-5">
                     <label for="location" class="form-label">Location</label>
                     <input type="text" class="form-control" id="location" name="location">
@@ -52,10 +65,14 @@
                     <label for="qr" class="form-label">QR Bank</label><br>
                     <input type="file" id="qr" name="qr_image" accept="image/*" class="form-control">
                 </div>
+                <div class="mb-3 mx-5">
+                    <label for="lot_price" class="form-label">Lot Price</label>
+                    <textarea class="form-control" id="lot_price" name="lot_price" rows="3"></textarea>
+                </div>
                 <div class="mb-3 mx-5" style="width: 100px">
                     <label for="lot_quantity" class="form-label">Lot Quantity</label>
                     <input type="number" class="form-control" id="lot_quantity" name="lot_quantity" min="1">
-                </div>       
+                </div>     
                 <div class="mx-5 text-center">
                     <button type="submit" class="button">Submit</button>
                 </div>    

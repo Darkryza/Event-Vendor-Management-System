@@ -11,11 +11,13 @@
                 <h1>Detail</h1>
             </div>
             <div class="content-event">
-                <p>Duration: {{ $event->duration }} Days</p>
-                <p>Start Date: {{ \Carbon\Carbon::parse($event->start_date)->format('j F Y') }}</p>
-                <p>End Date: {{ \Carbon\Carbon::parse($event->end_date)->format('j F Y') }}</p>
-                <p>Lot Quantity: {{ $event->Lot_Quantity }} vendors needed</p>
-                <p>Lot Price: {{ $event->lot_price }}</p>
+                <p><b>Organiser:</b>{{ $event->organiser }}</p>
+                <p><b>Duration:</b> {{ $event->duration }} Days</p>
+                <p><b>Start Date:</b> {{ \Carbon\Carbon::parse($event->start_date)->format('j F Y') }}</p>
+                <p><b>End Date:</b> {{ \Carbon\Carbon::parse($event->end_date)->format('j F Y') }}</p>
+                <p><b>Lot Quantity:</b> {{ $event->Lot_Quantity }} vendors needed</p>
+                <p><b>Lot of Price:</b></p>
+                <p>{!! nl2br(e($event->lot_price)) !!}</p>
             </div>
         </div>
         <div class="managerAbout-event">

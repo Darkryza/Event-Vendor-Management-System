@@ -40,12 +40,13 @@
                         <tr>
                             <th>No</th>
                             <th>Title</th>
+                            <th>Organiser</th>
+                            <th>Manager</th>
                             <th>Location</th>
                             <th>Duration</th>
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Status</th>
-                            <th>Manager</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -57,12 +58,21 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $event->title }}</td>
+                                <td>{{ $event->organiser }}</td>
+                                <td>{{ $event->user->name }}</td>
                                 <td>{{ $event->location }}</td>
                                 <td>{{ $event->duration }} days</td>
-                                <td>{{ $event->start_date }}</td>
-                                <td>{{ $event->end_date }}</td>
-                                <td>{{ $event->status }}</td>
-                                <td>{{ $event->user->name }}</td>
+                                <td>{{ \Carbon\Carbon::parse($event->start_date)->format('j M Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($event->end_date)->format('j M Y') }}</td>
+                                <td>
+                                    @if ($event->status == 'Pending')
+                                    <button class="btn btn-danger">Pending</button>
+                                    @elseif ($event->status == 'Ongoing')
+                                        <button class="btn btn-warning">Ongoing</button>
+                                    @elseif ($event->status == 'Completed')
+                                        <button class="btn btn-success">Completed</button>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="listuser-btn">
                                         <a href="{{ route('admin.editevent', ['event' => $event->id]) }}">Edit</a>

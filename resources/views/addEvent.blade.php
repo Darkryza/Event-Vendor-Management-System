@@ -11,11 +11,15 @@
         {{ session('success') }}
     </div>
     @endif
-    <form action="/addEvent" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('addEvent') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3 mx-5">
             <label for="title" class="form-label">Event Title</label>
             <input type="text" class="form-control" id="title" name="title">
+        </div>
+        <div class="mb-3 mx-5">
+            <label for="organiser" class="form-label">Organiser</label>
+            <input type="text" class="form-control" id="organiser" name="organiser">
         </div>
         <div class="mb-3 mx-5">
             <label for="location" class="form-label">Location</label>

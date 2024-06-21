@@ -6,27 +6,37 @@
 <div class="body-container">
     <div class="container">
         <div class="card-container d-flex flex-column py-3 px-4">
-            <h2 class="text-center">Edit Event</h2>
-            <div id="carouselExample" class="carousel slide border border-black img-resize">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="{{ asset('images/'.$event->name_imgPoster) }}" class="d-block img-resize" alt="Event Poster">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="{{ asset('images/'.$event->name_imgLayout) }}" class="d-block img-resize" alt="Event Layout">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="{{ asset('images/'.$event->name_imgQR) }}" class="d-block img-resize" alt="Event QR">
-                    </div>
+            <div class="mb-3 d-flex justify-content-center gap-3">
+                <h2 style="margin: 0">Edit Event</h2>
+                <a href="{{ route('viewEvents') }}" class="button" style="position: relative; top: 2px;">Back</a>
+            </div>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+            @endif
+            <div class="d-flex justify-content-center">
+                <div id="carouselExample" class="carousel slide border border-black img-resize">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                        <img src="{{ asset('images/'.$event->name_imgPoster) }}" class="d-block img-resize" alt="Event Poster">
+                        </div>
+                        <div class="carousel-item">
+                        <img src="{{ asset('images/'.$event->name_imgLayout) }}" class="d-block img-resize" alt="Event Layout">
+                        </div>
+                        <div class="carousel-item">
+                        <img src="{{ asset('images/'.$event->name_imgQR) }}" class="d-block img-resize" alt="Event QR">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
             <form action="{{ route('editEvent', ['event' => $event->id]) }}" method="POST">
                 @csrf
@@ -34,6 +44,21 @@
                     <label for="title" class="form-label">Event Title</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{ $event->title }}">
                 </div>
+                <div class="mb-3">
+                    <label for="organiser" class="form-label">Organiser</label>
+                    <input type="text" class="form-control" id="organiser" name="organiser" value="{{ $event->organiser }}">
+                </div>
+                <div class="mb-3">
+                    <label for="manager" class="form-label">Manager</label>
+                    <select class="form-select" id="manager" name="manager">
+                        <option value="{{ $current_manager->id }}" selected>{{ $current_manager->name }}</option>
+                        @foreach($managers as $manager)
+                            @if($manager->id != $current_manager->id)
+                                <option value="{{ $manager->id }}">{{ $manager->name }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div> 
                 <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
                     <input type="text" class="form-control" id="location" name="location" value="{{ $event->location }}">
@@ -77,6 +102,10 @@
                         <option value="Ongoing" {{ $event->status == 'Ongoing' ? 'selected' : '' }}>Ongoing</option>
                         <option value="Completed" {{ $event->status == 'Completed' ? 'selected' : '' }}>Completed</option>
                     </select>
+                </div>
+                <div class="mb-3 d-flex flex-row justify-content-center gap-3">
+                    <a href="{{ route('viewEvents') }}" class="button">Cancel</a>
+                    <button type="submuit" class="button">Submit</button>
                 </div>      
             </form>
         </div>

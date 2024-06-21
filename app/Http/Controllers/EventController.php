@@ -13,6 +13,7 @@ class EventController extends Controller
 
         $request->validate([
             'title' => 'required',
+            'organiser' => 'required',
             'location' => 'required',
             'description' => 'required',
             'start_date' => 'required',
@@ -41,6 +42,7 @@ class EventController extends Controller
 
         $event = new Event();
         $event->title = $request->title;
+        $event->organiser = $request->organiser;
         $event->location = $request->location;
         $event->description = $request->description;
         $event->start_date = $request->start_date;
@@ -54,16 +56,15 @@ class EventController extends Controller
         $event->Lot_Quantity = $request->lot_quantity;
         $event->user_id = auth()->user()->id;
         $event->save();
+        
 
-        if (auth()->user()->role == 'Admin') {
-            return redirect()->route('viewEvents')->with('success', 'Event added successfully');
-        } else {
-            return redirect()->back()->with('success', 'Event added successfully');
-        }
+        return redirect()->route('manager_homepage')->with('success', 'Event added successfully');
+        
     }
 
     public function editEvent(Request $request, Event $event){
         $title = $request->input('title');
+        $organiser = $request->input('organiser');
         $location = $request->input('location');
         $description = $request->input('description');
         $start_date =  $request->input('start_date');
@@ -107,10 +108,16 @@ class EventController extends Controller
         $lot_price = $request->input('lot_price');
         $Lot_Quantity = $request->input('lot_quantity');
         $status = $request->input('status');
-        $user_id = auth()->user()->id;
+        if (auth()->user()->role == 'Admin') {
+            $user_id = $request->manager;
+        }
+        else {
+            $user_id = $event->user_id;
+        }
         
         Event::where('id', $event->id)->update([
             'title' => $title,
+            'organiser' => $organiser,
             'location' => $location,
             'description' => $description,
             'start_date' => $start_date,
@@ -126,6 +133,12 @@ class EventController extends Controller
             'user_id' => $user_id
         ]);
     
+        
+
+        if(auth()->check() && auth()->user()->role == 'Admin'){
+            return redirect()->route('viewEvents')->with('success','Event updated successfully');
+            
+        }
         return redirect()->back()->with('success', 'Event updated successfully');
     }
     
@@ -148,5 +161,57 @@ class EventController extends Controller
             return redirect('/manager_homepage')->with('success', $event->title.' deleted successfully');
         }
         return redirect()->route('viewEvents')->with('success',$event->title.' deleted successfully');
+    }
+
+    public function Admin_AddEvent(Request $request, Event $event){
+        $request->validate([
+            'title' => 'required',
+            'organiser' => 'required',
+            'manager' => 'required',
+            'location' => 'required',
+            'description' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'agreement' => 'required',
+            'poster_image'=> 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'layout_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'qr_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'lot_price' => 'required',
+            'lot_quantity' => 'required',
+        ]);
+
+        $poster_name = time().'.'.$request->poster_image->getClientOriginalName().'.'.$request->poster_image->extension();
+        $request->poster_image->move(public_path('images'), $poster_name);
+
+        $layout_name = time().'.'.$request->layout_image->getClientOriginalName().'.'.$request->layout_image->extension();
+        $request->layout_image->move(public_path('images'), $layout_name);
+
+        $qr_name = time().'.'.$request->qr_image->getClientOriginalName().'.'.$request->qr_image->extension();
+        $request->qr_image->move(public_path('images'), $qr_name);
+
+
+        $start_date = Carbon::parse($request->start_date);
+        $end_date = Carbon::parse($request->end_date);
+        $duration = $start_date->diffInDays($end_date) + 1;
+
+        $event = new Event();
+        $event->title = $request->title;
+        $event->organiser = $request->organiser;
+        $event->location = $request->location;
+        $event->description = $request->description;
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
+        $event->duration = $duration;
+        $event->agreement = $request->agreement;
+        $event->name_imgPoster = $poster_name;
+        $event->name_imgLayout = $layout_name;
+        $event->name_imgQR = $qr_name;
+        $event->lot_price = $request->lot_price;
+        $event->Lot_Quantity = $request->lot_quantity;
+        $event->user_id = $request->manager;
+        $event->save();
+        
+
+        return redirect()->route('viewEvents')->with('success', 'Event added successfully');
     }
 }
