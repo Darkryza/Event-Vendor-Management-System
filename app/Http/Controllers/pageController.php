@@ -155,6 +155,10 @@ class pageController extends Controller
         return view('manager-listApplications', compact('applications'));
     }
 
+    public function viewVendor(Application $application){
+        return view('viewVendor', compact('application'));
+    }
+
     // Vendor functions
 
     public function viewEvent(Event $event){

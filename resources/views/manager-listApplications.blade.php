@@ -50,14 +50,17 @@
                             <td>{{ $application->category }}</td>
                             <td>
                                 @if ($application->status == 'Pending')
-                                    <div class="bg-warning rounded">Pending</div>
+                                    <div class="bg-warning rounded p-1 text-center"><b>Pending</b></div>
+                                @elseif ($application->status == 'Approved')
+                                    <div class="bg-success rounded p-1 text-center"><b>Approved</b></div>
+                                @elseif ($application->status == 'Rejected')
+                                    <div class="bg-danger rounded p-1 text-center"><b>Rejected</b></div>
                                 @endif
                             </td>
                             <td>
-                                <form action="{{ route('approve', ['application' => $application->id]) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="button">Approve</button>
-                                </form>
+                                <div class="d-flex flex-row gap-3">
+                                    <a href="{{ route('viewVendor', ['application' => $application->id]) }}" class="button">View</a>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
