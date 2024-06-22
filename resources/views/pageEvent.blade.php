@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="editEvent-btn">
-        <a href="/manager_homepage">Back</a>
+        <a href="{{ route('manager-listEvents') }}">Back</a>
         <a href="/list-applications/{{ $event->id }}">List Applications</a>
         <a href="/editEvent/{{ $event->id }}">Edit</a>
     </div>

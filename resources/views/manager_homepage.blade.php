@@ -22,9 +22,7 @@
             <div class="title">
                 <h1>Manager Dashboard</h1>
             </div>
-            <div class="add-event-btn">
-                <a href="/addEvent">Add Event</a>
-            </div>
+            
             
             @if (session()->has('success'))
                 <div class="alert alert-success mx-3 my-1">{{ session('success') }}</div>
@@ -41,13 +39,15 @@
                                 <h4><b>{{ $event->title }}</b></h4>
                                 <p><br><b>{{ \Carbon\Carbon::parse($event->start_date)->format('j M Y') }}</b> <br>({{ $event->duration }} days)</p>
                                 <h5>Availability:</h5>
-                                <p>
+                                
                                     @if ($event->availabality == $event->Lot_Quantity)
-                                        <b>Full</b>
+                                        <p><b>Full</b></p>
                                     @else
-                                        {{ $event->availabality }}/{{ $event->Lot_Quantity }}
+                                        <p>
+                                            {{ $event->availabality }}/{{ $event->Lot_Quantity }}
+                                        </p>
                                     @endif
-                                </p>
+                                
                                 @if ($event->status == 'Upcoming')
                                     <p class="bg-warning rounded"><b>{{ $event->status }}</b></p>
                                 @elseif ($event->status == 'Ongoing')

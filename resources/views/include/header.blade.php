@@ -42,6 +42,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><a class="dropdown-item" href="/">About</a></li>
               <li><a class="dropdown-item" href="/logout">Logout</a></li>
           </ul>
         </li>

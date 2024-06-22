@@ -3,7 +3,7 @@
 @section('title','Manager List Events')
 @section('content')
 
-<div class="body">
+<div class="body-container">
     <div class="content">
         <div class="nav-content">
             <ul class="nav flex-column">
@@ -20,6 +20,9 @@
         </div>
         <div class="main-content">
             <h2 class="text-center">List Events</h2>
+            <div class="d-flex justify-content-center">
+                <a href="{{ route('addEvent') }}" class="button">Add Event</a>
+            </div>
             @if (session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
             @endif
@@ -61,7 +64,7 @@
                             </td>
                             <td>
                                 <div class="d-flex flex-row gap-3">
-                                    <a href="{{ route('editEvent', ['event' => $event->id]) }}" class="button">Edit</a>
+                                    <a href="{{ route('pageEvent', ['event' => $event->id]) }}" class="button">View</a>
                                 </div>
                             </td>
                         </tr>

@@ -57,7 +57,7 @@ Route::get('/editProfile/{user}', [pageController::class, 'editProfilePage']);
 Route::post('/editProfile/{user}', [profileController::class, 'editProfile'])->name('editProfile');
 
 //Route for Events
-Route::get('/addEvent', [pageController::class, 'addEventPage']);
+Route::get('/addEvent', [pageController::class, 'addEventPage'])->name('addEvent');
 Route::post('/addEvent', [EventController::class, 'addEvent'])->name('addEvent');
 Route::get('/pageEvent/{event}',[pageController::class,'pageEvent'])->name('pageEvent');
 Route::get('/viewEvent/{event}', [pageController::class, 'viewEvent']);

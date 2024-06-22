@@ -149,9 +149,10 @@ class pageController extends Controller
     }
 
     public function manager_listApplications(){
-        $user = Auth::user();
-        $applications = Application::where('user_id', $user->id)->get();
-        return view('manager-listApplications', compact('applications')); 
+        $manager = Auth::user();
+        $events = Event::where('user_id', $manager->id)->pluck('id');
+        $applications = Application::whereIn('event_id', $events)->get();
+        return view('manager-listApplications', compact('applications'));
     }
 
     // Vendor functions

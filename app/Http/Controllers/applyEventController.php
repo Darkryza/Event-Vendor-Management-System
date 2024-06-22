@@ -7,17 +7,32 @@ use App\Models\Event;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class applyEventController extends Controller
 {
     public function addApplyEvent(Request $request, Event $event, User $user){
+        $event = Event::findOrFail($event->id);
+        $approvedApplications = Application::where('event_id', $event->id)->where('status', 'Approve')->get();
 
         $applyEvent = $request->validate([
             'vendor_name' => 'required',
             'booth_name' => 'required',
             'phone_number' => 'required',
             'category' => 'required',
-            'no_of_lot' => 'required',
+            'no_of_lot' => [
+                'required',
+                'integer',
+                'min:1',
+                'max:' . $event->Lot_Quantity,
+                function ($attribute, $value, $fail) use ($approvedApplications) {
+                    foreach ($approvedApplications as $application) {
+                        if ($application->no_of_lot == $value) {
+                            return $fail('The lot number ' . $value . ' is already booked.');
+                        }
+                    }
+                }
+            ],
             'agreement' => 'required',
         ]);
 
@@ -27,9 +42,6 @@ class applyEventController extends Controller
         $category = $request->category;
         $no_of_lot = $request->no_of_lot;
         $agreement = $request->agreement;
-        
-        // $receipt_name = $request->file('receipt_image')->getClientOriginalName();
-        // $request->file('receipt_image')->storeAs('public/images', $receipt_name);
 
         $receipt_name = time().'.'.$request->receipt_image->getClientOriginalName().'.'.$request->receipt_image->extension();
         $request->receipt_image->move(public_path('images'), $receipt_name);
@@ -47,37 +59,6 @@ class applyEventController extends Controller
         $application->save();
 
         return redirect()->route('listApplicationVendor',['user' => $user->id])->with('success', $application->event->title." Application successful");
-    }
-
-    public function editApplyEvent(Request $request, Application $application){
-        $vendor_name = $request->input('vendor_name');
-        $booth_name = $request->input('booth_name');
-        $phone_number = $request->input('phone_number');
-        $category = $request->input('category');
-        $no_of_lot = $request->input('no_of_lot');
-
-        if ($request->hasFile('receipt_name')) {
-            if (File::exists(public_path('images/' . $application->receipt_name))) {
-                File::delete(public_path('images/' . $application->receipt_name));
-            }
-
-            $receipt_image = $request->file('receipt_name');
-            $receipt_name = time() . '.' . $receipt_image->getClientOriginalName();
-            $receipt_image->move(public_path('images'), $receipt_name);
-        } else {
-            $receipt_name = $application->receipt_name;
-        }
-
-        $application->update([
-            'vendor_name' => $vendor_name,
-            'booth_name' => $booth_name,
-            'phone_number' => $phone_number,
-            'category' => $category,
-            'no_of_lot' => $no_of_lot,
-            'receipt_name' => $receipt_name,
-        ]);
-
-        return redirect()->route('listApplicationVendor', ['user' => auth()->user()->id])->with('success', 'Application update successfully');
     }
 
     public function deleteApplyEvent(Request $request, Application $application){

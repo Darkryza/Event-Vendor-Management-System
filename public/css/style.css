@@ -405,24 +405,6 @@ tbody, td, tfoot, th, thead, tr{
     margin-top: 10px;
 }
 
-.add-event-btn{
-    text-align: center;
-    margin-top: 10px;
-}
-
-.add-event-btn a{
-    text-decoration: none;
-    background-color: rgb(92, 0, 31);
-    border-radius: 5px;
-    color: white;
-    padding: 10px 20px;
-    font-size: 12px;
-}
-
-.add-event-btn a:hover{
-    background-color: rgb(74, 16, 36);
-}
-
 .applications-btn{
     text-align: center;
     margin: 10px 0;

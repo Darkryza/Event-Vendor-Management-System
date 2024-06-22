@@ -58,7 +58,7 @@ class EventController extends Controller
         $event->save();
         
 
-        return redirect()->route('manager_homepage')->with('success', 'Event added successfully');
+        return redirect()->route('manager-listEvents')->with('success', $event->title . ' applied. Wait for the approval');
         
     }
 
@@ -156,11 +156,9 @@ class EventController extends Controller
         }
     
         $event->delete();
-
-        $sourcePage = $request->sourcePage;
     
         if (auth()->user()->role != 'Admin'){
-            return redirect('/manager_homepage')->with('success', $event->title.' deleted successfully');
+            return redirect()->route('manager-listEvents')->with('success', $event->title.' deleted successfully');
         }
         return redirect()->route('viewEvents')->with('success',$event->title.' deleted successfully');
     }
