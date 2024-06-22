@@ -8,7 +8,7 @@
         <div class="application-upper-container">
             <h2>List of Applications</h2>
             <h3>{{ $event->title }}</h3>
-            <a href="{{ route('PageEvent',['event' => $event->id]) }}" class="button">Back</a>
+            <a href="{{ route('pageEvent',['event' => $event->id]) }}" class="button">Back</a>
         </div>
     
         <div class="title">

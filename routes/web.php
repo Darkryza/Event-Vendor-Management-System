@@ -64,7 +64,7 @@ Route::get('/viewEvent/{event}', [pageController::class, 'viewEvent']);
 
 
 //Route Edit Event
-Route::get('/editEvent/{event}',[pageController::class,'editEventPage']);
+Route::get('/editEvent/{event}',[pageController::class,'editEventPage'])->name('editEvent');
 Route::post('/editEvent/{event}',[EventController::class,'editEvent'])->name('editEvent');
 Route::delete('/deleteEvent/{event}', [EventController::class, 'deleteEvent'])->name('deleteEvent');
 

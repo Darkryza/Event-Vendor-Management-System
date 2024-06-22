@@ -14,7 +14,7 @@
                   <a class="nav-link" href="{{ route('manager-listEvents') }}">Events</a>
                 </li>
                 <li class="nav-item admin-link">
-                    <a class="nav-link active" href="{{ route('manager-listApplications') }}">Applications</a>
+                    <a class="nav-link active" href="{{ route('manager-listApplications') }}">Vendor Applications</a>
                 </li>
             </ul>
         </div>

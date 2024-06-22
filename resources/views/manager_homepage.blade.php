@@ -14,7 +14,7 @@
                   <a class="nav-link" href="{{ route('manager-listEvents') }}">Events</a>
                 </li>
                 <li class="nav-item admin-link">
-                    <a class="nav-link" href="{{ route('Admin.viewApplications') }}">Applications</a>
+                    <a class="nav-link" href="{{ route('manager-listApplications') }}">Vendor Applications</a>
                 </li>
             </ul>
         </div>
@@ -39,7 +39,7 @@
                             </div>
                             <div class="eventsInfo-container">
                                 <h4><b>{{ $event->title }}</b></h4>
-                                <p>{{ $event->duration }} days</p>
+                                <p><br><b>{{ \Carbon\Carbon::parse($event->start_date)->format('j M Y') }}</b> <br>({{ $event->duration }} days)</p>
                                 <h5>Availability:</h5>
                                 <p>
                                     @if ($event->availabality == $event->Lot_Quantity)
@@ -48,7 +48,14 @@
                                         {{ $event->availabality }}/{{ $event->Lot_Quantity }}
                                     @endif
                                 </p>
-                                <p><b>{{ $event->status }}</b></p>
+                                @if ($event->status == 'Upcoming')
+                                    <p class="bg-warning rounded"><b>{{ $event->status }}</b></p>
+                                @elseif ($event->status == 'Ongoing')
+                                    <p class="bg-primary rounded"><b>{{ $event->status }}</b></p>
+                                @elseif ($event->status == 'Completed')
+                                    <p class="bg-success rounded text-white"><b>{{ $event->status }}</b></p>
+                                @endif
+                                
                             </div>
                         </a>
                     </div>

@@ -139,7 +139,7 @@ class EventController extends Controller
             return redirect()->route('viewEvents')->with('success','Event updated successfully');
             
         }
-        return redirect()->back()->with('success', 'Event updated successfully');
+        return redirect()->route('manager-listEvents')->with('success', 'Event updated successfully');
     }
     
     public function deleteEvent(Request $request,Event $event){
@@ -156,6 +156,8 @@ class EventController extends Controller
         }
     
         $event->delete();
+
+        $sourcePage = $request->sourcePage;
     
         if (auth()->user()->role != 'Admin'){
             return redirect('/manager_homepage')->with('success', $event->title.' deleted successfully');
