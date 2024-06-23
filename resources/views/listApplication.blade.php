@@ -15,7 +15,7 @@
             <h4>No. of lot:</h4>
         </div>
     
-        <div class="lot-boxes-container">
+        <div class="lot-boxes-container d-flex justify-content-center">
             @for ($i = 1; $i <= $event->Lot_Quantity; $i++)
                 @php
                     $isApproved = false;
@@ -74,11 +74,11 @@
                         </td>
                         <td>
                             <div class="buttons">
-                                <form action="/approve/{{ $application->id }}" method="POST">
+                                <form action="/approveApp/{{ $application->id }}" method="POST">
                                     @csrf
                                     <button type="submit">Approve</button>
                                 </form>
-                                <form action="/reject/{{ $application->id }}" method="POST">
+                                <form action="/rejectApp/{{ $application->id }}" method="POST">
                                     @csrf
                                     <button type="submit">Reject</button>
                                 </form>

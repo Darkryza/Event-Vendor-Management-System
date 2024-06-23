@@ -51,7 +51,7 @@
                                 @if ($event->status == 'Upcoming')
                                     <p class="bg-warning rounded"><b>{{ $event->status }}</b></p>
                                 @elseif ($event->status == 'Ongoing')
-                                    <p class="bg-primary rounded"><b>{{ $event->status }}</b></p>
+                                    <p class="bg-primary rounded text-white"><b>{{ $event->status }}</b></p>
                                 @elseif ($event->status == 'Completed')
                                     <p class="bg-success rounded text-white"><b>{{ $event->status }}</b></p>
                                 @endif

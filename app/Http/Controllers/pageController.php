@@ -183,7 +183,9 @@ class pageController extends Controller
     }
 
     public function EditAppPage(Application $application){
-        return view('editApplication', compact('application'));
+        $applications = Application::all();
+        $event = Event::where('id', $application->event_id)->first(); // Fetch single event instance
+        return view('editApplication', compact('application', 'event', 'applications'));
     }
 
 }

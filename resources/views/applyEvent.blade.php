@@ -85,7 +85,7 @@
                 </div>
                 <div class="mb-4">
                     <h4 class="required">Agreement:</h4>
-                    <p>{{ $event->agreement }}</p>
+                    <p>{!! nl2br(e($event->agreement)) !!}</p>
                 </div>
                 <div class="mb-4">
                     <input type="checkbox" id="agree" name="agreement" value="1">

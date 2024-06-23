@@ -48,15 +48,19 @@
             </div>
             <div class="mb-3 mx-5">
                 <h5>Start Date:</h4>
-                <p>{{ $event->start_date }}</p>
+                <p>{{ \Carbon\Carbon::parse($event->start_date)->format('j F Y') }}</p>
             </div>
             <div class="mb-3 mx-5">
                 <h5>End Date:</h4>
-                <p>{{ $event->end_date }}</p>
+                <p>{{ \Carbon\Carbon::parse($event->end_date)->format('j F Y') }}</p>
             </div>
             <div class="mb-3 mx-5">
                 <h5>Duration:</h4>
-                <p>{{ $event->duration }}</p>
+                <p>{{ $event->duration }} days</p>
+            </div>
+            <div class="mb-3 mx-5">
+                <h5>Agreement:</h4>
+                <p>{!! nl2br(e($event->agreement)) !!}</p>
             </div>
             <div class="mb-3 mx-5">
                 <h5>Lot Price:</h4>

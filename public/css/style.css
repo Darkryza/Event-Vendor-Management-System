@@ -702,11 +702,6 @@ tbody, td, tfoot, th, thead, tr{
     align-items: center;
 }
 
-.expand{
-    margin-left: -50px;
-    margin-right: 50px;
-}
-
 .view-content-event h4{
     font-size: 20px;
     font-weight: 800;

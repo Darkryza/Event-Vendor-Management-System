@@ -87,7 +87,7 @@
                     <div class="mb-3">
                         <label for="status" class="form-label">Status Event</label><br>
                         <select name="status" id="status" class="form-select">
-                            <option value="Pending" {{ $event->status == 'Upcoming' ? 'selected' : '' }}>Upcoming</option>
+                            <option value="Upcoming" {{ $event->status == 'Upcoming' ? 'selected' : '' }}>Upcoming</option>
                             <option value="Ongoing" {{ $event->status == 'Ongoing' ? 'selected' : '' }}>Ongoing</option>
                             <option value="Completed" {{ $event->status == 'Completed' ? 'selected' : '' }}>Completed</option>
                         </select>

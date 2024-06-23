@@ -80,9 +80,10 @@
                                 </td>        
                                 <td>
                                     <div class="listuser-btn">
-                                        <a href="#">Edit</a>
-                                        <form action="" method="POST">
+                                        <a href="{{ route('editApplication', ['application' => $application->id]) }}">Edit</a>
+                                        <form action="{{ route('deleteApplyEvent', ['application' => $application->id]) }}" method="POST">
                                             @csrf
+                                            @method('DELETE')
                                             <button type="submit" class="button">Delete</button>
                                         </form>
                                     </div>

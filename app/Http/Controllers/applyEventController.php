@@ -61,12 +61,51 @@ class applyEventController extends Controller
         return redirect()->route('listApplicationVendor',['user' => $user->id])->with('success', $application->event->title." Application successful");
     }
 
+    public function editApplyEvent(Request $request, Application $application){
+        $vendor_name = $request->input('vendor_name');
+        $booth_name = $request->input('booth_name');
+        $phone_number = $request->input('phone_number');
+        $category = $request->input('category');
+
+        $no_of_lot = $application->no_of_lot;
+
+        if($request->input('no_of_lot')){
+            $no_of_lot = $request->input('no_of_lot');    
+            if ($application->status == 'Approve') {
+                $application->status = 'Pending';
+            }
+        }
+        
+        $receipt_name = $application->receipt_name;
+        
+        if ($request->hasFile('receipt_name')){
+            $receipt_name = time().'.'.$request->receipt_image->getClientOriginalName().'.'.$request->receipt_image->extension();
+            $request->receipt_image->move(public_path('images'), $receipt_name);
+        }
+
+        $application->vendor_name = $vendor_name;
+        $application->booth_name = $booth_name;
+        $application->phone_number = $phone_number;
+        $application->category = $category;
+        $application->no_of_lot = $no_of_lot;
+        $application->receipt_name = $receipt_name;
+        $application->save();
+        
+        if (auth()->user()->role == 'Admin') {
+            return redirect()->route('Admin.viewApplications')->with('success', 'Edit successfully');
+        }
+        return redirect()->back()->with('success', 'Update Success');
+    }
+
     public function deleteApplyEvent(Request $request, Application $application){
         $image = public_path('images/' . $application->receipt_name);
         if (File::exists($image)) {
             File::delete($image);
         }
         $application->delete();
+        if (auth()->user()->role == 'Admin') {
+            return redirect()->back()->with('success', $application->vendor_name . ' apply for ' . $application->event->title . ' for lot ' . $application->no_of_lot . 'deleted');
+        }
         return redirect()->route('listApplicationVendor',['user' => auth()->user()])->with('success','Application deleted successfully');
     }
 

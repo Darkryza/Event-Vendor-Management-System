@@ -38,6 +38,25 @@
                     </select>
                 </div>
                 <div class="mb-3 mx-5">
+                    <h4 class="text-center mb-4">Availability Lot (Green - Booked)</h4>
+                    <div class="lot-boxes-container">
+                        @for ($i = 1; $i <= $event->Lot_Quantity; $i++)
+                            @php
+                                $isApproved = false;
+                            @endphp
+                            @foreach($applications as $application)
+                                @if ($application->no_of_lot == $i && $application->status == 'Approve')
+                                    @php
+                                        $isApproved = true;
+                                        break;
+                                    @endphp
+                                @endif
+                            @endforeach
+                            <div class="lot-box {{ $isApproved ? 'approved' : '' }}">{{ $i }}</div>
+                        @endfor
+                    </div>
+                </div>
+                <div class="mb-3 mx-5">
                     <label for="no_of_lot" class="form-label">No of lot</label>
                     <input type="text" name="no_of_lot" id="no_of_lot" value="{{ $application->no_of_lot }}" class="form-control">
                 </div>
@@ -51,7 +70,12 @@
                     <input type="file" id="receipt_name" name="receipt_name" accept="image/*" class="form-control">
                 </div>
                 <div class="mb-3 mx-5 text-center editApp-btn">
-                    <a href="/vendorApplications/{{ auth()->user()->id }}">Cancel</a>
+                    @if (auth()->user()->role == 'Admin')
+                        <a href="{{ route('Admin.viewApplications') }}">Cancel</a>
+                    @else
+                        <a href="/vendorApplications/{{ auth()->user()->id }}">Cancel</a>
+                    @endif
+                    
                     <button type="submit">Save</button>
                 </div>
             </form>
