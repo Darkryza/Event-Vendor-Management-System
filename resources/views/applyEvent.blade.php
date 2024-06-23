@@ -97,8 +97,8 @@
                     </a>
                 </div>
                 <div class="mb-3">
-                    <label for="receipt_image" class="form-label"><h4 class="required">Receipt Payment</h4></label><br>
-                    <input type="file" id="receipt_image" name="receipt_image" accept="image/*" class="form-control">
+                    <label for="receipt_name" class="form-label"><h4 class="required">Receipt Payment</h4></label><br>
+                    <input type="file" id="receipt_name" name="receipt_name" accept="image/*" class="form-control">
                 </div>
                 <div class="button-applyEvent">
                     <button type="submit" class="btn-applyEvent">Submit</button>

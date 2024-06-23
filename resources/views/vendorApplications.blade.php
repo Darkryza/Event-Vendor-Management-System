@@ -50,7 +50,7 @@
                         <td>{{ $application->phone_number }}</td>
                         <td>{{ $application->category }}</td>
                         <td>{{ $application->no_of_lot }}</td>
-                        <td>{{ $application->receipt_name }}</td>
+                        <td><a href="{{ asset('images/'.$application->receipt_name) }}" target="_blank">{{ $application->receipt_name }}</a></td>
                         <td>
                             @if ($application->status == 'Pending')
                                 <button class="btn btn-warning">Pending</button>

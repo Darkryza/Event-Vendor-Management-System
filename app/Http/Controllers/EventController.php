@@ -54,6 +54,7 @@ class EventController extends Controller
         $event->name_imgQR = $qr_name;
         $event->lot_price = $request->lot_price;
         $event->Lot_Quantity = $request->lot_quantity;
+        $event->status = $request->input('status', 'Upcoming');
         $event->user_id = auth()->user()->id;
         $event->save();
         
@@ -78,8 +79,8 @@ class EventController extends Controller
 
         // Check if the poster image input exists in the request
         if ($request->hasFile('poster_image')) {
-            if (File::exists(public_path($event->name_imgLayout))) {
-                File::delete(public_path($event->name_imgLayout));
+            if (File::exists(public_path('images/'.$event->name_imgPoster))) {
+                File::delete(public_path('images/'.$event->name_imgPoster));
             }
 
             $poster_name = time().'.'.$request->poster_image->getClientOriginalName().'.'.$request->poster_image->extension();
@@ -90,6 +91,9 @@ class EventController extends Controller
         }
         // Check if the layout image input exists in the request
         if ($request->hasFile('layout_image')) {
+            if (File::exists(public_path('images/'.$event->name_imgLayout))) {
+                File::delete(public_path('images/'.$event->name_imgLayout));
+            }
             $layout_name = time().'.'.$request->layout_image->getClientOriginalName().'.'.$request->layout_image->extension();
             $request->layout_image->move(public_path('images'), $layout_name);
         } else {
@@ -98,6 +102,9 @@ class EventController extends Controller
         }
 
         if ($request->hasFile('qr_image')) {
+            if (File::exists(public_path('images/'.$event->name_imgQR))) {
+                File::delete(public_path('images/'.$event->name_imgQR));
+            }
             $qr_name = time().'.'.$request->qr_image->getClientOriginalName().'.'.$request->qr_image->extension();
             $request->qr_image->move(public_path('images'), $qr_name);
         } else {
@@ -208,6 +215,7 @@ class EventController extends Controller
         $event->name_imgQR = $qr_name;
         $event->lot_price = $request->lot_price;
         $event->Lot_Quantity = $request->lot_quantity;
+        $event->status = 'Upcoming';
         $event->user_id = $request->manager;
         $event->save();
         

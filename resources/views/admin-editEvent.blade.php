@@ -38,7 +38,7 @@
                     </button>
                 </div>
             </div>
-            <form action="{{ route('editEvent', ['event' => $event->id]) }}" method="POST">
+            <form action="/editEvent/{{ $event->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label">Event Title</label>

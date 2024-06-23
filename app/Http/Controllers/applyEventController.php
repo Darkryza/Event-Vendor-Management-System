@@ -43,8 +43,8 @@ class applyEventController extends Controller
         $no_of_lot = $request->no_of_lot;
         $agreement = $request->agreement;
 
-        $receipt_name = time().'.'.$request->receipt_image->getClientOriginalName().'.'.$request->receipt_image->extension();
-        $request->receipt_image->move(public_path('images'), $receipt_name);
+        $receipt_name = time().'.'.$request->receipt_name->getClientOriginalName().'.'.$request->receipt_name->extension();
+        $request->receipt_name->move(public_path('images'), $receipt_name);
         
         $application = new Application();
         $application->vendor_name = $vendor_name;
@@ -79,8 +79,11 @@ class applyEventController extends Controller
         $receipt_name = $application->receipt_name;
         
         if ($request->hasFile('receipt_name')){
-            $receipt_name = time().'.'.$request->receipt_image->getClientOriginalName().'.'.$request->receipt_image->extension();
-            $request->receipt_image->move(public_path('images'), $receipt_name);
+            if (File::exists(public_path('images/' . $application->receipt_name))) {
+                File::delete(public_path('images/' . $application->receipt_name));
+            }
+            $receipt_name = time() . '.' . $request->receipt_name->getClientOriginalName() . '.' . $request->receipt_name->extension();
+            $request->receipt_name->move(public_path('images'), $receipt_name);
         }
 
         $application->vendor_name = $vendor_name;
