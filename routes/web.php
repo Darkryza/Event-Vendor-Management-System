@@ -77,8 +77,8 @@ Route::delete('/deleteApplyEvent/{application}', [applyEventController::class, '
 
 // Route for list applications (Manager/Vendor)
 Route::get('/list-applications/{event}',[pageController::class, 'listApplicationPage'])->name('listApplicationManager');
-Route::post('/approveApp/{application}',[applyEventController::class,'approve']);
-Route::post('/rejectApp/{application}',[applyEventController::class,'reject']);
+Route::post('/approveApp/{application}',[applyEventController::class,'approve'])->name('approved');
+Route::post('/rejectApp/{application}',[applyEventController::class,'reject'])->name('rejected');
 Route::get('/viewReceipt/{event}/{application}',[pageController::class,'viewReceiptPage']);
 Route::get('/viewVendor/{application}', [pageController::class, 'viewVendor'])->name('viewVendor');
 

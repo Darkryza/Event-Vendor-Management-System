@@ -156,7 +156,9 @@ class pageController extends Controller
     }
 
     public function viewVendor(Application $application){
-        return view('viewVendor', compact('application'));
+        $event = Event::where('id', $application->event_id)->get()->first();
+        $Allapplications = Application::where('event_id', $event->id)->get();
+        return view('viewVendor', compact('application', 'event', 'Allapplications'));
     }
 
     // Vendor functions

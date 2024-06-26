@@ -101,11 +101,14 @@ class applyEventController extends Controller
     }
 
     public function deleteApplyEvent(Request $request, Application $application){
+        $event = Event::where('id', $application->event_id)->get();
         $image = public_path('images/' . $application->receipt_name);
         if (File::exists($image)) {
             File::delete($image);
         }
         $application->delete();
+        $event->availabality -= 1;
+        $event->save();
         if (auth()->user()->role == 'Admin') {
             return redirect()->back()->with('success', $application->vendor_name . ' apply for ' . $application->event->title . ' for lot ' . $application->no_of_lot . 'deleted');
         }
@@ -122,10 +125,10 @@ class applyEventController extends Controller
             $event->save();
 
             // Update the application's status to 'Approve'
-            $application->status = 'Approve';
+            $application->status = 'Approved';
             $application->save();
 
-            return redirect()->back()->with('success', "Application approved successfully");
+            return redirect()->route('manager-listApplications')->with('success', "Application approved successfully");
         } else {
             return redirect()->back()->with('error', "Cannot approve application. Maximum lot quantity reached.");
         }
@@ -136,16 +139,16 @@ class applyEventController extends Controller
          $event = $application->event;
 
          // Check if the application was previously approved
-         if ($application->status == 'Approve') {
+         if ($application->status == 'Approved') {
              // Decrease the availability by 1
              $event->availabality -= 1;
              $event->save();
          }
  
          // Update the application's status to 'Reject'
-         $application->status = 'Reject';
+         $application->status = 'Rejected';
          $application->save();
  
-         return redirect()->back()->with('success', "Application rejected successfully");
+         return redirect()->route('manager-listApplications')->with('success', "Application rejected successfully");
     }
 }

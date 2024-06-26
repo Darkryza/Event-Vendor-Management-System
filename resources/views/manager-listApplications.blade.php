@@ -32,6 +32,7 @@
                         <th>Booth Name</th>
                         <th>Phone Number</th>
                         <th>Category</th>
+                        <th>Lot Number</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -48,19 +49,20 @@
                             <td>{{ $application->booth_name }}</td>
                             <td>{{ $application->phone_number }}</td>
                             <td>{{ $application->category }}</td>
+                            <td>{{ $application->no_of_lot }}</td>
                             <td>
                                 @if ($application->status == 'Pending')
                                     <div class="bg-warning rounded p-1 text-center"><b>Pending</b></div>
                                 @elseif ($application->status == 'Approved')
-                                    <div class="bg-success rounded p-1 text-center"><b>Approved</b></div>
+                                    <div class="bg-success rounded p-1 text-center text-white"><b>Approved</b></div>
                                 @elseif ($application->status == 'Rejected')
-                                    <div class="bg-danger rounded p-1 text-center"><b>Rejected</b></div>
+                                    <div class="bg-danger rounded p-1 text-center text-white"><b>Rejected</b></div>
                                 @endif
                             </td>
                             <td>
                                 <div class="d-flex flex-row gap-3">
                                     <a href="{{ route('viewVendor', ['application' => $application->id]) }}" class="button">View</a>
-                                </div>
+                                </div>  
                             </td>
                         </tr>
                     @endforeach

@@ -64,7 +64,7 @@
                                 $isApproved = false;
                             @endphp
                             @foreach($applications as $application)
-                                @if ($application->no_of_lot == $i && $application->status == 'Approve')
+                                @if ($application->no_of_lot == $i && $application->status == 'Approved')
                                     @php
                                         $isApproved = true;
                                         break;

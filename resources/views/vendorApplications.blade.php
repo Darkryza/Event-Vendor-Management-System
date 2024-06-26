@@ -54,9 +54,9 @@
                         <td>
                             @if ($application->status == 'Pending')
                                 <button class="btn btn-warning">Pending</button>
-                            @elseif ($application->status == 'Approve')
+                            @elseif ($application->status == 'Approved')
                                 <button class="btn btn-success">Approve</button>
-                            @elseif ($application->status == 'Reject')
+                            @elseif ($application->status == 'Rejected')
                                 <button class="btn btn-danger">Reject</button>
                             @endif
                         </td>

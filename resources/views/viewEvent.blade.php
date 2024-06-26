@@ -17,6 +17,9 @@
                 <div class="event-content">
                     <h4>Details:</h4>
                     <p><b>Organiser:</b>{{ $event->organiser }}</p>
+                    <p><b>Manager:</b>{{ $event->user->name }}</p>
+                    <p><b>Phone number:</b>{{ $event->user->phone_number }}</p>
+                    <p><b>Email:</b>{{ $event->user->email }}</p>
                     <p><b>Location:</b> {{ $event->location }}</p>
                     <p><b>Start Date:</b> {{ \Carbon\Carbon::parse($event->start_date)->format('j F Y') }}</p>
                     <p><b>End Date:</b> {{ \Carbon\Carbon::parse($event->end_date)->format('j F Y') }}</p>
