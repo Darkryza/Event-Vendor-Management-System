@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @vite(['resources/sass/app.scss', 'resources/css/style.css','resources/js/app.js'])
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
