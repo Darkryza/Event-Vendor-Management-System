@@ -35,6 +35,9 @@
                     <div class="alert alert-success my-3 mx-3">{{ session('success') }}</div>
                     @endif
                 </div>  
+                <div>
+                    Total Events: {{ $totalEvents }}
+                </div>
                 <table>
                     <thead>
                         <tr>

@@ -76,12 +76,14 @@ class pageController extends Controller
 
     public function viewUsers(){
         $users = User::where('role', '!=', 'Admin')->get();
-        return view('viewUsers', compact('users')); 
+        $totalUsers = $users->count();
+        return view('viewUsers', compact('users', 'totalUsers')); 
     }
 
     public function viewEvents(){
         $events = Event::all();
-        return view('viewEvents', compact('events'));
+        $totalEvents = $events->count();
+        return view('viewEvents', compact('events', 'totalEvents'));
     }
     
     public function adduser(){
@@ -112,7 +114,8 @@ class pageController extends Controller
 
     public function admin_viewApplications(){
         $applications = Application::all();
-        return view('admin-viewApplications', compact('applications'));
+        $totalApplications = $applications->count();
+        return view('admin-viewApplications', compact('applications', 'totalApplications'));
     }
 
     public function reviewEvent(Event $event){

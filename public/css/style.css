@@ -171,6 +171,15 @@ nav{
     gap: 20px;
 }
 
+footer{
+    background-color: rgb(92, 0, 31);
+    height: 80px;
+    width: 100%;
+    position: relative;
+    left: 0;
+    bottom: 0;
+}
+
 /* --------------- */
 
 /* Index Page */

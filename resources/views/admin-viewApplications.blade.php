@@ -31,7 +31,8 @@
                     @if (session()->has('success'))
                     <div class="alert alert-success my-3 mx-3">{{ session('success') }}</div>
                     @endif
-                </div>  
+                </div>
+                <div>Total applications: {{ $totalApplications }}</div>
                 <table>
                     <thead>
                         <tr>

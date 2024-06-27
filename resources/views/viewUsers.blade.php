@@ -6,7 +6,6 @@
 <div class="body-container">
 
     <div class="admin-container">
-
         <div class="admin-nav">
             <ul class="nav flex-column">
                 <li class="nav-item admin-link">
@@ -34,7 +33,8 @@
                     @if (session()->has('success'))
                     <div class="alert alert-success my-3 mx-3">{{ session('success') }}</div>
                     @endif
-                </div>  
+                </div>
+                <div>Total user: {{ $totalUsers }}</div>  
                 <table>
                     <thead>
                         <tr>

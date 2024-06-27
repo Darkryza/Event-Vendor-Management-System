@@ -42,13 +42,11 @@
                                     </div>
                                     <div>
                                         <h5>Availability:</h5>
-                                        <p>
-                                            @if ($event->availabality == $event->Lot_Quantity)
-                                            <b>Full</b>
-                                            @else
-                                                {{ $event->availabality }}/{{ $event->Lot_Quantity }}
-                                            @endif
-                                        </p>
+                                        @if ($event->availabality == $event->Lot_Quantity)
+                                            <p class="bg-success rounded text-white">Full</p>
+                                        @else
+                                            <p>{{ $event->availabality }}/{{ $event->Lot_Quantity }}</p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="applyEvent">

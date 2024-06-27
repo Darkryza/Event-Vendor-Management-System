@@ -33,31 +33,38 @@
                 <h5>Category:</h4>
                 <p>{{ $application->category }}</p>
             </div>
-            <div class="lot-boxes-container d-flex justify-content-center">
-                @for ($i = 1; $i <= $event->Lot_Quantity; $i++)
-                    @php
-                        $isApproved = false;
-                    @endphp
-                    @foreach($Allapplications as $app)
-                        @if ($app->no_of_lot == $i && $app->status == 'Approved')
-                            @php
-                                $isApproved = true;
-                                break;
-                            @endphp
-                        @endif
-                    @endforeach
-                    <div class="lot-box {{ $isApproved ? 'approved' : '' }}">{{ $i }}</div>
-                @endfor
+            <div class="mt-4 mb-3 mx-5">
+                <h5>Total Lot:</h4>
+                <p>{{ $application->event->Lot_Quantity }}</p>
             </div>
             <div class="mt-4 mb-3 mx-5">
-                <h5>Lot Number:</h4>
+                <h5 class="text-center">Availabality Lot (Green - Booked)</h4><br>
+                    <div class="lot-boxes-container d-flex justify-content-center">
+                        @for ($i = 1; $i <= $event->Lot_Quantity; $i++)
+                            @php
+                                $isApproved = false;
+                            @endphp
+                            @foreach($Allapplications as $app)
+                                @if ($app->no_of_lot == $i && $app->status == 'Approved')
+                                    @php
+                                        $isApproved = true;
+                                        break;
+                                    @endphp
+                                @endif
+                            @endforeach
+                            <div class="lot-box {{ $isApproved ? 'approved' : '' }}">{{ $i }}</div>
+                        @endfor
+                    </div>
+            </div>
+            <div class="mt-4 mb-3 mx-5">
+                <h5>Vendor Choose Lot Number:</h4>
                 <p>{{ $application->no_of_lot }}</p>
             </div>
             <div class="mt-4 mb-3 mx-5">
                 <h5>Agreement:</h4>
                 <p>{!! nl2br(e($event->agreement)) !!}</p>
                 @if ($application->agreement == '1')
-                    <p><b>[I agree]</b></p>
+                    <p><b><i>Vendor choose: </i></b><b>[I agree]</b></p>
                 @endif
             </div>
             <div class="mt-4 mb-3 mx-5">

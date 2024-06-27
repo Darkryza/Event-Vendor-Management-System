@@ -101,7 +101,7 @@ class applyEventController extends Controller
     }
 
     public function deleteApplyEvent(Request $request, Application $application){
-        $event = Event::where('id', $application->event_id)->get();
+        $event = $application->event;
         $image = public_path('images/' . $application->receipt_name);
         if (File::exists($image)) {
             File::delete($image);
