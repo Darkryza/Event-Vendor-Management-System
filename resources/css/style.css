@@ -1,0 +1,1230 @@
+/* General */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box
+}
+
+/* ----------------------- */
+
+/* header*/
+
+nav{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin: 0 auto;
+    background-color: rgb(232, 232, 232);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.left-navbar{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+}
+
+.right-navbar{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.UTMlogo{
+    width: 150px;
+}
+
+.app-name{
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.app-name:hover{
+    color: rgb(92, 0, 31);
+}
+
+.link-navbar{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+}
+
+.navbar-list a{
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.navbar-list a:hover{
+    color: rgb(92, 0, 31);
+}
+
+.toggle-btn{
+    color: #000000;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.drop-navbar{
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    width: 300px;
+    background-color: #d2d2d2;
+    backdrop-filter: blur(15px);
+    overflow: hidden;
+    display: block;
+}
+
+.drop-navbar .navbar-list{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media (max-width: 992px){
+    .app-name, .link-navbar{
+        display: none;
+    }
+    .toggle-btn{
+        display: block;
+    }
+}
+
+/* ----------------- */
+
+/* Body-container */
+
+.body-container{
+    height: auto;
+    width: 100%;
+}
+
+.card-container{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 800px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 4px 5px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.card-container h1{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.button{
+    border: none;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(92, 0, 31);
+    padding: 5px 10px;
+    border-radius: 5px;
+    &:hover{
+        background-color: rgb(33, 7, 16);
+    }
+}
+
+.content{
+    margin: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-content{
+    width: 10%;
+    margin-right: 20px;
+}
+
+.main-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+footer{
+    background-color: rgb(92, 0, 31);
+    height: 80px;
+    width: 100%;
+    position: relative;
+    left: 0;
+    bottom: 0;
+}
+
+/* --------------- */
+
+/* Index Page */
+
+.white-container{
+    background-color: white;
+    height: auto;
+    width: 75%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.background-image img{
+    opacity: 0.5;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: -1;
+}
+
+.title_index h1{
+    color: #000000;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.white-container .text p{
+    font-size: 20px;
+    color: #000000;
+    margin: 20px 20px;
+}
+
+/* ---------- */
+
+/* Auth Page Login/Register */
+.bodyAuth{
+    background-color: #e5e3e4c3;
+    height: 100vh;
+    overflow: scroll;
+}
+
+.title{
+    padding: 0;
+}
+
+.title h1{
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+.btn-user{
+    background-color: rgb(92, 0, 31);
+    width: 80px;
+    text-align: center;
+    margin-left: 43%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-user .btn{
+    color: white;
+}
+
+.backHome-container{
+    text-align: center;
+    margin: 1em 0;
+}
+
+.backHome-container .backHome{
+    text-decoration: none;
+    color: rgb(92, 0, 31);
+}
+
+.backHome-container .backHome:hover{
+    color: rgb(248, 166, 23)
+}
+
+.card{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    margin:1em 0;
+}
+
+.card .utmlogo-container{
+    text-align: center;
+    padding: 1.5em 0;
+}
+
+.card .utmlogo img{
+    width: 200px;
+    height: auto;
+    display: inline-block;
+}
+
+.required::after {
+    content: " *";
+    color: red;
+}
+
+/* ------------- */
+
+/* HomePage Admin */
+
+.admin-container{
+    margin: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.admin-nav{
+    width: 10%;
+    margin-right: 20px;
+}
+
+a.nav-link{
+    color: black;
+}
+
+.nav-link.active{
+    color: rgb(92, 0, 31);
+    background-color: rgb(232, 232, 232);
+    font-weight: bold;
+}
+
+.admin-link{
+    background-color: rgb(232, 232, 232);
+    border-bottom: 1px solid black;
+}
+
+.admin-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.admin-content-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.admin-container-card{
+    background-color: rgb(232, 232, 232);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    width: 200px;
+    height: 220px;
+    text-align: center;
+    padding: 20px;
+}
+
+.graph-event-month{
+    width: 40%;
+    margin-left: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin-upper-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+}
+th{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #f2f2f2;
+}
+
+tbody, td, tfoot, th, thead, tr{
+    margin: 5px 0;
+    height: auto;
+}
+
+.user-list table tr td{
+    padding: 10px 5px;
+}
+
+.listuser-btn{
+    display: flex;
+    gap: 5px;
+    margin: 5px 0;
+}
+
+.listuser-btn a{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(92, 0, 31);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.listuser-btn a:hover{
+    background-color: rgb(33, 7, 16)
+}
+
+/* ............. */
+
+/* HomePage (manager/vendor) */
+
+.title{
+    margin-top: 10px;
+}
+
+.applications-btn{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.applications-btn a{
+    background-color: rgb(92, 0, 31);
+    text-decoration: none;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+.applications-btn a:hover{
+    background-color: rgb(74, 16, 36);
+}
+
+.managerEvents-card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 200px;
+    height: auto;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.link-cardEvent{
+    text-decoration: none;
+}
+
+.img-events img{
+    height: 200px;
+    width: 100%;
+}
+
+.managerEvents-card:hover{
+    border: solid 1px black;
+}
+
+.eventsInfo-container{
+    text-align: center;
+}
+
+.eventsInfo-container h4{
+    font-size: 22px;
+    margin: 0;
+}
+
+.events-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 200px;
+    height: auto;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.applyEvent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.applyEvent a{
+    background-color: rgb(92, 0, 31);
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    &:hover{
+        background-color: rgb(122, 40, 67);
+    }
+}
+
+/* Profile Page */
+
+.upper-profile-card{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.upper-profile-card h1{
+    text-align: center;
+}
+
+.editProfile-btn{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.editProfile-btn a{
+    background-color: rgb(92, 0, 31);
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.editProfile-btn a:hover{
+    background-color: rgb(54, 8, 23);
+    color: rgb(255, 255, 255);
+}
+
+.profile-information{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding:20px 100px;
+    gap: 10px;
+}
+
+.label{
+    width: 300px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.box-value{
+    border: 1px solid black;
+    width: 600px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.label-value{
+    margin-bottom: 0;
+    font-size: 20px;
+    margin: 5px 20px;
+}
+
+
+/* Edit profile */
+
+.upper-editprofile-card{
+    margin-top: 20px;
+}
+
+.edit-value input{
+    width: 600px;
+    font-size: 20px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+}
+
+.edit-value input:hover{
+    border-color: black;
+}
+
+.edit-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.save-btn button{
+    border: 0;
+    background: none;
+    box-shadow: none;
+    background-color: rgb(92, 0, 31);
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    margin-right: 25px;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.save-btn button:hover{
+    background-color: rgb(54, 8, 23);
+    color: rgb(255, 255, 255);
+}
+
+.cancel-btn{
+    margin-top: 31px;
+}
+
+.cancel-btn a{
+    background-color: rgb(92, 0, 31);
+    text-decoration: none;
+    color: white;
+    padding: 11px 15px;
+    border-radius: 10px;
+}
+
+.cancel-btn a:hover{
+    background-color: rgb(54, 8, 23);
+    color: rgb(255, 255, 255);
+}
+
+/* Add event */
+.addEvent{
+    margin-bottom: 20px;
+}
+
+.addEvent button{
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.addEvent button:hover{
+    background-color: rgb(54, 8, 23);
+}
+
+.events-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* margin:20px 0; */
+}
+
+.link-cardEvent{
+    text-decoration: none;
+    color: black;
+}
+
+.events-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 200px;
+    height: auto;
+    margin: 20px;
+}
+
+.events-card:hover{
+    border: solid 1px rgb(92, 0, 31);
+}
+    
+.eventsInfo-container {
+    padding: 5px 0px;
+}
+
+/* View event */
+
+.upperEvent-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.upperEvent-container h1{
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.upperEvent-container a{
+    text-decoration: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    background-color: rgb(92, 0, 31);
+}
+
+.upperEvent-container a:hover{
+    background-color: rgb(122, 40, 67);
+}
+
+.view-event-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px 0;
+}
+
+.view-event-btn a{
+    text-decoration: none;
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.view-event-btn a:hover{
+    background-color: rgb(122, 40, 67);
+}
+
+.event-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.view-content-event{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.view-content-event h4{
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.imgEvent img{
+    width: 100%;
+    height: 300px;
+}
+
+/* Apply Event */
+
+.title-upperEvent-container p{
+    font-weight: 500;
+    margin-bottom: 0;
+    margin: 0 50px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.content-applyEvent{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    height: auto;
+}
+
+.link-application{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.link-application ul li{
+    margin-bottom: 20px;
+}
+
+.link-application ul li a{
+    display: flex;
+    justify-content: center;
+    background-color: #545454;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 10px;
+    width: 80px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.link-application ul li .active,
+.link-application ul li a:hover{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    width: 80px;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(92, 0, 31);
+}
+
+.form-applyEvent{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 50px;
+    width: 100%;
+
+}
+
+.button-applyEvent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-applyEvent button{
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.button-applyEvent button:hover{
+    background-color: rgb(54, 8, 23);
+}
+
+.qr-payment{
+    margin-left: 50px;
+}
+
+.qr-payment img{
+    width: 200px;
+    height: 250px;
+}
+
+.form-payment-applyEvent{
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+.form-uploadPayment{
+    margin-left: 50px;
+}
+
+.payment-button-applyEvent button{
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.payment-button-applyEvent button:hover{
+    background-color: rgb(54, 8, 23);
+    color: white;
+}
+
+/* Manager view Event */
+
+.managerEventInfo-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.managerEventInfo-container img{
+    width: 200px;
+    height: 300px;
+    margin: 50px 20px;
+}
+
+.managerAbout-event{
+    width: 500px;
+    margin: 50px 50px;
+}
+
+.title-event h1{
+    font-size: 30px;
+}
+
+.content-event{
+    margin: 20px 0;
+}
+
+.managerDetail-event{
+    width: 400px;
+    margin: 50px 20px;
+}
+
+.editEvent-btn{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.editEvent-btn a{
+    text-decoration: none;
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    &:hover{
+        background-color: rgb(128, 0, 43);
+    }
+}
+
+/* Edit Event */
+
+.editEvent-container{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px;
+}
+
+.upperEditEvent-container{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 10px 0;
+}
+
+.upperEditEvent-container h2{
+    margin-top: 20px;
+}
+
+.delete-btn button{
+    border: 0;
+    background-color: rgb(92, 0, 31);
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.delete-btn button:hover{
+    background-color: rgb(54, 8, 23);
+}
+
+.eventContent-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+    margin-bottom: 50px;
+}
+
+.editEvent-img{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.editEvent-poster img{
+    height: 300px;
+    width: 200px;
+    border:1px solid #000000;
+}
+
+.editEvent-layout img{
+    height: 300px;
+    width: 200px;
+    border:1px solid #000000;
+}
+
+.editEvent-QR img{
+    height: 300px;
+    width: 200px;
+    border:1px solid #000000;
+}
+
+.formEditEvent-container{
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    padding: 0;
+}
+
+.edit-value textarea{
+    width: 600px;
+    padding: 5px 10px;
+}
+
+.updateEvent-btn{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cancel-btn a{
+    border: 0;
+    background: none;
+    box-shadow: none;
+    background-color: rgb(92, 0, 31);
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    padding: 12px 15px;
+    border-radius: 10px;
+}
+
+/* ---------------- */
+
+/* Edit user (Admin) */
+
+.edit-user-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+.edit-user-container h1{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.form-edit-user{
+    margin: 10px 0;
+}
+
+.edituser-label label{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.edit-user .form-select{
+    margin-bottom: 10px;
+}
+
+button.btn.button-editUser{
+    background-color: rgb(92, 0, 31);
+    color: white;
+    &:hover{
+        background-color: rgb(54, 8, 23);
+    }
+}
+
+a.btn.button-editUser{
+    background-color: rgb(92, 0, 31);
+    color: white;
+    &:hover{
+        background-color: rgb(54, 8, 23);
+    }
+}
+
+/* ................ */
+
+/* List application (Manager/Vendor) */
+
+.list-application{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.application-upper-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lot-boxes-container {
+    display: flex;
+    margin: 0 200px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.list-application .title{
+    text-align: center;
+}
+
+.lot-box {
+    width: 30px;
+    height: 30px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.lot-box.approved {
+    background-color: green;
+    color: white;
+}
+
+table tbody tr td{
+    padding: 8px 10px;
+}
+
+table tbody tr td .buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.buttons button{
+    background-color: rgb(92, 0, 31);
+    padding: 5px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.buttons button:hover{
+    background-color: rgb(54, 8, 23);
+}
+
+/* ................ */
+
+/* Vendor Application */
+
+.my-applications{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.myApp-uppercontainer{
+    margin: 10px 0;
+    text-align: center;
+}
+
+.back-myapp-button{
+    margin: 20px 0;
+}
+
+.back-myapp-button a{
+    text-decoration: none;
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.back-myapp-button a:hover{
+    background-color: rgb(54, 8, 23);
+}
+
+/* Edit Application (Vendor) */
+
+.editApp-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.form-editApp{
+    width: 50%;
+    margin: 20px 0;
+}
+
+.editApp-btn{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.receipt-img{
+    text-align: center;
+}
+
+.receipt-img img{
+    width: 200px;
+    height: 300px;
+}
+
+.editApp-btn a{
+    text-decoration: none;
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.editApp-btn a:hover{
+    background-color: rgb(54, 8, 23);
+}
+
+.editApp-btn button{
+    border: none;
+    background-color: rgb(92, 0, 31);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.editApp-btn button:hover{
+    background-color: rgb(54, 8, 23);
+}
+
+/* ............ */
+
+/* View Receipt */
+
+.viewReceipt-container{
+    margin: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.receipt-img img{
+    width: 400px;
+    height: 450px;
+}
+
+/* Carousel Image Resize */
+
+.img-resize-viewEvent{
+    width: 300px;
+    height: 400px;
+}
+
+.img-resize{
+    width: 200px;
+    height: 300;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black; /* Change the color to black */
+    width: 50px; /* Increase the size */
+    height: 50px; /* Increase the size */
+    background-size: 100%, 100%; /* Ensure the background size covers the whole area */
+}
+
+/* ............ */
+
+/* modal close button */
+
+.close-button{
+    padding: 0 10px;
+    &:hover{
+        background-color: #545454;
+    }
+}
+
+/* ........... */
