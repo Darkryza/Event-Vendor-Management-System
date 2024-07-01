@@ -338,11 +338,16 @@ a.nav-link{
     background-color: rgb(232, 232, 232);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-radius: 10px;
-    width: 200px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
     text-align: center;
     padding: 20px;
 }
+
+.admin-container-card h2{
+    font-size: 25px;
+}
+
 
 .graph-event-month{
     width: 40%;

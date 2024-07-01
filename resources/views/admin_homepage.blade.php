@@ -27,16 +27,28 @@
         <div class="admin-content">
             <div class="admin-content-row">
                 <div class="admin-container-card">
-                    <h2>Total Users</h2><br>
-                    <h2>{{ $totalUsers }}</h2>
+                    <div style="height: 50px">
+                        <h2>Total Users</h2><br>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center pt-4">
+                        <h2>{{ $totalUsers }}</h2>
+                    </div>
                 </div>
                 <div class="admin-container-card">
-                    <h2>Total Events</h2><br>
-                    <h2>{{ $totalEvents }}</h2>
+                    <div style="height: 50px">
+                        <h2>Total Events</h2><br>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center pt-4">
+                        <h2>{{ $totalEvents }}</h2>
+                    </div>
                 </div>
                 <div class="admin-container-card">
-                    <h2>Total Applications</h2><br>
-                    <h2>{{ $totalApplications }}</h2>
+                    <div style="height: 50px">
+                        <h2>Total Applications</h2><br>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center pt-4">
+                        <h2>{{ $totalApplications }}</h2>
+                    </div>
                 </div>
                 <div class="graph-event-month">
                     <h2>Events Per Month</h2>
